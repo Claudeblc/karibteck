@@ -12,12 +12,15 @@ interface Props {
   description: string;
   locale?: Locale;
   route?: RouteKey;
+  ogImage?: string;
 }
-const { title, description, locale = DEFAULT_LOCALE, route = 'home' } = Astro.props;
+const { title, description, locale = DEFAULT_LOCALE, route = 'home', ogImage } = Astro.props;
 const t = useTranslations(locale);
 const canonical = new URL(routes[locale][route], SITE_URL).href;
 const frHref = new URL(routes.fr[route], SITE_URL).href;
 const enHref = new URL(routes.en[route], SITE_URL).href;
+const ogImageUrl = ogImage ? new URL(ogImage, SITE_URL).href : undefined;
+const ogLocale = locale === 'fr' ? 'fr_FR' : 'en_US';
 ---
 
 <!doctype html>
@@ -31,6 +34,18 @@ const enHref = new URL(routes.en[route], SITE_URL).href;
     <link rel="alternate" hreflang="fr" href={frHref} />
     <link rel="alternate" hreflang="en" href={enHref} />
     <link rel="alternate" hreflang="x-default" href={frHref} />
+    {/* TODO Phase V1.1: dynamic OG image (Satori) — og:image omitted until an asset exists */}
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Karib Teck" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:locale" content={ogLocale} />
+    {ogImageUrl && <meta property="og:image" content={ogImageUrl} />}
+    <meta name="twitter:card" content={ogImageUrl ? 'summary_large_image' : 'summary'} />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    {ogImageUrl && <meta name="twitter:image" content={ogImageUrl} />}
     <slot name="head" />
   </head>
   <body>
