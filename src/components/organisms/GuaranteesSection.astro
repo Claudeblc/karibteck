@@ -1,0 +1,52 @@
+---
+import SectionHeader from '@/components/molecules/SectionHeader.astro';
+import GuaranteeItem from '@/components/molecules/GuaranteeItem.astro';
+import { getGuarantees } from '@/data/guarantees';
+import { useTranslations } from '@/i18n/utils';
+import { DEFAULT_LOCALE } from '@/lib/constants';
+import type { Locale } from '@/types';
+
+interface Props {
+  locale?: Locale;
+}
+const { locale = DEFAULT_LOCALE } = Astro.props;
+const t = useTranslations(locale);
+const guarantees = getGuarantees(locale);
+---
+
+<section id="garanties">
+  <div class="section-inner">
+    <SectionHeader
+      badge={t('guarantees.badge')}
+      lead={t('guarantees.title.lead')}
+      highlight={t('guarantees.title.hl')}
+      sub={t('guarantees.sub')}
+      align="center"
+    />
+    <div class="guarantees-grid">
+      {guarantees.map((guarantee) => <GuaranteeItem guarantee={guarantee} />)}
+    </div>
+  </div>
+
+  <style>
+    #garanties {
+      background: var(--color-navy);
+      padding: var(--section-pad-y) 5%;
+    }
+    .section-inner {
+      max-width: var(--content-max);
+      margin: 0 auto;
+    }
+    .guarantees-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+      margin-top: 48px;
+    }
+    @media (max-width: 860px) {
+      .guarantees-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</section>
