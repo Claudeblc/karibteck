@@ -1,0 +1,17 @@
+---
+interface Props {
+  text: string;
+}
+const { text } = Astro.props;
+---
+
+<span class="hl">{text}</span>
+
+<style>
+  .hl {
+    background: var(--gradient-accent);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+</style>
