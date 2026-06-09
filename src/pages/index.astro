@@ -1,26 +1,32 @@
 ---
-import '@fontsource-variable/inter';
-import '@fontsource-variable/space-grotesk';
-import '@/styles/global.css';
+import MainLayout from '@/layouts/MainLayout.astro';
+import Nav from '@/components/organisms/Nav.astro';
+import Hero from '@/components/organisms/Hero.astro';
+import FeaturesStrip from '@/components/organisms/FeaturesStrip.astro';
+import ServicesSection from '@/components/organisms/ServicesSection.astro';
+import StackSection from '@/components/organisms/StackSection.astro';
+import ProcessSection from '@/components/organisms/ProcessSection.astro';
+import WhySection from '@/components/organisms/WhySection.astro';
+import ProjectsSection from '@/components/organisms/ProjectsSection.astro';
+import PricingSection from '@/components/organisms/PricingSection.astro';
+import ContactSection from '@/components/organisms/ContactSection.astro';
+import Footer from '@/components/organisms/Footer.astro';
+
+const title = 'Karib Teck – Agence Web aux Antilles';
+const description =
+  'Karib Teck, agence web aux Antilles. Création de sites web, applications mobiles et solutions digitales clé en main pour les entreprises des DOM.';
 ---
 
-<!doctype html>
-<html lang="fr">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>KaribTeck — Agence web aux Antilles</title>
-    <meta name="description" content="KaribTeck, agence web aux Antilles. Refonte en cours." />
-  </head>
-  <body class="bg-navy text-white">
-    <main class="mx-auto max-w-3xl px-6 py-24">
-      <h1 class="font-display text-5xl font-bold">
-        Karib<span
-          style={`background: var(--gradient-accent); -webkit-background-clip: text; background-clip: text; color: transparent;`}
-          >Teck</span
-        >
-      </h1>
-      <p class="text-gray mt-4">Refonte Astro en cours — fondations en place.</p>
-    </main>
-  </body>
-</html>
+<MainLayout title={title} description={description}>
+  <Nav slot="nav" />
+  <Hero />
+  <FeaturesStrip />
+  <ServicesSection />
+  <StackSection />
+  <ProcessSection />
+  <WhySection />
+  <ProjectsSection />
+  <PricingSection />
+  <ContactSection />
+  <Footer slot="footer" />
+</MainLayout>
