@@ -29,7 +29,7 @@ Le **design visuel actuel est conservé** (il est jugé bon) : on le porte fidè
 | SEO | **Local** (`ProfessionalService`/`Organization` JSON-LD, NAP, `areaServed` DOM) **+** sitemap |
 | GEO | **IA** : `llms.txt`, `llms-full.txt`, `ai.txt`, robots IA, graphe JSON-LD d'entités, `FAQPage` |
 | Contact | **Web3Forms** (statique, honeypot) + **Cal.com** (embed) + **WhatsApp** |
-| Déploiement | Build statique → **VPS** (nginx) via **GitHub Actions** |
+| Déploiement | Build statique → **VPS** (nginx) via **GitHub Actions** — ⏸️ **en standby** (validation infra à venir) |
 | Collaboration | ESLint + Prettier + Husky/lint-staged + `astro check` + axe-playwright + Lighthouse CI + validateur JSON-LD |
 
 ### Choix de stack écartés
@@ -230,7 +230,9 @@ Pas de tests unitaires sur les composants. Logique pure dans `lib/` testable (Vi
 
 ---
 
-## 12. Déploiement (VPS)
+## 12. Déploiement (VPS) — ⏸️ EN STANDBY
+
+> La mécanique de déploiement est **gelée** tant que l'infra (VPS) n'est pas validée côté équipe. Le build statique (`dist/`) reste produit et vérifié en CI ; seule l'étape de publication sur le VPS est différée. La cible ci-dessous est la proposition par défaut, à confirmer.
 
 - **GitHub Actions** sur push `main` : install → `astro check` + lint → `astro build` → lighthouse/axe/jsonld → **déploiement sur le VPS** (rsync/ssh du `dist/`), **nginx** sert les fichiers statiques.
 - Secrets CI : hôte/clé SSH du VPS. Domaine `karibteck.com` (TLS via Let's Encrypt sur le VPS).
@@ -246,7 +248,8 @@ Pas de tests unitaires sur les composants. Logique pure dans `lib/` testable (Vi
 - **Phase 3 — SEO local + GEO** : `jsonLd.ts`, `<SeoHead>`, `ProfessionalService`/`Organization`/`FAQPage`, sitemap, `robots/llms/llms-full/ai.txt`, validateur CI.
 - **Phase 4 — Pages services** : `data/services.ts` + `services/[slug]`, `Service` JSON-LD.
 - **Phase 5 — Blog** : content collection + `BlogLayout`, index/[slug]/tags, RSS, `BlogPosting`.
-- **Phase 6 — Contact + déploiement** : Web3Forms, Cal embed, WhatsApp, pages légales, pipeline de déploiement VPS + nginx.
+- **Phase 6 — Contact + légales** : Web3Forms, Cal embed, WhatsApp, pages légales.
+- **Phase 7 — Déploiement VPS** : ⏸️ **en standby** — pipeline GitHub Actions → VPS + nginx, à débloquer une fois l'infra validée.
 
 ---
 
