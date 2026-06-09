@@ -8,7 +8,10 @@ import StackSection from '@/components/organisms/StackSection.astro';
 import ProcessSection from '@/components/organisms/ProcessSection.astro';
 import WhySection from '@/components/organisms/WhySection.astro';
 import ProjectsSection from '@/components/organisms/ProjectsSection.astro';
+import TeamSection from '@/components/organisms/TeamSection.astro';
+import GuaranteesSection from '@/components/organisms/GuaranteesSection.astro';
 import PricingSection from '@/components/organisms/PricingSection.astro';
+import FaqSection from '@/components/organisms/FaqSection.astro';
 import ContactSection from '@/components/organisms/ContactSection.astro';
 import Footer from '@/components/organisms/Footer.astro';
 import { useTranslations } from '@/i18n/utils';
@@ -35,7 +38,10 @@ const t = useTranslations(locale);
   <ProcessSection locale={locale} />
   <WhySection locale={locale} />
   <ProjectsSection locale={locale} />
+  <TeamSection locale={locale} />
+  <GuaranteesSection locale={locale} />
   <PricingSection locale={locale} />
+  <FaqSection locale={locale} />
   <ContactSection locale={locale} />
   <Footer slot="footer" locale={locale} />
 </MainLayout>
