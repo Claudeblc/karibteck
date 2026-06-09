@@ -13,3 +13,13 @@ export const AREA_SERVED = [
   'Saint-Martin',
   'Saint-Barthélemy',
 ] as const;
+
+/** Legal/brand identifiers for schema.org. */
+export const ORGANIZATION_NAME = 'Karib Teck';
+export const ORGANIZATION_LEGAL_NAME = 'Karib Teck';
+/** Region for PostalAddress (placeholder until full NAP is provided). */
+export const ADDRESS_REGION = 'Guadeloupe';
+export const ADDRESS_COUNTRY = 'FR';
+/** Approx. centroid of Guadeloupe — placeholder geo until a real address exists. */
+export const GEO_LATITUDE = 16.265;
+export const GEO_LONGITUDE = -61.551;
