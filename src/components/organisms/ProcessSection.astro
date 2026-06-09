@@ -1,0 +1,80 @@
+---
+import { PROCESS_STEPS } from '@/data/process';
+import ProcessStep from '@/components/molecules/ProcessStep.astro';
+import SectionBadge from '@/components/atoms/SectionBadge.astro';
+import Highlight from '@/components/atoms/Highlight.astro';
+import { useTranslations } from '@/i18n/utils';
+import { DEFAULT_LOCALE } from '@/lib/constants';
+import type { Locale } from '@/types';
+
+interface Props {
+  locale?: Locale;
+}
+const { locale = DEFAULT_LOCALE } = Astro.props;
+const t = useTranslations(locale);
+---
+
+<section id="processus">
+  <div class="section-inner">
+    <div class="section-head fade-up">
+      <SectionBadge label={t('process.badge')} />
+      <h2 class="section-title">
+        {t('process.title.lead')}
+        <Highlight text={t('process.title.hl')} />
+      </h2>
+      <p class="section-sub">{t('process.sub')}</p>
+    </div>
+    <div class="process-steps fade-up">
+      {PROCESS_STEPS.map((step) => <ProcessStep step={step} />)}
+    </div>
+  </div>
+</section>
+
+<style>
+  #processus {
+    background: var(--color-navy);
+    padding: var(--section-pad-y) 5%;
+  }
+  .section-inner {
+    max-width: var(--content-max);
+    margin: 0 auto;
+  }
+  .section-head {
+    text-align: center;
+  }
+  .section-title {
+    font-family: var(--font-display);
+    font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+    font-weight: 800;
+    line-height: 1.15;
+    margin: 16px 0 14px;
+  }
+  .section-sub {
+    color: var(--color-gray);
+    font-size: 1rem;
+    max-width: 600px;
+    line-height: 1.7;
+    margin: 0 auto 56px;
+  }
+  .process-steps {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 0;
+    position: relative;
+    margin-top: 20px;
+  }
+  .process-steps::before {
+    content: '';
+    position: absolute;
+    top: 28px;
+    left: 10%;
+    right: 10%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(0, 153, 255, 0.3), transparent);
+  }
+  @media (max-width: 860px) {
+    .process-steps::before {
+      display: none;
+    }
+  }
+</style>

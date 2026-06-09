@@ -1,0 +1,61 @@
+---
+import { SERVICES } from '@/data/services';
+import ServiceCard from '@/components/molecules/ServiceCard.astro';
+import SectionBadge from '@/components/atoms/SectionBadge.astro';
+import Highlight from '@/components/atoms/Highlight.astro';
+import { useTranslations } from '@/i18n/utils';
+import { DEFAULT_LOCALE } from '@/lib/constants';
+import type { Locale } from '@/types';
+
+interface Props {
+  locale?: Locale;
+}
+const { locale = DEFAULT_LOCALE } = Astro.props;
+const t = useTranslations(locale);
+---
+
+<section id="services">
+  <div class="section-inner">
+    <div class="section-head fade-up">
+      <SectionBadge label={t('services.badge')} />
+      <h2 class="section-title">
+        {t('services.title.lead')}
+        <Highlight text={t('services.title.hl')} />
+      </h2>
+      <p class="section-sub">{t('services.sub')}</p>
+    </div>
+    <div class="services-grid">
+      {SERVICES.map((service) => <ServiceCard service={service} />)}
+    </div>
+  </div>
+</section>
+
+<style>
+  #services {
+    background: var(--color-navy);
+    padding: var(--section-pad-y) 5%;
+  }
+  .section-inner {
+    max-width: var(--content-max);
+    margin: 0 auto;
+  }
+  .section-title {
+    font-family: var(--font-display);
+    font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+    font-weight: 800;
+    line-height: 1.15;
+    margin: 16px 0 14px;
+  }
+  .section-sub {
+    color: var(--color-gray);
+    font-size: 1rem;
+    max-width: 600px;
+    line-height: 1.7;
+    margin-bottom: 52px;
+  }
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 24px;
+  }
+</style>

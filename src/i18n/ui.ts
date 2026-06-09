@@ -20,6 +20,7 @@ export const ui = {
     'services.title.hl': 'adaptées à vos ambitions',
     'services.sub':
       "De la vitrine en ligne à l'application métier complexe, nous couvrons l'intégralité de votre besoin digital avec une expertise de pointe.",
+    'stack.label': 'Des technologies modernes pour des résultats durables',
     'process.badge': 'Notre Méthode',
     'process.title.lead': 'Un processus',
     'process.title.hl': 'simple et transparent',

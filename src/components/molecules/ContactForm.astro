@@ -1,0 +1,143 @@
+---
+import { useTranslations } from '@/i18n/utils';
+import { DEFAULT_LOCALE } from '@/lib/constants';
+import type { Locale } from '@/types';
+
+interface Props {
+  locale?: Locale;
+}
+const { locale = DEFAULT_LOCALE } = Astro.props;
+const t = useTranslations(locale);
+---
+
+<form class="contact-form fade-up">
+  <div class="form-row">
+    <div class="form-group">
+      <label for="firstName">{t('contact.form.firstName')} *</label>
+      <input
+        id="firstName"
+        type="text"
+        placeholder="Jean"
+        aria-label={t('contact.form.firstName')}
+      />
+    </div>
+    <div class="form-group">
+      <label for="lastName">{t('contact.form.lastName')} *</label>
+      <input
+        id="lastName"
+        type="text"
+        placeholder="Dupont"
+        aria-label={t('contact.form.lastName')}
+      />
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="form-group">
+      <label for="email">{t('contact.form.email')} *</label>
+      <input
+        id="email"
+        type="email"
+        placeholder="jean@entreprise.com"
+        aria-label={t('contact.form.email')}
+      />
+    </div>
+    <div class="form-group">
+      <label for="phone">{t('contact.form.phone')}</label>
+      <input
+        id="phone"
+        type="tel"
+        placeholder="+590 690 ..."
+        aria-label={t('contact.form.phone')}
+      />
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="company">{t('contact.form.company')}</label>
+    <input
+      id="company"
+      type="text"
+      placeholder="Nom de votre entreprise"
+      aria-label={t('contact.form.company')}
+    />
+  </div>
+  <div class="form-group">
+    <label for="message">{t('contact.form.message')} *</label>
+    <textarea
+      id="message"
+      placeholder="Parlez-nous de votre projet, de vos objectifs, de votre budget approximatif..."
+      aria-label={t('contact.form.message')}></textarea>
+  </div>
+  <button class="btn-submit" type="submit">{t('contact.form.submit')}</button>
+</form>
+
+<style>
+  .contact-form {
+    background: linear-gradient(160deg, #0f1e38, #080f22);
+    border: 1px solid rgba(0, 153, 255, 0.15);
+    border-radius: var(--radius-lg);
+    padding: 36px;
+  }
+  .form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+  .form-group {
+    margin-bottom: 18px;
+  }
+  .form-group label {
+    display: block;
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.7);
+    margin-bottom: 6px;
+  }
+  .form-group input,
+  .form-group textarea {
+    width: 100%;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(0, 153, 255, 0.18);
+    border-radius: 8px;
+    padding: 11px 14px;
+    color: var(--color-white);
+    font-family: var(--font-sans);
+    font-size: 0.9rem;
+    transition:
+      border-color 0.2s,
+      background 0.2s;
+    outline: none;
+  }
+  .form-group input::placeholder,
+  .form-group textarea::placeholder {
+    color: rgba(255, 255, 255, 0.3);
+  }
+  .form-group input:focus,
+  .form-group textarea:focus {
+    border-color: var(--color-blue-2);
+    background: rgba(0, 153, 255, 0.06);
+  }
+  .form-group textarea {
+    resize: vertical;
+    min-height: 110px;
+  }
+  .btn-submit {
+    width: 100%;
+    background: var(--gradient-accent);
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    padding: 14px;
+    font-family: var(--font-sans);
+    font-size: 0.95rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition:
+      opacity 0.2s,
+      transform 0.2s;
+    box-shadow: 0 4px 20px rgba(0, 87, 231, 0.4);
+  }
+  .btn-submit:hover {
+    opacity: 0.88;
+    transform: translateY(-1px);
+  }
+</style>

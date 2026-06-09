@@ -1,0 +1,109 @@
+---
+import SectionBadge from '@/components/atoms/SectionBadge.astro';
+import Highlight from '@/components/atoms/Highlight.astro';
+import ContactForm from '@/components/molecules/ContactForm.astro';
+import { AGENCY } from '@/data/agency';
+import { useTranslations } from '@/i18n/utils';
+import { DEFAULT_LOCALE } from '@/lib/constants';
+import type { Locale } from '@/types';
+
+interface Props {
+  locale?: Locale;
+}
+const { locale = DEFAULT_LOCALE } = Astro.props;
+const t = useTranslations(locale);
+---
+
+<section id="contact">
+  <div class="section-inner">
+    <div class="contact-grid">
+      <div class="fade-up">
+        <SectionBadge label={t('contact.badge')} />
+        <h2 class="section-title">
+          {t('contact.title.lead')}
+          <Highlight text={t('contact.title.hl')} />
+        </h2>
+        <p class="contact-intro">{t('contact.intro')}</p>
+        <div class="contact-detail">
+          <div class="contact-detail-icon">📧</div>
+          <div><a href={`mailto:${AGENCY.email}`}>{AGENCY.email}</a></div>
+        </div>
+        <div class="contact-detail">
+          <div class="contact-detail-icon">📞</div>
+          <div>+590 690 00 00 00</div>
+        </div>
+        <div class="contact-detail">
+          <div class="contact-detail-icon">📍</div>
+          <div>Guadeloupe, Antilles Françaises</div>
+        </div>
+        <div class="contact-detail">
+          <div class="contact-detail-icon">🕐</div>
+          <div>Lun–Ven : 8h – 18h • Sam : 9h – 13h</div>
+        </div>
+      </div>
+      <ContactForm locale={locale} />
+    </div>
+  </div>
+</section>
+
+<style>
+  #contact {
+    background: var(--color-navy);
+    padding: var(--section-pad-y) 5%;
+  }
+  .section-inner {
+    max-width: var(--content-max);
+    margin: 0 auto;
+  }
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.4fr;
+    gap: 60px;
+    align-items: start;
+  }
+  .section-title {
+    font-family: var(--font-display);
+    font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+    font-weight: 800;
+    line-height: 1.15;
+    margin: 16px 0 14px;
+  }
+  .contact-intro {
+    color: var(--color-gray);
+    font-size: 0.95rem;
+    line-height: 1.7;
+    margin-bottom: 32px;
+  }
+  .contact-detail {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 16px;
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 0.9rem;
+  }
+  .contact-detail a {
+    color: inherit;
+    text-decoration: none;
+  }
+  .contact-detail a:hover {
+    color: var(--color-cyan);
+  }
+  .contact-detail-icon {
+    width: 38px;
+    height: 38px;
+    background: rgba(0, 87, 231, 0.15);
+    border: 1px solid rgba(0, 153, 255, 0.2);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    flex-shrink: 0;
+  }
+  @media (max-width: 860px) {
+    .contact-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

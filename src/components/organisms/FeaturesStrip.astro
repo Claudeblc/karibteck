@@ -1,0 +1,28 @@
+---
+import { FEATURES } from '@/data/features';
+import FeatureItem from '@/components/molecules/FeatureItem.astro';
+---
+
+<div class="features-strip">
+  <div class="features-strip-inner">
+    {FEATURES.map((feature) => <FeatureItem feature={feature} />)}
+  </div>
+</div>
+
+<style>
+  .features-strip {
+    background: rgba(10, 22, 40, 0.8);
+    border-top: 1px solid rgba(0, 153, 255, 0.1);
+    border-bottom: 1px solid rgba(0, 153, 255, 0.1);
+    padding: 28px 5%;
+  }
+  .features-strip-inner {
+    max-width: var(--content-max);
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+</style>

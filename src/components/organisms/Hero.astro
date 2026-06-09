@@ -1,0 +1,81 @@
+---
+import { Image } from 'astro:assets';
+import heroImage from '@/assets/hero.png';
+import Highlight from '@/components/atoms/Highlight.astro';
+import Button from '@/components/atoms/Button.astro';
+import SectionBadge from '@/components/atoms/SectionBadge.astro';
+import { useTranslations } from '@/i18n/utils';
+import { DEFAULT_LOCALE } from '@/lib/constants';
+import type { Locale } from '@/types';
+
+interface Props {
+  locale?: Locale;
+}
+const { locale = DEFAULT_LOCALE } = Astro.props;
+const t = useTranslations(locale);
+---
+
+<section id="hero">
+  <div class="hero-inner">
+    <SectionBadge label={t('hero.badge')} />
+    <h1 class="hero-title">
+      Nous créons des <Highlight text="sites web" /> qui propulsent votre entreprise.
+    </h1>
+    <p class="hero-sub">
+      Karib Teck accompagne les entreprises, entrepreneurs et marques des DOM dans leur
+      transformation digitale avec des sites modernes, rapides et performants.
+    </p>
+    <div class="hero-ctas">
+      <Button href="#services" variant="primary">{t('cta.discoverServices')}</Button>
+      <Button href="#realisations" variant="outline">{t('cta.seeProjects')}</Button>
+    </div>
+  </div>
+  <div class="hero-img-col">
+    <Image
+      src={heroImage}
+      alt="Karib Teck – Solutions digitales"
+      widths={[480, 768, 1100]}
+      sizes="(max-width: 860px) 90vw, 45vw"
+      loading="eager"
+      fetchpriority="high"
+    />
+  </div>
+</section>
+
+<style>
+  #hero {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    align-items: center;
+    gap: 40px;
+    max-width: var(--content-max);
+    margin: 0 auto;
+    padding: calc(var(--nav-height) + 64px) 5% 64px;
+  }
+  .hero-title {
+    font-family: var(--font-display);
+    font-size: clamp(2.2rem, 5vw, 3.6rem);
+    line-height: 1.1;
+    margin: 18px 0;
+  }
+  .hero-sub {
+    color: var(--color-gray);
+    max-width: 46ch;
+  }
+  .hero-ctas {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    margin-top: 28px;
+  }
+  .hero-img-col :global(img) {
+    width: 100%;
+    height: auto;
+    border-radius: var(--radius-lg);
+  }
+  @media (max-width: 860px) {
+    #hero {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
