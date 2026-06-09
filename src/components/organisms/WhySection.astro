@@ -2,8 +2,7 @@
 import { WHY_POINTS, WHY_STATS, EXPERTISE_TAGS } from '@/data/why';
 import WhyPoint from '@/components/molecules/WhyPoint.astro';
 import StatCard from '@/components/molecules/StatCard.astro';
-import SectionBadge from '@/components/atoms/SectionBadge.astro';
-import Highlight from '@/components/atoms/Highlight.astro';
+import SectionHeader from '@/components/molecules/SectionHeader.astro';
 import Tag from '@/components/atoms/Tag.astro';
 import { useTranslations } from '@/i18n/utils';
 import { DEFAULT_LOCALE } from '@/lib/constants';
@@ -20,13 +19,15 @@ const t = useTranslations(locale);
   <div class="section-inner">
     <div class="why-grid">
       <div class="fade-up">
-        <SectionBadge label={t('why.badge')} />
-        <h2 class="section-title">
-          {t('why.title.lead')}
-          <Highlight text={t('why.title.hl')} />
-          {' '}{t('why.title.tail')}
-        </h2>
-        <p class="section-sub">{t('why.sub')}</p>
+        <SectionHeader
+          badge={t('why.badge')}
+          lead={t('why.title.lead')}
+          highlight={t('why.title.hl')}
+          tail={t('why.title.tail')}
+          sub={t('why.sub')}
+          subWidth="none"
+          subSpacing={32}
+        />
         <ul class="why-list">
           {WHY_POINTS.map((point) => <WhyPoint point={point} />)}
         </ul>
@@ -61,19 +62,6 @@ const t = useTranslations(locale);
     gap: 60px;
     align-items: center;
   }
-  .section-title {
-    font-family: var(--font-display);
-    font-size: clamp(1.8rem, 3.5vw, 2.8rem);
-    font-weight: 800;
-    line-height: 1.15;
-    margin: 16px 0 14px;
-  }
-  .section-sub {
-    color: var(--color-gray);
-    font-size: 1rem;
-    line-height: 1.7;
-    margin-bottom: 32px;
-  }
   .why-list {
     list-style: none;
     display: flex;
@@ -83,8 +71,8 @@ const t = useTranslations(locale);
     margin: 0;
   }
   .why-visual {
-    background: linear-gradient(160deg, #0f1e38, #071326);
-    border: 1px solid rgba(0, 153, 255, 0.15);
+    background: var(--gradient-card);
+    border: 1px solid var(--color-border-accent);
     border-radius: var(--radius-lg);
     padding: 36px;
   }
@@ -96,8 +84,8 @@ const t = useTranslations(locale);
   .why-expertise {
     margin-top: 24px;
     padding: 20px;
-    background: rgba(0, 87, 231, 0.08);
-    border: 1px solid rgba(0, 153, 255, 0.15);
+    background: var(--color-overlay-accent);
+    border: 1px solid var(--color-border-accent);
     border-radius: var(--radius-card);
   }
   .why-expertise-label {

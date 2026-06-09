@@ -1,8 +1,7 @@
 ---
-import SectionBadge from '@/components/atoms/SectionBadge.astro';
-import Highlight from '@/components/atoms/Highlight.astro';
+import SectionHeader from '@/components/molecules/SectionHeader.astro';
 import ContactForm from '@/components/molecules/ContactForm.astro';
-import { AGENCY } from '@/data/agency';
+import { CONTACT_DETAILS } from '@/data/agency';
 import { useTranslations } from '@/i18n/utils';
 import { DEFAULT_LOCALE } from '@/lib/constants';
 import type { Locale } from '@/types';
@@ -18,27 +17,27 @@ const t = useTranslations(locale);
   <div class="section-inner">
     <div class="contact-grid">
       <div class="fade-up">
-        <SectionBadge label={t('contact.badge')} />
-        <h2 class="section-title">
-          {t('contact.title.lead')}
-          <Highlight text={t('contact.title.hl')} />
-        </h2>
+        <SectionHeader
+          badge={t('contact.badge')}
+          lead={t('contact.title.lead')}
+          highlight={t('contact.title.hl')}
+        />
         <p class="contact-intro">{t('contact.intro')}</p>
         <div class="contact-detail">
           <div class="contact-detail-icon">📧</div>
-          <div><a href={`mailto:${AGENCY.email}`}>{AGENCY.email}</a></div>
+          <div><a href={`mailto:${CONTACT_DETAILS.email}`}>{CONTACT_DETAILS.email}</a></div>
         </div>
         <div class="contact-detail">
           <div class="contact-detail-icon">📞</div>
-          <div>+590 690 00 00 00</div>
+          <div>{CONTACT_DETAILS.phone}</div>
         </div>
         <div class="contact-detail">
           <div class="contact-detail-icon">📍</div>
-          <div>Guadeloupe, Antilles Françaises</div>
+          <div>{CONTACT_DETAILS.location}</div>
         </div>
         <div class="contact-detail">
           <div class="contact-detail-icon">🕐</div>
-          <div>Lun–Ven : 8h – 18h • Sam : 9h – 13h</div>
+          <div>{CONTACT_DETAILS.hours}</div>
         </div>
       </div>
       <ContactForm locale={locale} />
@@ -60,13 +59,6 @@ const t = useTranslations(locale);
     grid-template-columns: 1fr 1.4fr;
     gap: 60px;
     align-items: start;
-  }
-  .section-title {
-    font-family: var(--font-display);
-    font-size: clamp(1.8rem, 3.5vw, 2.8rem);
-    font-weight: 800;
-    line-height: 1.15;
-    margin: 16px 0 14px;
   }
   .contact-intro {
     color: var(--color-gray);
@@ -92,8 +84,8 @@ const t = useTranslations(locale);
   .contact-detail-icon {
     width: 38px;
     height: 38px;
-    background: rgba(0, 87, 231, 0.15);
-    border: 1px solid rgba(0, 153, 255, 0.2);
+    background: var(--color-overlay-accent-strong);
+    border: 1px solid var(--color-border-accent-faint);
     border-radius: 8px;
     display: flex;
     align-items: center;

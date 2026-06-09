@@ -1,8 +1,7 @@
 ---
 import { PRICING_PLANS } from '@/data/pricing';
 import PricingCard from '@/components/molecules/PricingCard.astro';
-import SectionBadge from '@/components/atoms/SectionBadge.astro';
-import Highlight from '@/components/atoms/Highlight.astro';
+import SectionHeader from '@/components/molecules/SectionHeader.astro';
 import { useTranslations } from '@/i18n/utils';
 import { DEFAULT_LOCALE } from '@/lib/constants';
 import type { Locale } from '@/types';
@@ -16,14 +15,13 @@ const t = useTranslations(locale);
 
 <section id="tarifs">
   <div class="section-inner">
-    <div class="section-head fade-up">
-      <SectionBadge label={t('pricing.badge')} />
-      <h2 class="section-title">
-        {t('pricing.title.lead')}
-        <Highlight text={t('pricing.title.hl')} />
-      </h2>
-      <p class="section-sub">{t('pricing.sub')}</p>
-    </div>
+    <SectionHeader
+      badge={t('pricing.badge')}
+      lead={t('pricing.title.lead')}
+      highlight={t('pricing.title.hl')}
+      sub={t('pricing.sub')}
+      align="center"
+    />
     <div class="tarifs-grid">
       {PRICING_PLANS.map((plan) => <PricingCard plan={plan} locale={locale} />)}
     </div>
@@ -38,23 +36,6 @@ const t = useTranslations(locale);
   .section-inner {
     max-width: var(--content-max);
     margin: 0 auto;
-  }
-  .section-head {
-    text-align: center;
-  }
-  .section-title {
-    font-family: var(--font-display);
-    font-size: clamp(1.8rem, 3.5vw, 2.8rem);
-    font-weight: 800;
-    line-height: 1.15;
-    margin: 16px 0 14px;
-  }
-  .section-sub {
-    color: var(--color-gray);
-    font-size: 1rem;
-    max-width: 600px;
-    line-height: 1.7;
-    margin: 0 auto 52px;
   }
   .tarifs-grid {
     display: grid;
