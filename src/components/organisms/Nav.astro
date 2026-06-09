@@ -1,7 +1,8 @@
 ---
-import { AGENCY } from '@/data/agency';
+import { AGENCY, getTagline } from '@/data/agency';
 import NavMenu from '@/components/molecules/NavMenu.astro';
 import LangToggle from '@/components/molecules/LangToggle.astro';
+import { useTranslations } from '@/i18n/utils';
 import { DEFAULT_LOCALE } from '@/lib/constants';
 import type { Locale, RouteKey } from '@/types';
 
@@ -10,18 +11,20 @@ interface Props {
   route?: RouteKey;
 }
 const { locale = DEFAULT_LOCALE, route = 'home' } = Astro.props;
+const t = useTranslations(locale);
+const logoSub = `— ${getTagline(locale)} —`;
 ---
 
 <nav>
   <a href="#hero" class="nav-logo">
     <span class="nav-logo-name">{AGENCY.name.toUpperCase()}</span>
-    <span class="nav-logo-sub">{AGENCY.logoSub}</span>
+    <span class="nav-logo-sub">{logoSub}</span>
   </a>
   <div class="nav-actions">
     <NavMenu locale={locale} />
     <LangToggle locale={locale} route={route} />
   </div>
-  <button class="burger" id="burger" aria-label="Ouvrir le menu">
+  <button class="burger" id="burger" aria-label={t('a11y.openMenu')}>
     <span></span><span></span><span></span>
   </button>
 </nav>

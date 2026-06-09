@@ -1,6 +1,7 @@
 ---
 import { DEFAULT_LOCALE, SITE_URL } from '@/lib/constants';
 import { routes } from '@/i18n/ui';
+import { useTranslations } from '@/i18n/utils';
 import type { Locale, RouteKey } from '@/types';
 import '@fontsource-variable/inter';
 import '@fontsource-variable/space-grotesk';
@@ -13,6 +14,7 @@ interface Props {
   route?: RouteKey;
 }
 const { title, description, locale = DEFAULT_LOCALE, route = 'home' } = Astro.props;
+const t = useTranslations(locale);
 const canonical = new URL(routes[locale][route], SITE_URL).href;
 const frHref = new URL(routes.fr[route], SITE_URL).href;
 const enHref = new URL(routes.en[route], SITE_URL).href;
@@ -32,7 +34,7 @@ const enHref = new URL(routes.en[route], SITE_URL).href;
     <slot name="head" />
   </head>
   <body>
-    <a href="#main" class="skip-link">Aller au contenu</a>
+    <a href="#main" class="skip-link">{t('a11y.skipToContent')}</a>
     <slot name="nav" />
     <main id="main">
       <slot />

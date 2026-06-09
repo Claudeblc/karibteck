@@ -8,7 +8,6 @@ const TAGLINE: Localized<string> = {
 
 export const AGENCY = {
   name: 'Karib Teck',
-  logoSub: '— Agence Web aux Antilles —',
   email: CONTACT_EMAIL,
 } as const;
 
