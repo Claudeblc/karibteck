@@ -1,0 +1,31 @@
+/* KaribTeck design tokens — ported from the original index.html :root.
+   Tailwind 4 exposes @theme tokens as utilities (bg-navy, text-cyan, rounded-card…). */
+@theme {
+  /* Backgrounds */
+  --color-navy: #050d1f;
+  --color-navy-2: #0a1628;
+  --color-navy-3: #0f1e38;
+
+  /* Accents */
+  --color-blue-1: #0057e7;
+  --color-blue-2: #0099ff;
+  --color-cyan: #00d4ff;
+
+  /* Neutrals */
+  --color-white: #ffffff;
+  --color-gray: #8a9bb5;
+  --color-gray-2: #1a2d4a;
+
+  /* Radii */
+  --radius-card: 12px;
+  --radius-lg: 20px;
+
+  /* Fonts (self-hosted variable fonts, loaded in the layout) */
+  --font-sans: 'Inter Variable', sans-serif;
+  --font-display: 'Space Grotesk Variable', sans-serif;
+}
+
+/* Gradients can't be color tokens — expose as a plain custom property. */
+:root {
+  --gradient-accent: linear-gradient(135deg, #0057e7, #00d4ff);
+}
