@@ -1,13 +1,15 @@
 ---
 import { AGENCY } from '@/data/agency';
 import NavMenu from '@/components/molecules/NavMenu.astro';
+import LangToggle from '@/components/molecules/LangToggle.astro';
 import { DEFAULT_LOCALE } from '@/lib/constants';
-import type { Locale } from '@/types';
+import type { Locale, RouteKey } from '@/types';
 
 interface Props {
   locale?: Locale;
+  route?: RouteKey;
 }
-const { locale = DEFAULT_LOCALE } = Astro.props;
+const { locale = DEFAULT_LOCALE, route = 'home' } = Astro.props;
 ---
 
 <nav>
@@ -15,7 +17,10 @@ const { locale = DEFAULT_LOCALE } = Astro.props;
     <span class="nav-logo-name">{AGENCY.name.toUpperCase()}</span>
     <span class="nav-logo-sub">{AGENCY.logoSub}</span>
   </a>
-  <NavMenu locale={locale} />
+  <div class="nav-actions">
+    <NavMenu locale={locale} />
+    <LangToggle locale={locale} route={route} />
+  </div>
   <button class="burger" id="burger" aria-label="Ouvrir le menu">
     <span></span><span></span><span></span>
   </button>
@@ -35,6 +40,11 @@ const { locale = DEFAULT_LOCALE } = Astro.props;
     background: rgba(0, 87, 180, 0.85);
     backdrop-filter: blur(14px);
     border-bottom: 1px solid var(--color-border-accent-soft);
+  }
+  .nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 20px;
   }
   .nav-logo {
     display: flex;
