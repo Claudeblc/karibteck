@@ -1,0 +1,73 @@
+---
+import { AGENCY } from '@/data/agency';
+import NavMenu from '@/components/molecules/NavMenu.astro';
+import { DEFAULT_LOCALE } from '@/lib/constants';
+import type { Locale } from '@/types';
+
+interface Props {
+  locale?: Locale;
+}
+const { locale = DEFAULT_LOCALE } = Astro.props;
+---
+
+<nav>
+  <a href="#hero" class="nav-logo">
+    <span class="nav-logo-name">{AGENCY.name.toUpperCase()}</span>
+    <span class="nav-logo-sub">{AGENCY.logoSub}</span>
+  </a>
+  <NavMenu locale={locale} />
+  <button class="burger" id="burger" aria-label="Ouvrir le menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<style>
+  nav {
+    position: fixed;
+    inset: 0 0 auto 0;
+    z-index: 1000;
+    height: var(--nav-height);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 0 5%;
+    background: rgba(0, 87, 180, 0.85);
+    backdrop-filter: blur(14px);
+    border-bottom: 1px solid rgba(0, 153, 255, 0.12);
+  }
+  .nav-logo {
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+  }
+  .nav-logo-name {
+    font-family: var(--font-display);
+    font-weight: 700;
+    color: var(--color-white);
+    letter-spacing: 0.04em;
+  }
+  .nav-logo-sub {
+    font-size: 0.62rem;
+    color: var(--color-gray);
+    letter-spacing: 0.05em;
+  }
+  .burger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+  .burger span {
+    width: 24px;
+    height: 2px;
+    background: var(--color-white);
+  }
+  @media (max-width: 860px) {
+    .burger {
+      display: flex;
+    }
+  }
+</style>

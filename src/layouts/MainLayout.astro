@@ -1,0 +1,69 @@
+---
+import { DEFAULT_LOCALE, SITE_URL } from '@/lib/constants';
+import type { Locale } from '@/types';
+import '@fontsource-variable/inter';
+import '@fontsource-variable/space-grotesk';
+import '@/styles/global.css';
+
+interface Props {
+  title: string;
+  description: string;
+  locale?: Locale;
+}
+const { title, description, locale = DEFAULT_LOCALE } = Astro.props;
+const canonical = new URL(Astro.url.pathname, SITE_URL).href;
+---
+
+<!doctype html>
+<html lang={locale}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+  </head>
+  <body>
+    <a href="#main" class="skip-link">Aller au contenu</a>
+    <slot name="nav" />
+    <main id="main">
+      <slot />
+    </main>
+    <slot name="footer" />
+    <script>
+      import '@/scripts/reveal.ts';
+    </script>
+    <style is:global>
+      .skip-link {
+        position: absolute;
+        left: -999px;
+        top: 0;
+        background: var(--color-cyan);
+        color: var(--color-navy);
+        padding: 8px 16px;
+        z-index: 2000;
+      }
+      .skip-link:focus {
+        left: 0;
+      }
+      .fade-up {
+        opacity: 0;
+        transform: translateY(24px);
+        transition:
+          opacity 0.6s ease,
+          transform 0.6s ease;
+      }
+      .fade-up.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      @media (prefers-reduced-motion: reduce) {
+        .fade-up {
+          opacity: 1;
+          transform: none;
+          transition: none;
+        }
+      }
+    </style>
+  </body>
+</html>

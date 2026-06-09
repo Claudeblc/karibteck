@@ -1,0 +1,59 @@
+---
+import { NAV_LINKS } from '@/data/agency';
+import { useTranslations } from '@/i18n/utils';
+import Button from '@/components/atoms/Button.astro';
+import type { Locale } from '@/types';
+import type { UiKey } from '@/i18n/ui';
+
+interface Props {
+  locale: Locale;
+}
+const { locale } = Astro.props;
+const t = useTranslations(locale);
+---
+
+<ul class="nav-links" id="navLinks">
+  {
+    NAV_LINKS.map((link) => (
+      <li>
+        <a href={link.href}>{t(link.labelKey as UiKey)}</a>
+      </li>
+    ))
+  }
+  <li><Button href="#contact" variant="devis">{t('cta.requestQuote')}</Button></li>
+</ul>
+
+<style>
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  .nav-links a {
+    color: var(--color-white);
+    text-decoration: none;
+    font-size: 0.95rem;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover {
+    color: var(--color-cyan);
+  }
+  @media (max-width: 860px) {
+    .nav-links {
+      position: fixed;
+      inset: var(--nav-height) 0 auto 0;
+      flex-direction: column;
+      gap: 18px;
+      padding: 24px 5%;
+      background: var(--color-navy-2);
+      transform: translateY(-120%);
+      transition: transform 0.3s ease;
+    }
+    .nav-links.open {
+      transform: translateY(0);
+    }
+  }
+</style>
