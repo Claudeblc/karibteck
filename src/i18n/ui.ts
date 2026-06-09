@@ -55,6 +55,21 @@ export const ui = {
     'pricing.sub':
       'Chaque projet est unique. Ces tarifs sont indicatifs — contactez-nous pour un devis sur mesure adapté à vos besoins exacts.',
     'pricing.popular': '⭐ Le plus choisi',
+    'team.badge': 'L’équipe',
+    'team.title.lead': 'Trois ingénieurs,',
+    'team.title.hl': 'une exigence commune',
+    'team.sub':
+      'Une équipe à taille humaine, où chaque projet est porté par des développeurs seniors qui maîtrisent leur sujet de bout en bout.',
+    'guarantees.badge': 'Nos engagements',
+    'guarantees.title.lead': 'Ce sur quoi vous pouvez',
+    'guarantees.title.hl': 'compter',
+    'guarantees.sub':
+      'Pas de promesses en l’air : des engagements concrets qui encadrent chacune de nos collaborations.',
+    'faq.badge': 'FAQ',
+    'faq.title.lead': 'Questions',
+    'faq.title.hl': 'fréquentes',
+    'faq.sub':
+      'Les réponses aux questions qu’on nous pose le plus souvent. Une autre question ? Écrivez-nous.',
     'contact.badge': 'Contact',
     'contact.title.lead': 'Parlons de votre',
     'contact.title.hl': 'projet',
@@ -136,6 +151,19 @@ export const ui = {
     'pricing.sub':
       'Every project is unique. These prices are indicative — contact us for a tailored quote matched to your exact needs.',
     'pricing.popular': '⭐ Most chosen',
+    'team.badge': 'The team',
+    'team.title.lead': 'Three engineers,',
+    'team.title.hl': 'one shared standard',
+    'team.sub':
+      'A small, focused team where every project is led by senior developers who own their craft end to end.',
+    'guarantees.badge': 'Our commitments',
+    'guarantees.title.lead': 'What you can',
+    'guarantees.title.hl': 'count on',
+    'guarantees.sub': 'No empty promises: concrete commitments that frame every collaboration.',
+    'faq.badge': 'FAQ',
+    'faq.title.lead': 'Frequently asked',
+    'faq.title.hl': 'questions',
+    'faq.sub': 'Answers to the questions we hear most often. Another question? Write to us.',
     'contact.badge': 'Contact',
     'contact.title.lead': "Let's talk about your",
     'contact.title.hl': 'project',
