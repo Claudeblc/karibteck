@@ -17,7 +17,10 @@ export const ui = {
     'meta.home.title': 'Karib Teck – Agence Web aux Antilles',
     'meta.home.description':
       'Karib Teck, agence web aux Antilles. Création de sites web, applications mobiles et solutions digitales clé en main pour les entreprises des DOM.',
+    'a11y.skipToContent': 'Aller au contenu',
+    'a11y.openMenu': 'Ouvrir le menu',
     'hero.badge': 'Agence Web aux Antilles',
+    'hero.imageAlt': 'Karib Teck – Solutions digitales',
     'hero.title.lead': 'Nous créons des',
     'hero.title.hl': 'sites web',
     'hero.title.tail': 'qui propulsent votre entreprise.',
@@ -95,7 +98,10 @@ export const ui = {
     'meta.home.title': 'Karib Teck – Web Agency in the French West Indies',
     'meta.home.description':
       'Karib Teck, web agency in the French West Indies. Websites, mobile apps and turnkey digital solutions for businesses across the French overseas territories.',
+    'a11y.skipToContent': 'Skip to content',
+    'a11y.openMenu': 'Open menu',
     'hero.badge': 'Web agency in the French West Indies',
+    'hero.imageAlt': 'Karib Teck – Digital solutions',
     'hero.title.lead': 'We build',
     'hero.title.hl': 'websites',
     'hero.title.tail': 'that grow your business.',
@@ -165,7 +171,8 @@ type AssertSameKeys<A, B extends A> = B;
 export type _UiSymmetry = AssertSameKeys<
   Record<keyof (typeof ui)['fr'], string>,
   (typeof ui)['en']
->;
+> &
+  AssertSameKeys<Record<keyof (typeof ui)['en'], string>, (typeof ui)['fr']>;
 
 export const routes = {
   fr: {
