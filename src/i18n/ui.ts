@@ -80,7 +80,92 @@ export const ui = {
     'footer.legal.cgv': 'CGV',
     'footer.rights': 'Tous droits réservés.',
   },
+  en: {
+    'nav.home': 'Home',
+    'nav.services': 'Services',
+    'nav.projects': 'Work',
+    'nav.about': 'About',
+    'nav.pricing': 'Pricing',
+    'nav.contact': 'Contact',
+    'cta.requestQuote': 'Request a quote',
+    'cta.discoverServices': 'Explore our services',
+    'cta.seeProjects': 'See our work',
+    'cta.discussProject': 'Discuss your project',
+    'cta.contactUs': 'Contact us',
+    'meta.home.title': 'Karib Teck – Web Agency in the French West Indies',
+    'meta.home.description':
+      'Karib Teck, web agency in the French West Indies. Websites, mobile apps and turnkey digital solutions for businesses across the French overseas territories.',
+    'hero.badge': 'Web agency in the French West Indies',
+    'hero.title.lead': 'We build',
+    'hero.title.hl': 'websites',
+    'hero.title.tail': 'that grow your business.',
+    'hero.sub':
+      'Karib Teck helps businesses, entrepreneurs and brands across the French overseas territories go digital with modern, fast and high-performing websites.',
+    'services.badge': 'Our Services',
+    'services.title.lead': 'Solutions',
+    'services.title.hl': 'tailored to your ambitions',
+    'services.sub':
+      'From an online storefront to a complex business application, we cover your entire digital needs with sharp, senior expertise.',
+    'stack.label': 'Modern technologies for results that last',
+    'process.badge': 'Our Method',
+    'process.title.lead': 'A',
+    'process.title.hl': 'simple and transparent',
+    'process.sub':
+      'From the first meeting to go-live, we support you at every step with clarity and rigor.',
+    'why.badge': 'Why Karib Teck',
+    'why.title.lead': 'An agency',
+    'why.title.hl': 'rooted in the West Indies,',
+    'why.title.tail': 'open to the world',
+    'why.sub':
+      'We know the realities of the local overseas market while mastering the international standards of web and software development.',
+    'why.expertiseLabel': 'Our areas of expertise',
+    'projects.badge': 'Our Work',
+    'projects.title.lead': 'Projects that',
+    'projects.title.hl': 'speak for themselves',
+    'projects.sub':
+      'Examples of the projects we design and build for businesses in Guadeloupe, Martinique and the French overseas territories.',
+    'pricing.badge': 'Pricing',
+    'pricing.title.lead': 'Transparent',
+    'pricing.title.hl': 'offers',
+    'pricing.sub':
+      'Every project is unique. These prices are indicative — contact us for a tailored quote matched to your exact needs.',
+    'pricing.popular': '⭐ Most chosen',
+    'contact.badge': 'Contact',
+    'contact.title.lead': "Let's talk about your",
+    'contact.title.hl': 'project',
+    'contact.intro':
+      'An idea, a need, a project to launch? Fill in the form or reach out directly. We reply within 24h.',
+    'contact.form.firstName': 'First name',
+    'contact.form.firstName.placeholder': 'John',
+    'contact.form.lastName': 'Last name',
+    'contact.form.lastName.placeholder': 'Doe',
+    'contact.form.email': 'Email',
+    'contact.form.email.placeholder': 'john@company.com',
+    'contact.form.phone': 'Phone',
+    'contact.form.phone.placeholder': '+590 690 ...',
+    'contact.form.company': 'Company',
+    'contact.form.company.placeholder': 'Your company name',
+    'contact.form.message': 'Your message',
+    'contact.form.message.placeholder':
+      'Tell us about your project, your goals, your approximate budget...',
+    'contact.form.submit': 'Send my quote request',
+    'footer.servicesTitle': 'Services',
+    'footer.companyTitle': 'Company',
+    'footer.legalTitle': 'Legal',
+    'footer.followTitle': 'Follow us',
+    'footer.legal.mentions': 'Legal notice',
+    'footer.legal.privacy': 'Privacy policy',
+    'footer.legal.cgv': 'Terms of sale',
+    'footer.rights': 'All rights reserved.',
+  },
 } as const;
+
+// Ensures every locale defines exactly the same keys as the default locale.
+type AssertSameKeys<A, B extends A> = B;
+export type _UiSymmetry = AssertSameKeys<
+  Record<keyof (typeof ui)['fr'], string>,
+  (typeof ui)['en']
+>;
 
 export const routes = {
   fr: {
