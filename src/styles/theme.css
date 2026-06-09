@@ -28,4 +28,7 @@
 /* Gradients can't be color tokens — expose as a plain custom property. */
 :root {
   --gradient-accent: linear-gradient(135deg, #0057e7, #00d4ff);
+  --nav-height: 70px;
+  --section-pad-y: 96px;
+  --content-max: 1200px;
 }
