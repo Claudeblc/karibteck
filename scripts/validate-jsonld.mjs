@@ -14,15 +14,23 @@ async function htmlFiles(dir) {
   return files;
 }
 
+function typeIncludesOrganization(node) {
+  if (!node || typeof node !== 'object') return false;
+  const t = node['@type'];
+  return t === 'Organization' || (Array.isArray(t) && t.includes('Organization'));
+}
+
 function hasOrganization(html) {
   const blocks = [...html.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)];
   return blocks.some((m) => {
+    let parsed;
     try {
-      const json = JSON.stringify(JSON.parse(m[1]));
-      return json.includes('"Organization"');
+      parsed = JSON.parse(m[1]);
     } catch {
       return false;
     }
+    const nodes = Array.isArray(parsed['@graph']) ? parsed['@graph'] : [parsed];
+    return nodes.some(typeIncludesOrganization);
   });
 }
 
