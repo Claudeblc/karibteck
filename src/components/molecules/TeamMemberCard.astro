@@ -1,0 +1,55 @@
+---
+import type { TeamMember } from '@/types';
+
+interface Props {
+  member: TeamMember;
+}
+const { member } = Astro.props;
+---
+
+<article class="team-card fade-up">
+  <div class="avatar" style={`--avatar-accent: ${member.accent}`} aria-hidden="true">
+    {member.initials}
+  </div>
+  <h3 class="name">{member.name}</h3>
+  <p class="role">{member.role}</p>
+  <p class="bio">{member.bio}</p>
+</article>
+
+<style>
+  .team-card {
+    background: var(--color-navy-2);
+    border: 1px solid var(--color-gray-2);
+    border-radius: var(--radius-lg);
+    padding: 28px;
+    text-align: center;
+  }
+  .avatar {
+    width: 72px;
+    height: 72px;
+    margin: 0 auto 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 999px;
+    background: var(--color-navy-3);
+    border: 2px solid var(--avatar-accent);
+    color: var(--avatar-accent);
+    font-family: var(--font-display);
+    font-size: 1.6rem;
+    font-weight: 700;
+  }
+  .name {
+    font-family: var(--font-display);
+    font-size: 1.1rem;
+  }
+  .role {
+    color: var(--color-cyan);
+    font-size: 0.9rem;
+    margin: 4px 0 12px;
+  }
+  .bio {
+    color: var(--color-gray);
+    font-size: 0.92rem;
+  }
+</style>
