@@ -2,3 +2,6 @@ dist/
 .astro/
 node_modules/
 package-lock.json
+# Implementation/spec docs contain illustrative code fragments prettier can't parse
+docs/superpowers/plans/
+docs/superpowers/specs/
