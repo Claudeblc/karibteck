@@ -73,3 +73,22 @@ export interface SocialLink {
   abbr: string;
   href: string;
 }
+
+export interface TeamMember {
+  initials: string;
+  name: string;
+  role: string;
+  bio: string;
+  accent: string;
+}
+
+export interface Guarantee {
+  icon: string;
+  title: string;
+  description: string;
+}
+
+export interface FaqItem {
+  question: string;
+  answer: string;
+}
