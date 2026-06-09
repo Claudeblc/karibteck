@@ -45,6 +45,7 @@ The existing `index.html` and `*.png` files are left untouched in Phase 0; `inde
 ## Task 1: Create package.json and install dependencies
 
 **Files:**
+
 - Create: `package.json`
 
 - [ ] **Step 1: Create `package.json`**
@@ -112,6 +113,7 @@ git commit -m "chore: scaffold package.json with Astro 6 + tooling deps"
 ## Task 2: Add .gitignore and TypeScript config
 
 **Files:**
+
 - Create: `.gitignore`
 - Create: `tsconfig.json`
 
@@ -159,6 +161,7 @@ git commit -m "chore: add gitignore and strict tsconfig with @/ alias"
 ## Task 3: Configure Astro (site, i18n, integrations, Tailwind plugin)
 
 **Files:**
+
 - Create: `astro.config.mjs`
 
 - [ ] **Step 1: Create `astro.config.mjs`**
@@ -200,6 +203,7 @@ git commit -m "chore: configure astro (site, FR/EN i18n, sitemap, icon, tailwind
 ## Task 4: Design tokens and base styles
 
 **Files:**
+
 - Create: `src/styles/theme.css`
 - Create: `src/styles/global.css`
 
@@ -296,6 +300,7 @@ git commit -m "feat(styles): add KaribTeck design tokens and base styles"
 ## Task 5: Shared constants and types
 
 **Files:**
+
 - Create: `src/lib/constants.ts`
 - Create: `src/types/index.ts`
 
@@ -339,6 +344,7 @@ git commit -m "feat(lib): add site constants and Locale type"
 ## Task 6: Linting, formatting, and pre-commit hooks
 
 **Files:**
+
 - Create: `eslint.config.mjs`
 - Create: `.prettierrc`
 - Create: `.prettierignore`
@@ -422,6 +428,7 @@ git commit -m "chore: add eslint flat config, prettier, husky + lint-staged"
 ## Task 7: Temporary placeholder home page (verifies the toolchain end-to-end)
 
 **Files:**
+
 - Create: `src/pages/index.astro`
 
 This is a throwaway page replaced in Phase 1. It exists only to prove tokens, fonts, and Tailwind utilities all resolve.
@@ -441,17 +448,17 @@ import '@/styles/global.css';
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>KaribTeck — Agence web aux Antilles</title>
-    <meta
-      name="description"
-      content="KaribTeck, agence web aux Antilles. Refonte en cours."
-    />
+    <meta name="description" content="KaribTeck, agence web aux Antilles. Refonte en cours." />
   </head>
   <body class="bg-navy text-white">
     <main class="mx-auto max-w-3xl px-6 py-24">
       <h1 class="font-display text-5xl font-bold">
-        Karib<span style={`background: var(--gradient-accent); -webkit-background-clip: text; background-clip: text; color: transparent;`}>Teck</span>
+        Karib<span
+          style={`background: var(--gradient-accent); -webkit-background-clip: text; background-clip: text; color: transparent;`}
+          >Teck</span
+        >
       </h1>
-      <p class="mt-4 text-gray">Refonte Astro en cours — fondations en place.</p>
+      <p class="text-gray mt-4">Refonte Astro en cours — fondations en place.</p>
     </main>
   </body>
 </html>
@@ -484,6 +491,7 @@ git commit -m "feat(pages): add temporary placeholder home to verify toolchain"
 ## Task 8: GitHub Actions CI (build + checks, no deploy)
 
 **Files:**
+
 - Create: `.github/workflows/ci.yml`
 
 Deployment is intentionally **out of scope** (VPS standby per spec §12). CI only validates quality gates.
@@ -527,6 +535,7 @@ git commit -m "ci: add quality workflow (lint, format, astro check, build)"
 ## Task 9: Environment variable template
 
 **Files:**
+
 - Create: `.env.example`
 
 - [ ] **Step 1: Create `.env.example`**
@@ -560,6 +569,7 @@ git commit -m "chore: add .env.example for PUBLIC_ runtime config"
 ## Task 10: Rewrite CLAUDE.md (full project guide)
 
 **Files:**
+
 - Modify: `CLAUDE.md` (overwrite the current static-site version entirely)
 
 This is the keystone deliverable: it codifies the conventions every later phase follows. It mirrors the reference project's `CLAUDE.md`, adapted to KaribTeck (agency context, navy/cyan tokens, VPS-standby deploy, local-SEO + GEO, Web3Forms/Cal/WhatsApp).
@@ -679,12 +689,12 @@ S'appliquent à chaque fichier, chaque fonction, chaque PR.
 
 ## Tests & budgets
 
-| Niveau | Quoi | Outil |
-|---|---|---|
-| 1 | Build & types | `astro check` + `astro build` |
-| 2 | A11y | `@axe-core/playwright` sur routes critiques (FR + EN) |
-| 3 | Perf | Lighthouse CI — **Perf ≥ 95, A11y = 100, BP ≥ 95, SEO = 100** |
-| 4 | JSON-LD | `scripts/validate-jsonld.mjs` sur `dist/` |
+| Niveau | Quoi          | Outil                                                         |
+| ------ | ------------- | ------------------------------------------------------------- |
+| 1      | Build & types | `astro check` + `astro build`                                 |
+| 2      | A11y          | `@axe-core/playwright` sur routes critiques (FR + EN)         |
+| 3      | Perf          | Lighthouse CI — **Perf ≥ 95, A11y = 100, BP ≥ 95, SEO = 100** |
+| 4      | JSON-LD       | `scripts/validate-jsonld.mjs` sur `dist/`                     |
 
 Pas de tests unitaires sur les composants Astro. Logique pure non triviale dans `lib/` → testable (Vitest) si besoin.
 
@@ -774,4 +784,7 @@ Confirm the repo now has: `package.json`, `astro.config.mjs`, `tsconfig.json`, `
 - **Phase 0 (spec §13):** scaffold + tooling + CI + `CLAUDE.md` + alias `@/` — covered. ✅
 - **Deferred to later phases (correctly absent here):** MDX/RSS/blog deps, Playwright/axe, Lighthouse CI, satori OG, `@axe-core` (Phase 3+), data files, components, i18n strings. These are installed/built in their own phase plans. Noted, not a gap.
 - **Placeholder scan:** the only "placeholder" is `src/pages/index.astro`, explicitly a throwaway replaced in Phase 1 — intentional, not a plan gap. No TBD/TODO steps. ✅
+
+```
+
 ```

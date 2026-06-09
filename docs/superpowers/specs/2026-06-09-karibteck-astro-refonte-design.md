@@ -18,21 +18,22 @@ Le **design visuel actuel est conservé** (il est jugé bon) : on le porte fidè
 
 ## 2. Décisions validées
 
-| Sujet | Décision |
-|---|---|
-| Framework | **Astro 6**, output **static**, zéro-JS par défaut |
-| Styling | **Tailwind 4** (`@theme` + CSS vars), **pas de framework UI** (pas de React/shadcn) |
-| Langage | **TypeScript strict** |
-| Langues | **Bilingue FR (défaut, sans préfixe) / EN (`/en/`)** + hreflang |
-| Contenu dynamique | Astro **Content Collections** + MDX (Zod) pour le blog |
-| Périmètre V1 | **Landing enrichie + pages services dédiées + blog**. Pas d'études de cas/témoignages clients (0 client) |
-| SEO | **Local** (`ProfessionalService`/`Organization` JSON-LD, NAP, `areaServed` DOM) **+** sitemap |
-| GEO | **IA** : `llms.txt`, `llms-full.txt`, `ai.txt`, robots IA, graphe JSON-LD d'entités, `FAQPage` |
-| Contact | **Web3Forms** (statique, honeypot) + **Cal.com** (embed) + **WhatsApp** |
-| Déploiement | Build statique → **VPS** (nginx) via **GitHub Actions** — ⏸️ **en standby** (validation infra à venir) |
-| Collaboration | ESLint + Prettier + Husky/lint-staged + `astro check` + axe-playwright + Lighthouse CI + validateur JSON-LD |
+| Sujet             | Décision                                                                                                    |
+| ----------------- | ----------------------------------------------------------------------------------------------------------- |
+| Framework         | **Astro 6**, output **static**, zéro-JS par défaut                                                          |
+| Styling           | **Tailwind 4** (`@theme` + CSS vars), **pas de framework UI** (pas de React/shadcn)                         |
+| Langage           | **TypeScript strict**                                                                                       |
+| Langues           | **Bilingue FR (défaut, sans préfixe) / EN (`/en/`)** + hreflang                                             |
+| Contenu dynamique | Astro **Content Collections** + MDX (Zod) pour le blog                                                      |
+| Périmètre V1      | **Landing enrichie + pages services dédiées + blog**. Pas d'études de cas/témoignages clients (0 client)    |
+| SEO               | **Local** (`ProfessionalService`/`Organization` JSON-LD, NAP, `areaServed` DOM) **+** sitemap               |
+| GEO               | **IA** : `llms.txt`, `llms-full.txt`, `ai.txt`, robots IA, graphe JSON-LD d'entités, `FAQPage`              |
+| Contact           | **Web3Forms** (statique, honeypot) + **Cal.com** (embed) + **WhatsApp**                                     |
+| Déploiement       | Build statique → **VPS** (nginx) via **GitHub Actions** — ⏸️ **en standby** (validation infra à venir)      |
+| Collaboration     | ESLint + Prettier + Husky/lint-staged + `astro check` + axe-playwright + Lighthouse CI + validateur JSON-LD |
 
 ### Choix de stack écartés
+
 - **shadcn/ui** : écarté. C'est React + Tailwind, donc il impose une hydratation client qui annule l'avantage zéro-JS d'Astro (source des scores Lighthouse Perf ≥95 / SEO 100). Un site marketing n'a pas besoin de React. Option 1 (Astro + Tailwind zéro-JS) retenue.
 
 ---
@@ -48,7 +49,7 @@ L'équipe démarre **sans client**. En conséquence :
   - **« Garanties / engagements »** = devis sous 24h, code propre, perf + SEO inclus, accompagnement.
   - **Chiffres uniquement réels** (années d'XP cumulées, technos maîtrisées).
 - **Blog** : levier d'autorité dès le jour 1, sans besoin de clients.
-- Les 3 « réalisations » présentes dans `index.html` (e-commerce alimentaire, ERP BTP, app réservation nautique) sont actuellement présentées comme *« projets réalisés pour nos clients »*. Elles sont **reprises mais reformulées** en *« exemples de projets que nous réalisons »* / démonstration de savoir-faire — jamais présentées comme du travail client livré tant qu'il n'y en a pas.
+- Les 3 « réalisations » présentes dans `index.html` (e-commerce alimentaire, ERP BTP, app réservation nautique) sont actuellement présentées comme _« projets réalisés pour nos clients »_. Elles sont **reprises mais reformulées** en _« exemples de projets que nous réalisons »_ / démonstration de savoir-faire — jamais présentées comme du travail client livré tant qu'il n'y en a pas.
 - **Bascule future** : dès les premiers vrais projets clients, on passe « Nos projets » vers une content collection d'**études de cas** (problème → solution → résultats chiffrés). L'architecture content-collection est prête pour ça dès la V1.
 
 ---
@@ -136,6 +137,7 @@ Règles : aucune couleur/taille en dur hors `theme.css`. Fonts self-hostées (`@
 ## 6. Contenu des pages
 
 ### 6.1 Landing `/` (sections, dans l'ordre)
+
 1. **Hero** — accroche + double CTA (devis / RDV).
 2. **Services** — aperçu des 5 services (sites web, apps mobiles, logiciels métier, e-commerce, IA), chaque carte liée à sa page dédiée.
 3. **Stack / Techno** — technologies maîtrisées (preuve de capacité).
@@ -149,15 +151,19 @@ Règles : aucune couleur/taille en dur hors `theme.css`. Fonts self-hostées (`@
 11. **Contact** — formulaire Web3Forms + Cal.com + WhatsApp + email `contact@karibteck.com`.
 
 ### 6.2 Pages services `/services/[slug]`
+
 Une page par service, générée depuis `data/services.ts`. Contenu : description, bénéfices, process, exemples, CTA. Cible le SEO local (« création site web Guadeloupe », « application mobile Martinique »…). `Service` JSON-LD par page.
 
 ### 6.3 Blog `/blog`, `/blog/[slug]`, `/blog/tags/[tag]`
+
 Content collection MDX bilingue (`content/blog/{fr,en}`), frontmatter Zod-validé (`title, date, locale, translationKey, tags, excerpt, draft`). Paire FR↔EN via `translationKey`. `BlogPosting` JSON-LD + RSS.
 
 ### 6.4 Pages légales
+
 `mentions-legales`, `confidentialite` (RGPD), `cgv` — actuellement liens morts (`#`) dans le footer. À créer (gabarits simples) pour le sérieux et la conformité.
 
 ### 6.5 Miroir EN
+
 Toutes les routes ci-dessus sous `/en/` avec slugs traduits (`about`, `services`, `blog`, `legal-notice`…). hreflang sur chaque page.
 
 ---
@@ -173,6 +179,7 @@ Toutes les routes ci-dessus sous `/en/` avec slugs traduits (`about`, `services`
 ## 8. SEO local + GEO IA
 
 ### 8.1 SEO local (géographique)
+
 - **NAP** centralisé (`data/agency.ts` / `lib/constants.ts`) : nom, adresse, téléphone, email.
 - **JSON-LD `ProfessionalService`** (+ `Organization`) avec `@id` canonique, `areaServed` (Guadeloupe, Martinique, Guyane, Saint-Martin, Saint-Barthélemy), `address`, `geo`, `telephone`, `email`, `url`, `sameAs` (réseaux sociaux).
 - **`Service`** JSON-LD sur chaque page service.
@@ -180,6 +187,7 @@ Toutes les routes ci-dessus sous `/en/` avec slugs traduits (`about`, `services`
 - Sitemap via `@astrojs/sitemap`.
 
 ### 8.2 GEO (moteurs IA)
+
 - **`/llms.txt`** (résumé structuré, llmstxt.org) + **`/llms-full.txt`** (exhaustif) + **`/ai.txt`** (politique).
 - **`/robots.txt`** autorisant explicitement `GPTBot`, `ClaudeBot`, `PerplexityBot`, `Google-Extended`, `Applebot-Extended`, `CCBot`… + lien sitemap.
 - **`FAQPage`** JSON-LD (repris par les IA / AI Overviews), **`BlogPosting`** par article.
@@ -199,6 +207,7 @@ Toutes les routes ci-dessus sous `/en/` avec slugs traduits (`about`, `services`
 ## 10. Qualité, conventions & collaboration (3 devs)
 
 Reprend les **règles clean-code non négociables** du projet de référence (à inscrire dans le `CLAUDE.md`) :
+
 1. Composant Astro ≤ 150 lignes, `.ts` ≤ 120 ; page = composition (< 80 l).
 2. Fonction ≤ 20 lignes, responsabilité unique.
 3. Nommage explicite (booléens `is/has/can`, constantes `SCREAMING_SNAKE_CASE`).
@@ -219,12 +228,12 @@ Reprend les **règles clean-code non négociables** du projet de référence (à
 
 ## 11. Tests & budgets
 
-| Niveau | Quoi | Outil |
-|---|---|---|
-| 1 | Build & types | `astro check` + `astro build` |
-| 2 | A11y | `@axe-core/playwright` sur routes critiques (FR + EN) |
-| 3 | Perf | Lighthouse CI — **Perf ≥ 95, A11y = 100, BP ≥ 95, SEO = 100** |
-| 4 | JSON-LD | `scripts/validate-jsonld.mjs` sur `dist/` |
+| Niveau | Quoi          | Outil                                                         |
+| ------ | ------------- | ------------------------------------------------------------- |
+| 1      | Build & types | `astro check` + `astro build`                                 |
+| 2      | A11y          | `@axe-core/playwright` sur routes critiques (FR + EN)         |
+| 3      | Perf          | Lighthouse CI — **Perf ≥ 95, A11y = 100, BP ≥ 95, SEO = 100** |
+| 4      | JSON-LD       | `scripts/validate-jsonld.mjs` sur `dist/`                     |
 
 Pas de tests unitaires sur les composants. Logique pure dans `lib/` testable (Vitest) si elle devient non triviale (ex : filtre/tri blog).
 
@@ -273,4 +282,7 @@ Pas de tests unitaires sur les composants. Logique pure dans `lib/` testable (Vi
 - Créole antillais (archi i18n prête, ajout ultérieur possible).
 - Endpoint serveur dédié pour le formulaire (Web3Forms suffit ; un endpoint VPS reste une option future).
 - Tests unitaires/E2E des composants (Playwright sert uniquement à axe-core).
+
+```
+
 ```
