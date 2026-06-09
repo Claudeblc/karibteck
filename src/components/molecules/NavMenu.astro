@@ -3,7 +3,6 @@ import { NAV_LINKS } from '@/data/agency';
 import { useTranslations } from '@/i18n/utils';
 import Button from '@/components/atoms/Button.astro';
 import type { Locale } from '@/types';
-import type { UiKey } from '@/i18n/ui';
 
 interface Props {
   locale: Locale;
@@ -16,7 +15,7 @@ const t = useTranslations(locale);
   {
     NAV_LINKS.map((link) => (
       <li>
-        <a href={link.href}>{t(link.labelKey as UiKey)}</a>
+        <a href={link.href}>{t(link.labelKey)}</a>
       </li>
     ))
   }
