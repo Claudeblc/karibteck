@@ -19,12 +19,11 @@ const t = useTranslations(locale);
   <div class="hero-inner">
     <SectionBadge label={t('hero.badge')} />
     <h1 class="hero-title">
-      Nous créons des <Highlight text="sites web" /> qui propulsent votre entreprise.
+      {t('hero.title.lead')}
+      <Highlight text={t('hero.title.hl')} />
+      {' '}{t('hero.title.tail')}
     </h1>
-    <p class="hero-sub">
-      Karib Teck accompagne les entreprises, entrepreneurs et marques des DOM dans leur
-      transformation digitale avec des sites modernes, rapides et performants.
-    </p>
+    <p class="hero-sub">{t('hero.sub')}</p>
     <div class="hero-ctas">
       <Button href="#services" variant="primary">{t('cta.discoverServices')}</Button>
       <Button href="#realisations" variant="outline">{t('cta.seeProjects')}</Button>

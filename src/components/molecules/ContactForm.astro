@@ -17,7 +17,7 @@ const t = useTranslations(locale);
       <input
         id="firstName"
         type="text"
-        placeholder="Jean"
+        placeholder={t('contact.form.firstName.placeholder')}
         aria-label={t('contact.form.firstName')}
       />
     </div>
@@ -26,7 +26,7 @@ const t = useTranslations(locale);
       <input
         id="lastName"
         type="text"
-        placeholder="Dupont"
+        placeholder={t('contact.form.lastName.placeholder')}
         aria-label={t('contact.form.lastName')}
       />
     </div>
@@ -37,7 +37,7 @@ const t = useTranslations(locale);
       <input
         id="email"
         type="email"
-        placeholder="jean@entreprise.com"
+        placeholder={t('contact.form.email.placeholder')}
         aria-label={t('contact.form.email')}
       />
     </div>
@@ -46,7 +46,7 @@ const t = useTranslations(locale);
       <input
         id="phone"
         type="tel"
-        placeholder="+590 690 ..."
+        placeholder={t('contact.form.phone.placeholder')}
         aria-label={t('contact.form.phone')}
       />
     </div>
@@ -56,7 +56,7 @@ const t = useTranslations(locale);
     <input
       id="company"
       type="text"
-      placeholder="Nom de votre entreprise"
+      placeholder={t('contact.form.company.placeholder')}
       aria-label={t('contact.form.company')}
     />
   </div>
@@ -64,7 +64,7 @@ const t = useTranslations(locale);
     <label for="message">{t('contact.form.message')} *</label>
     <textarea
       id="message"
-      placeholder="Parlez-nous de votre projet, de vos objectifs, de votre budget approximatif..."
+      placeholder={t('contact.form.message.placeholder')}
       aria-label={t('contact.form.message')}></textarea>
   </div>
   <button class="btn-submit" type="submit">{t('contact.form.submit')}</button>
@@ -72,8 +72,8 @@ const t = useTranslations(locale);
 
 <style>
   .contact-form {
-    background: linear-gradient(160deg, #0f1e38, #080f22);
-    border: 1px solid rgba(0, 153, 255, 0.15);
+    background: var(--gradient-card-deep);
+    border: 1px solid var(--color-border-accent);
     border-radius: var(--radius-lg);
     padding: 36px;
   }
@@ -96,7 +96,7 @@ const t = useTranslations(locale);
   .form-group textarea {
     width: 100%;
     background: rgba(255, 255, 255, 0.04);
-    border: 1px solid rgba(0, 153, 255, 0.18);
+    border: 1px solid var(--color-border-accent-input);
     border-radius: 8px;
     padding: 11px 14px;
     color: var(--color-white);
@@ -114,7 +114,7 @@ const t = useTranslations(locale);
   .form-group input:focus,
   .form-group textarea:focus {
     border-color: var(--color-blue-2);
-    background: rgba(0, 153, 255, 0.06);
+    background: var(--color-input-bg-focus);
   }
   .form-group textarea {
     resize: vertical;
@@ -134,7 +134,7 @@ const t = useTranslations(locale);
     transition:
       opacity 0.2s,
       transform 0.2s;
-    box-shadow: 0 4px 20px rgba(0, 87, 231, 0.4);
+    box-shadow: var(--shadow-accent);
   }
   .btn-submit:hover {
     opacity: 0.88;

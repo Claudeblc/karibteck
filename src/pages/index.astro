@@ -11,10 +11,11 @@ import ProjectsSection from '@/components/organisms/ProjectsSection.astro';
 import PricingSection from '@/components/organisms/PricingSection.astro';
 import ContactSection from '@/components/organisms/ContactSection.astro';
 import Footer from '@/components/organisms/Footer.astro';
+import { useTranslations } from '@/i18n/utils';
 
-const title = 'Karib Teck – Agence Web aux Antilles';
-const description =
-  'Karib Teck, agence web aux Antilles. Création de sites web, applications mobiles et solutions digitales clé en main pour les entreprises des DOM.';
+const t = useTranslations();
+const title = t('meta.home.title');
+const description = t('meta.home.description');
 ---
 
 <MainLayout title={title} description={description}>
