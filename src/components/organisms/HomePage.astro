@@ -1,5 +1,6 @@
 ---
 import MainLayout from '@/layouts/MainLayout.astro';
+import JsonLd from '@/components/atoms/JsonLd.astro';
 import Nav from '@/components/organisms/Nav.astro';
 import Hero from '@/components/organisms/Hero.astro';
 import FeaturesStrip from '@/components/organisms/FeaturesStrip.astro';
@@ -15,6 +16,9 @@ import FaqSection from '@/components/organisms/FaqSection.astro';
 import ContactSection from '@/components/organisms/ContactSection.astro';
 import Footer from '@/components/organisms/Footer.astro';
 import { useTranslations } from '@/i18n/utils';
+import { buildHomeGraph } from '@/lib/jsonLd';
+import { routes } from '@/i18n/ui';
+import { SITE_URL } from '@/lib/constants';
 import type { Locale } from '@/types';
 
 interface Props {
@@ -22,6 +26,8 @@ interface Props {
 }
 const { locale } = Astro.props;
 const t = useTranslations(locale);
+const homeUrl = new URL(routes[locale].home, SITE_URL).href;
+const graph = buildHomeGraph(locale, homeUrl);
 ---
 
 <MainLayout
@@ -30,6 +36,7 @@ const t = useTranslations(locale);
   locale={locale}
   route="home"
 >
+  <Fragment slot="head"><JsonLd data={graph} /></Fragment>
   <Nav slot="nav" locale={locale} route="home" />
   <Hero locale={locale} />
   <FeaturesStrip locale={locale} />
