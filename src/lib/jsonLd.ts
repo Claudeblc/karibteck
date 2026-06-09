@@ -21,6 +21,22 @@ function areaServedNodes() {
   return AREA_SERVED.map((name) => ({ '@type': 'AdministrativeArea', name }));
 }
 
+function postalAddress() {
+  return {
+    '@type': 'PostalAddress',
+    addressRegion: ADDRESS_REGION,
+    addressCountry: ADDRESS_COUNTRY,
+  };
+}
+
+function geoCoordinates() {
+  return {
+    '@type': 'GeoCoordinates',
+    latitude: GEO_LATITUDE,
+    longitude: GEO_LONGITUDE,
+  };
+}
+
 export function buildOrganization(locale: Locale) {
   const contact = getContactDetails(locale);
   const t = useTranslations(locale);
@@ -33,16 +49,8 @@ export function buildOrganization(locale: Locale) {
     email: contact.email,
     telephone: contact.phone,
     description: t('meta.home.description'),
-    address: {
-      '@type': 'PostalAddress',
-      addressRegion: ADDRESS_REGION,
-      addressCountry: ADDRESS_COUNTRY,
-    },
-    geo: {
-      '@type': 'GeoCoordinates',
-      latitude: GEO_LATITUDE,
-      longitude: GEO_LONGITUDE,
-    },
+    address: postalAddress(),
+    geo: geoCoordinates(),
     areaServed: areaServedNodes(),
     knowsAbout: getServices(locale).map((s) => s.title),
   };
