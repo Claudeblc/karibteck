@@ -3,6 +3,11 @@ import type { UiKey } from '@/i18n/ui';
 
 export type Locale = (typeof SUPPORTED_LOCALES)[number];
 
+/** A value translated into every supported locale. */
+export type Localized<T> = Record<Locale, T>;
+
+export type { RouteKey } from '@/i18n/ui';
+
 export interface NavLink {
   labelKey: UiKey;
   href: string;

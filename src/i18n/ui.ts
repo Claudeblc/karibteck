@@ -82,6 +82,17 @@ export const ui = {
   },
 } as const;
 
+export const routes = {
+  fr: {
+    home: '/',
+  },
+  en: {
+    home: '/en/',
+  },
+} as const;
+
+export type RouteKey = keyof (typeof routes)['fr'];
+
 export type UiKey = keyof (typeof ui)['fr'];
 
 export const SUPPORTED_UI_LOCALES = Object.keys(ui) as Locale[];
