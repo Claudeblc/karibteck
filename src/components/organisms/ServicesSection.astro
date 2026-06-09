@@ -1,5 +1,5 @@
 ---
-import { SERVICES } from '@/data/services';
+import { getServices } from '@/data/services';
 import ServiceCard from '@/components/molecules/ServiceCard.astro';
 import SectionHeader from '@/components/molecules/SectionHeader.astro';
 import { useTranslations } from '@/i18n/utils';
@@ -11,6 +11,7 @@ interface Props {
 }
 const { locale = DEFAULT_LOCALE } = Astro.props;
 const t = useTranslations(locale);
+const services = getServices(locale);
 ---
 
 <section id="services">
@@ -22,7 +23,7 @@ const t = useTranslations(locale);
       sub={t('services.sub')}
     />
     <div class="services-grid">
-      {SERVICES.map((service) => <ServiceCard service={service} />)}
+      {services.map((service) => <ServiceCard service={service} />)}
     </div>
   </div>
 </section>

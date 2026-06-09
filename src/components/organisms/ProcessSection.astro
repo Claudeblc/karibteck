@@ -1,5 +1,5 @@
 ---
-import { PROCESS_STEPS } from '@/data/process';
+import { getProcessSteps } from '@/data/process';
 import ProcessStep from '@/components/molecules/ProcessStep.astro';
 import SectionHeader from '@/components/molecules/SectionHeader.astro';
 import { useTranslations } from '@/i18n/utils';
@@ -11,6 +11,7 @@ interface Props {
 }
 const { locale = DEFAULT_LOCALE } = Astro.props;
 const t = useTranslations(locale);
+const steps = getProcessSteps(locale);
 ---
 
 <section id="processus">
@@ -24,7 +25,7 @@ const t = useTranslations(locale);
       subSpacing={56}
     />
     <div class="process-steps fade-up">
-      {PROCESS_STEPS.map((step) => <ProcessStep step={step} />)}
+      {steps.map((step) => <ProcessStep step={step} />)}
     </div>
   </div>
 </section>

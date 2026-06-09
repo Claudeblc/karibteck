@@ -1,5 +1,5 @@
 ---
-import { PROJECTS } from '@/data/projects';
+import { getProjects } from '@/data/projects';
 import ProjectCard from '@/components/molecules/ProjectCard.astro';
 import SectionHeader from '@/components/molecules/SectionHeader.astro';
 import Button from '@/components/atoms/Button.astro';
@@ -12,6 +12,7 @@ interface Props {
 }
 const { locale = DEFAULT_LOCALE } = Astro.props;
 const t = useTranslations(locale);
+const projects = getProjects(locale);
 ---
 
 <section id="realisations">
@@ -23,7 +24,7 @@ const t = useTranslations(locale);
       sub={t('projects.sub')}
     />
     <div class="real-grid">
-      {PROJECTS.map((project) => <ProjectCard project={project} />)}
+      {projects.map((project) => <ProjectCard project={project} />)}
     </div>
     <div class="projects-cta fade-up">
       <Button href="#contact" variant="outline">{t('cta.discussProject')}</Button>

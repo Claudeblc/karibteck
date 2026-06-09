@@ -1,7 +1,7 @@
 ---
 import SectionHeader from '@/components/molecules/SectionHeader.astro';
 import ContactForm from '@/components/molecules/ContactForm.astro';
-import { CONTACT_DETAILS } from '@/data/agency';
+import { getContactDetails } from '@/data/agency';
 import { useTranslations } from '@/i18n/utils';
 import { DEFAULT_LOCALE } from '@/lib/constants';
 import type { Locale } from '@/types';
@@ -11,6 +11,7 @@ interface Props {
 }
 const { locale = DEFAULT_LOCALE } = Astro.props;
 const t = useTranslations(locale);
+const contact = getContactDetails(locale);
 ---
 
 <section id="contact">
@@ -25,19 +26,19 @@ const t = useTranslations(locale);
         <p class="contact-intro">{t('contact.intro')}</p>
         <div class="contact-detail">
           <div class="contact-detail-icon">📧</div>
-          <div><a href={`mailto:${CONTACT_DETAILS.email}`}>{CONTACT_DETAILS.email}</a></div>
+          <div><a href={`mailto:${contact.email}`}>{contact.email}</a></div>
         </div>
         <div class="contact-detail">
           <div class="contact-detail-icon">📞</div>
-          <div>{CONTACT_DETAILS.phone}</div>
+          <div>{contact.phone}</div>
         </div>
         <div class="contact-detail">
           <div class="contact-detail-icon">📍</div>
-          <div>{CONTACT_DETAILS.location}</div>
+          <div>{contact.location}</div>
         </div>
         <div class="contact-detail">
           <div class="contact-detail-icon">🕐</div>
-          <div>{CONTACT_DETAILS.hours}</div>
+          <div>{contact.hours}</div>
         </div>
       </div>
       <ContactForm locale={locale} />

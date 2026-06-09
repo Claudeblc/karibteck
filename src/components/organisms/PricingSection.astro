@@ -1,5 +1,5 @@
 ---
-import { PRICING_PLANS } from '@/data/pricing';
+import { getPricingPlans } from '@/data/pricing';
 import PricingCard from '@/components/molecules/PricingCard.astro';
 import SectionHeader from '@/components/molecules/SectionHeader.astro';
 import { useTranslations } from '@/i18n/utils';
@@ -11,6 +11,7 @@ interface Props {
 }
 const { locale = DEFAULT_LOCALE } = Astro.props;
 const t = useTranslations(locale);
+const plans = getPricingPlans(locale);
 ---
 
 <section id="tarifs">
@@ -23,7 +24,7 @@ const t = useTranslations(locale);
       align="center"
     />
     <div class="tarifs-grid">
-      {PRICING_PLANS.map((plan) => <PricingCard plan={plan} locale={locale} />)}
+      {plans.map((plan) => <PricingCard plan={plan} locale={locale} />)}
     </div>
   </div>
 </section>

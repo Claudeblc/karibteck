@@ -1,6 +1,6 @@
 ---
-import { AGENCY } from '@/data/agency';
-import { SERVICES } from '@/data/services';
+import { AGENCY, getTagline } from '@/data/agency';
+import { getServices } from '@/data/services';
 import { SOCIAL_LINKS } from '@/data/socialLinks';
 import SocialLink from '@/components/molecules/SocialLink.astro';
 import { useTranslations } from '@/i18n/utils';
@@ -12,6 +12,8 @@ interface Props {
 }
 const { locale = DEFAULT_LOCALE } = Astro.props;
 const t = useTranslations(locale);
+const services = getServices(locale);
+const tagline = getTagline(locale);
 const year = new Date().getFullYear();
 ---
 
@@ -19,14 +21,14 @@ const year = new Date().getFullYear();
   <div class="footer-grid">
     <div class="footer-brand">
       <span class="footer-name">{AGENCY.name}</span>
-      <p>{AGENCY.tagline}</p>
+      <p>{tagline}</p>
       <a href={`mailto:${AGENCY.email}`}>{AGENCY.email}</a>
     </div>
     <div>
       <h3>{t('footer.servicesTitle')}</h3>
       <ul>
         {
-          SERVICES.map((s) => (
+          services.map((s) => (
             <li>
               <a href="#services">{s.title}</a>
             </li>

@@ -1,5 +1,5 @@
 ---
-import { WHY_POINTS, WHY_STATS, EXPERTISE_TAGS } from '@/data/why';
+import { getWhyPoints, getWhyStats, getExpertiseTags } from '@/data/why';
 import WhyPoint from '@/components/molecules/WhyPoint.astro';
 import StatCard from '@/components/molecules/StatCard.astro';
 import SectionHeader from '@/components/molecules/SectionHeader.astro';
@@ -13,6 +13,9 @@ interface Props {
 }
 const { locale = DEFAULT_LOCALE } = Astro.props;
 const t = useTranslations(locale);
+const whyPoints = getWhyPoints(locale);
+const whyStats = getWhyStats(locale);
+const expertiseTags = getExpertiseTags(locale);
 ---
 
 <section id="pourquoi">
@@ -29,17 +32,17 @@ const t = useTranslations(locale);
           subSpacing={32}
         />
         <ul class="why-list">
-          {WHY_POINTS.map((point) => <WhyPoint point={point} />)}
+          {whyPoints.map((point) => <WhyPoint point={point} />)}
         </ul>
       </div>
       <div class="why-visual fade-up">
         <div class="why-stat-grid">
-          {WHY_STATS.map((stat) => <StatCard stat={stat} />)}
+          {whyStats.map((stat) => <StatCard stat={stat} />)}
         </div>
         <div class="why-expertise">
           <div class="why-expertise-label">{t('why.expertiseLabel')}</div>
           <div class="why-expertise-tags">
-            {EXPERTISE_TAGS.map((label) => <Tag label={label} />)}
+            {expertiseTags.map((label) => <Tag label={label} />)}
           </div>
         </div>
       </div>
