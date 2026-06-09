@@ -1,0 +1,47 @@
+---
+import type { WhyPoint } from '@/types';
+
+interface Props {
+  point: WhyPoint;
+}
+const { point } = Astro.props;
+---
+
+<li class="why-item">
+  <div class="why-check">{point.icon}</div>
+  <div>
+    <div class="why-item-title">{point.title}</div>
+    <div class="why-item-desc">{point.description}</div>
+  </div>
+</li>
+
+<style>
+  .why-item {
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+  }
+  .why-check {
+    width: 36px;
+    height: 36px;
+    background: linear-gradient(135deg, rgba(0, 87, 231, 0.3), rgba(0, 212, 255, 0.2));
+    border: 1px solid rgba(0, 153, 255, 0.3);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    font-size: 1rem;
+    color: var(--color-cyan);
+  }
+  .why-item-title {
+    font-weight: 700;
+    font-size: 0.95rem;
+    margin-bottom: 4px;
+  }
+  .why-item-desc {
+    color: var(--color-gray);
+    font-size: 0.85rem;
+    line-height: 1.6;
+  }
+</style>

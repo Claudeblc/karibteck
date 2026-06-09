@@ -1,0 +1,69 @@
+---
+import type { Project } from '@/types';
+
+interface Props {
+  project: Project;
+}
+const { project } = Astro.props;
+---
+
+<article class="real-card fade-up">
+  <div class="real-thumb" style={`background:${project.gradient}`}>{project.emoji}</div>
+  <div class="real-body">
+    <div class="real-cat">{project.category}</div>
+    <h3 class="real-title">{project.title}</h3>
+    <p class="real-desc">{project.description}</p>
+  </div>
+</article>
+
+<style>
+  .real-card {
+    background: linear-gradient(160deg, #0f1e38, #071326);
+    border: 1px solid rgba(0, 153, 255, 0.12);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    transition:
+      transform 0.3s,
+      box-shadow 0.3s;
+  }
+  .real-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 16px 48px rgba(0, 0, 0, 0.4);
+  }
+  .real-thumb {
+    height: 180px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .real-thumb::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(0, 87, 231, 0.15), rgba(0, 212, 255, 0.08));
+  }
+  .real-body {
+    padding: 20px 22px 24px;
+  }
+  .real-cat {
+    font-size: 0.72rem;
+    font-weight: 700;
+    color: var(--color-cyan);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+  .real-title {
+    font-weight: 700;
+    font-size: 1.05rem;
+    margin-bottom: 8px;
+  }
+  .real-desc {
+    color: var(--color-gray);
+    font-size: 0.85rem;
+    line-height: 1.6;
+  }
+</style>

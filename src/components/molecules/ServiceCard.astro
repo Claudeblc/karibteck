@@ -1,0 +1,54 @@
+---
+import Tag from '@/components/atoms/Tag.astro';
+import type { Service } from '@/types';
+
+interface Props {
+  service: Service;
+}
+const { service } = Astro.props;
+---
+
+<article class="service-card fade-up">
+  <div class="service-icon">{service.icon}</div>
+  <h3 class="service-title">{service.title}</h3>
+  <p class="service-desc">{service.description}</p>
+  <div class="service-tags">
+    {service.tags.map((tag) => <Tag label={tag} />)}
+  </div>
+</article>
+
+<style>
+  .service-card {
+    background: var(--color-navy-2);
+    border: 1px solid var(--color-gray-2);
+    border-radius: var(--radius-lg);
+    padding: 28px;
+    transition:
+      border-color 0.3s,
+      transform 0.3s,
+      box-shadow 0.3s;
+  }
+  .service-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(0, 153, 255, 0.4);
+    box-shadow: 0 16px 48px rgba(0, 87, 231, 0.15);
+  }
+  .service-icon {
+    font-size: 2rem;
+  }
+  .service-title {
+    font-family: var(--font-display);
+    font-size: 1.15rem;
+    margin: 14px 0 10px;
+  }
+  .service-desc {
+    color: var(--color-gray);
+    font-size: 0.95rem;
+  }
+  .service-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 16px;
+  }
+</style>

@@ -1,0 +1,43 @@
+---
+import type { SocialLink } from '@/types';
+
+interface Props {
+  link: SocialLink;
+}
+const { link } = Astro.props;
+---
+
+<a
+  href={link.href}
+  class="social-btn"
+  title={link.label}
+  aria-label={link.label}
+  rel="noopener noreferrer"
+>
+  {link.abbr}
+</a>
+
+<style>
+  .social-btn {
+    width: 38px;
+    height: 38px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 999px;
+    border: 1px solid var(--color-gray-2);
+    color: var(--color-gray);
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    transition:
+      background 0.2s,
+      border-color 0.2s,
+      color 0.2s;
+  }
+  .social-btn:hover {
+    background: rgba(0, 87, 231, 0.2);
+    border-color: var(--color-blue-2);
+    color: var(--color-white);
+  }
+</style>
