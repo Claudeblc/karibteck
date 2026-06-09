@@ -12,6 +12,7 @@
     "lint:fix": "eslint --fix \"src/**/*.{js,ts,astro}\"",
     "format": "prettier --write \"**/*.{astro,ts,js,mjs,css,md,mdx,json}\"",
     "format:check": "prettier --check \"**/*.{astro,ts,js,mjs,css,md,mdx,json}\"",
+    "validate:jsonld": "node scripts/validate-jsonld.mjs",
     "prepare": "husky"
   },
   "dependencies": {
