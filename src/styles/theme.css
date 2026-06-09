@@ -25,10 +25,52 @@
   --font-display: 'Space Grotesk Variable', sans-serif;
 }
 
-/* Gradients can't be color tokens — expose as a plain custom property. */
+/* Gradients & static design colors used as var() inside scoped <style> blocks.
+   These live in :root (not @theme) because they are not exposed as utilities. */
 :root {
   --gradient-accent: linear-gradient(135deg, #0057e7, #00d4ff);
   --nav-height: 70px;
   --section-pad-y: 96px;
   --content-max: 1200px;
+
+  /* Accent border / overlay tints (the repeated rgba(0,153,255,x) & rgba(0,87,231,x)). */
+  --color-border-accent: rgba(0, 153, 255, 0.15);
+  --color-border-accent-soft: rgba(0, 153, 255, 0.12);
+  --color-border-accent-strong: rgba(0, 153, 255, 0.25);
+  --color-border-accent-input: rgba(0, 153, 255, 0.18);
+  --color-border-accent-faint: rgba(0, 153, 255, 0.2);
+  --color-overlay-accent: rgba(0, 87, 231, 0.08);
+  --color-overlay-accent-strong: rgba(0, 87, 231, 0.15);
+  --color-overlay-accent-badge: rgba(0, 153, 255, 0.1);
+  --color-input-bg-focus: rgba(0, 153, 255, 0.06);
+  --color-line-accent: rgba(0, 153, 255, 0.3);
+
+  /* Surface gradients reused across cards. */
+  --gradient-card: linear-gradient(160deg, #0f1e38, #071326);
+  --gradient-card-deep: linear-gradient(160deg, #0f1e38, #080f22);
+  --gradient-card-popular: linear-gradient(160deg, #0d1e40, #071326);
+  --gradient-thumb-overlay: linear-gradient(
+    135deg,
+    rgba(0, 87, 231, 0.15),
+    rgba(0, 212, 255, 0.08)
+  );
+
+  /* Stat number gradient (lighter blue → cyan). */
+  --gradient-stat: linear-gradient(135deg, #4da6ff, #00d4ff);
+
+  /* Shadows / glows tinted with the brand blue. */
+  --shadow-accent: 0 4px 20px rgba(0, 87, 231, 0.4);
+  --shadow-accent-lg: 0 8px 32px rgba(0, 87, 231, 0.55);
+  --shadow-card-popular: 0 16px 48px rgba(0, 87, 231, 0.2);
+  --shadow-card-hover-soft: 0 16px 48px rgba(0, 87, 231, 0.15);
+  --ring-accent: 0 0 0 1px rgba(0, 153, 255, 0.2);
+
+  /* Additional accent border / overlay opacities used in atoms & strips. */
+  --color-border-accent-hover: rgba(0, 153, 255, 0.4);
+  --color-border-accent-outline: rgba(0, 153, 255, 0.35);
+  --color-border-accent-line: rgba(0, 153, 255, 0.1);
+  --color-overlay-accent-tag: rgba(0, 87, 231, 0.12);
+  --color-overlay-accent-social: rgba(0, 87, 231, 0.2);
+  --gradient-icon: linear-gradient(135deg, rgba(0, 87, 231, 0.3), rgba(0, 212, 255, 0.2));
+  --gradient-icon-soft: linear-gradient(135deg, rgba(0, 87, 231, 0.25), rgba(0, 212, 255, 0.15));
 }

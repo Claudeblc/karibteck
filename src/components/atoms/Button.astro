@@ -31,13 +31,13 @@ const { href, variant = 'primary', class: className } = Astro.props;
   }
   .btn-primary:hover {
     transform: translateY(-2px);
-    box-shadow: 0 8px 32px rgba(0, 87, 231, 0.55);
+    box-shadow: var(--shadow-accent-lg);
   }
   .btn-outline {
     padding: 14px 28px;
     background: transparent;
     color: var(--color-white);
-    border: 1px solid rgba(0, 153, 255, 0.35);
+    border: 1px solid var(--color-border-accent-outline);
   }
   .btn-outline:hover {
     transform: translateY(-2px);
