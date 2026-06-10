@@ -3,8 +3,9 @@ import { DEFAULT_LOCALE, SITE_URL } from '@/lib/constants';
 import { routes } from '@/i18n/ui';
 import { useTranslations } from '@/i18n/utils';
 import type { Locale, RouteKey } from '@/types';
-import '@fontsource-variable/inter';
-import '@fontsource-variable/space-grotesk';
+import '@fontsource-variable/sora';
+import '@fontsource-variable/plus-jakarta-sans';
+import '@fontsource-variable/hanken-grotesk';
 import '@/styles/global.css';
 
 interface Props {
@@ -76,8 +77,8 @@ const ogLocale = locale === 'fr' ? 'fr_FR' : 'en_US';
         position: absolute;
         left: -999px;
         top: 0;
-        background: var(--color-cyan);
-        color: var(--color-navy);
+        background: var(--color-teal);
+        color: var(--color-on-primary);
         padding: 8px 16px;
         z-index: 2000;
       }
