@@ -1,6 +1,8 @@
 import { SITE_URL, ORGANIZATION_NAME, AREA_SERVED } from '@/lib/constants';
 import { getServices } from '@/data/services';
 import { getFaq } from '@/data/faq';
+import { loadPosts, entrySlug } from '@/lib/blog';
+import { localizeBlogPostPath } from '@/i18n/utils';
 
 const AI_USER_AGENTS = [
   'GPTBot',
@@ -41,9 +43,10 @@ export function buildLlmsTxt(): string {
   ].join('\n');
 }
 
-export function buildLlmsFullTxt(): string {
+export async function buildLlmsFullTxt(): Promise<string> {
   const services = getServices('fr');
   const faq = getFaq('fr');
+  const posts = await loadPosts('fr');
   return [
     buildLlmsTxt(),
     '## Détail des services',
@@ -53,6 +56,12 @@ export function buildLlmsFullTxt(): string {
       `Technologies : ${s.tags.join(', ')}`,
       '',
     ]),
+    '## Articles du blog',
+    ...posts.map(
+      (p) =>
+        `- [${p.data.title}](${SITE_URL}${localizeBlogPostPath(entrySlug(p), 'fr')}): ${p.data.excerpt}`,
+    ),
+    '',
     '## FAQ',
     ...faq.flatMap((f) => [`### ${f.question}`, f.answer, '']),
   ].join('\n');

@@ -1,6 +1,6 @@
 ---
 import { NAV_LINKS } from '@/data/agency';
-import { useTranslations } from '@/i18n/utils';
+import { useTranslations, localizePath } from '@/i18n/utils';
 import Button from '@/components/atoms/Button.astro';
 import type { Locale } from '@/types';
 
@@ -19,6 +19,7 @@ const t = useTranslations(locale);
       </li>
     ))
   }
+  <li><a href={localizePath('blog', locale)}>{t('nav.blog')}</a></li>
   <li><Button href="#contact" variant="devis">{t('cta.requestQuote')}</Button></li>
 </ul>
 

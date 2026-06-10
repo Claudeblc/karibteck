@@ -1,5 +1,7 @@
 import type { APIRoute } from 'astro';
 import { buildLlmsFullTxt } from '@/lib/geo';
 
-export const GET: APIRoute = () =>
-  new Response(buildLlmsFullTxt(), { headers: { 'Content-Type': 'text/plain; charset=utf-8' } });
+export const GET: APIRoute = async () =>
+  new Response(await buildLlmsFullTxt(), {
+    headers: { 'Content-Type': 'text/plain; charset=utf-8' },
+  });

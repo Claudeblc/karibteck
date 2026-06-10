@@ -3,7 +3,7 @@ import { AGENCY, getTagline } from '@/data/agency';
 import { getServices } from '@/data/services';
 import { SOCIAL_LINKS } from '@/data/socialLinks';
 import SocialLink from '@/components/molecules/SocialLink.astro';
-import { useTranslations } from '@/i18n/utils';
+import { useTranslations, localizePath } from '@/i18n/utils';
 import { DEFAULT_LOCALE } from '@/lib/constants';
 import type { Locale } from '@/types';
 
@@ -14,6 +14,7 @@ const { locale = DEFAULT_LOCALE } = Astro.props;
 const t = useTranslations(locale);
 const services = getServices(locale);
 const tagline = getTagline(locale);
+const blogHref = localizePath('blog', locale);
 const year = new Date().getFullYear();
 ---
 
@@ -34,6 +35,12 @@ const year = new Date().getFullYear();
             </li>
           ))
         }
+      </ul>
+    </div>
+    <div>
+      <h3>{t('footer.companyTitle')}</h3>
+      <ul>
+        <li><a href={blogHref}>{t('nav.blog')}</a></li>
       </ul>
     </div>
     <div>
@@ -63,7 +70,7 @@ const year = new Date().getFullYear();
       max-width: var(--content-max);
       margin: 0 auto;
       display: grid;
-      grid-template-columns: 2fr 1fr 1fr 1fr;
+      grid-template-columns: 2fr 1fr 1fr 1fr 1fr;
       gap: 32px;
     }
     .footer-name {
