@@ -15,41 +15,47 @@ const { href, variant = 'primary', class: className } = Astro.props;
   .btn {
     display: inline-flex;
     align-items: center;
+    justify-content: center;
     gap: 8px;
+    font-family: var(--font-label);
     font-weight: 600;
     text-decoration: none;
-    border-radius: var(--radius-card);
     transition:
       transform 0.2s,
       box-shadow 0.2s,
-      opacity 0.2s;
+      background 0.2s,
+      color 0.2s;
   }
   .btn-primary {
+    min-width: 160px;
     padding: 14px 28px;
-    background: var(--gradient-accent);
-    color: var(--color-white);
+    border-radius: var(--radius-pill);
+    background: var(--color-teal);
+    color: var(--color-on-primary);
+    box-shadow: var(--shadow-card);
   }
   .btn-primary:hover {
     transform: translateY(-2px);
-    box-shadow: var(--shadow-accent-lg);
+    box-shadow: var(--shadow-card-hover);
   }
   .btn-outline {
-    padding: 14px 28px;
+    padding: 13px 26px;
+    border-radius: var(--radius-pill);
     background: transparent;
-    color: var(--color-white);
-    border: 1px solid var(--color-border-accent-outline);
+    color: var(--color-primary);
+    border: 2px solid var(--color-primary);
   }
   .btn-outline:hover {
-    transform: translateY(-2px);
-    border-color: var(--color-cyan);
+    background: var(--color-primary);
+    color: var(--color-on-primary);
   }
   .btn-devis {
-    padding: 10px 20px;
-    background: var(--gradient-accent);
-    color: var(--color-white);
+    padding: 10px 22px;
+    border-radius: var(--radius-pill);
+    background: var(--color-teal);
+    color: var(--color-on-primary);
   }
   .btn-devis:hover {
-    opacity: 0.88;
-    transform: translateY(-1px);
+    background: var(--color-primary-container);
   }
 </style>

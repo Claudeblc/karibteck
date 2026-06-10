@@ -11,11 +11,12 @@ const { label } = Astro.props;
   .tag {
     display: inline-block;
     padding: 5px 12px;
-    border-radius: 8px;
-    background: var(--color-overlay-accent-tag);
-    border: 1px solid var(--color-border-accent-input);
-    color: var(--color-gray);
+    border-radius: var(--radius-pill);
+    background: var(--color-overlay-teal);
+    border: 1px solid var(--color-outline-variant);
+    color: var(--color-teal);
+    font-family: var(--font-label);
     font-size: 0.78rem;
-    font-weight: 500;
+    font-weight: 600;
   }
 </style>
