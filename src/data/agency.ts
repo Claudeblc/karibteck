@@ -49,13 +49,11 @@ export function getContactDetails(locale: Locale): ContactDetails {
   };
 }
 
+// Lean nav (Stitch "Minimalist" spirit): 5 items max. Removed sections
+// (Accueil = the logo, Équipe, FAQ, Contact) stay reachable in-page + via the footer.
 export const NAV_LINKS: NavLink[] = [
-  { labelKey: 'nav.home', href: '#hero' },
   { labelKey: 'nav.services', href: '#services' },
   { labelKey: 'nav.projects', href: '#realisations' },
-  { labelKey: 'nav.team', href: '#equipe' },
   { labelKey: 'nav.about', href: '#pourquoi' },
   { labelKey: 'nav.pricing', href: '#tarifs' },
-  { labelKey: 'nav.faq', href: '#faq' },
-  { labelKey: 'nav.contact', href: '#contact' },
 ];
