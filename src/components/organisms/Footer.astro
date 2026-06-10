@@ -51,9 +51,9 @@ const socialLinks: SocialLinkType[] = SOCIAL_LINKS.map((s) =>
     <div>
       <h3>{t('footer.legalTitle')}</h3>
       <ul>
-        <li><a href="#">{t('footer.legal.mentions')}</a></li>
-        <li><a href="#">{t('footer.legal.privacy')}</a></li>
-        <li><a href="#">{t('footer.legal.cgv')}</a></li>
+        <li><a href={localizePath('legalNotice', locale)}>{t('footer.legal.mentions')}</a></li>
+        <li><a href={localizePath('privacy', locale)}>{t('footer.legal.privacy')}</a></li>
+        <li><a href={localizePath('terms', locale)}>{t('footer.legal.cgv')}</a></li>
       </ul>
     </div>
     <div>

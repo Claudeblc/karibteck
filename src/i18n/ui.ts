@@ -255,11 +255,17 @@ export const routes = {
     home: '/',
     blog: '/blog/',
     thankYou: '/merci/',
+    legalNotice: '/mentions-legales/',
+    privacy: '/confidentialite/',
+    terms: '/cgv/',
   },
   en: {
     home: '/en/',
     blog: '/en/blog/',
     thankYou: '/en/thank-you/',
+    legalNotice: '/en/legal-notice/',
+    privacy: '/en/privacy/',
+    terms: '/en/terms/',
   },
 } as const;
 
