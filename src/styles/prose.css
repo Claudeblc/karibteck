@@ -1,6 +1,6 @@
 /* Typography for rendered MDX article bodies. Scoped to .prose. */
 .prose {
-  color: var(--color-white);
+  color: var(--color-on-surface);
   font-size: 1.05rem;
   line-height: 1.75;
 }
@@ -9,14 +9,14 @@
   font-family: var(--font-display);
   font-size: clamp(1.4rem, 2.5vw, 1.8rem);
   margin: 48px 0 16px;
-  color: var(--color-white);
+  color: var(--color-primary);
 }
 
 .prose h3 {
   font-family: var(--font-display);
   font-size: clamp(1.15rem, 2vw, 1.4rem);
   margin: 36px 0 12px;
-  color: var(--color-white);
+  color: var(--color-primary);
 }
 
 .prose p {
@@ -36,27 +36,27 @@
 }
 
 .prose a {
-  color: var(--color-cyan);
+  color: var(--color-teal);
   text-decoration: underline;
   text-underline-offset: 3px;
 }
 
 .prose a:hover {
-  color: var(--color-blue-2);
+  color: var(--color-primary);
 }
 
 .prose code {
   font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
   font-size: 0.9em;
-  background: var(--color-overlay-accent-badge);
-  border: 1px solid var(--color-border-accent-input);
+  background: var(--color-surface-gray);
+  border: 1px solid var(--color-outline-variant);
   border-radius: 6px;
   padding: 0.1em 0.4em;
 }
 
 .prose pre {
-  background: var(--color-navy-3);
-  border: 1px solid var(--color-gray-2);
+  background: var(--color-surface-gray);
+  border: 1px solid var(--color-outline-variant);
   border-radius: var(--radius-card);
   padding: 18px;
   overflow-x: auto;
@@ -72,12 +72,12 @@
 .prose blockquote {
   margin: 0 0 24px;
   padding: 4px 20px;
-  border-left: 3px solid var(--color-cyan);
-  color: var(--color-gray);
+  border-left: 3px solid var(--color-teal);
+  color: var(--color-on-surface-variant);
   font-style: italic;
 }
 
 .prose strong {
-  color: var(--color-white);
+  color: var(--color-on-surface);
   font-weight: 600;
 }

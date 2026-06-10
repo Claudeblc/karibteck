@@ -58,7 +58,7 @@ const contact = getContactDetails(locale);
 
 <style>
   #contact {
-    background: var(--color-navy);
+    background: var(--color-surface-alt);
     padding: var(--section-pad-y) 5%;
   }
   .section-inner {
@@ -72,7 +72,7 @@ const contact = getContactDetails(locale);
     align-items: start;
   }
   .contact-intro {
-    color: var(--color-gray);
+    color: var(--color-on-surface-variant);
     font-size: 0.95rem;
     line-height: 1.7;
     margin-bottom: 32px;
@@ -82,7 +82,7 @@ const contact = getContactDetails(locale);
     align-items: center;
     gap: 12px;
     margin-bottom: 16px;
-    color: rgba(255, 255, 255, 0.8);
+    color: var(--color-on-surface);
     font-size: 0.9rem;
   }
   .contact-detail a {
@@ -90,13 +90,13 @@ const contact = getContactDetails(locale);
     text-decoration: none;
   }
   .contact-detail a:hover {
-    color: var(--color-cyan);
+    color: var(--color-teal);
   }
   .contact-cta {
     margin-top: 28px;
   }
   .contact-cta-label {
-    color: var(--color-gray);
+    color: var(--color-on-surface-variant);
     font-size: 0.9rem;
     margin-bottom: 14px;
   }
@@ -108,13 +108,13 @@ const contact = getContactDetails(locale);
   .contact-detail-icon {
     width: 38px;
     height: 38px;
-    background: var(--color-overlay-accent-strong);
-    border: 1px solid var(--color-border-accent-faint);
-    border-radius: 8px;
+    background: var(--color-overlay-teal);
+    border: 1px solid var(--color-outline-variant);
+    border-radius: var(--radius-card);
     display: flex;
     align-items: center;
     justify-content: center;
-    color: var(--color-cyan);
+    color: var(--color-teal);
     flex-shrink: 0;
   }
   .contact-detail-icon :global(svg) {

@@ -52,7 +52,7 @@ const expertiseTags = getExpertiseTags(locale);
 
 <style>
   #pourquoi {
-    background: var(--color-navy-2);
+    background: var(--color-surface-alt);
     padding: var(--section-pad-y) 5%;
   }
   .section-inner {
@@ -74,10 +74,11 @@ const expertiseTags = getExpertiseTags(locale);
     margin: 0;
   }
   .why-visual {
-    background: var(--gradient-card);
-    border: 1px solid var(--color-border-accent);
+    background: var(--color-surface-card);
+    border: 1px solid var(--color-outline-variant);
     border-radius: var(--radius-lg);
     padding: 36px;
+    box-shadow: var(--shadow-card);
   }
   .why-stat-grid {
     display: grid;
@@ -87,13 +88,14 @@ const expertiseTags = getExpertiseTags(locale);
   .why-expertise {
     margin-top: 24px;
     padding: 20px;
-    background: var(--color-overlay-accent);
-    border: 1px solid var(--color-border-accent);
+    background: var(--color-overlay-teal);
+    border: 1px solid var(--color-outline-variant);
     border-radius: var(--radius-card);
   }
   .why-expertise-label {
+    font-family: var(--font-label);
     font-size: 0.8rem;
-    color: var(--color-cyan);
+    color: var(--color-teal);
     font-weight: 700;
     letter-spacing: 0.08em;
     text-transform: uppercase;

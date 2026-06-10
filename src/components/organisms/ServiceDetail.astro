@@ -55,19 +55,19 @@ const servicesHref = `${homePath}#services`;
   .crumbs {
     display: flex;
     gap: 10px;
-    color: var(--color-gray);
+    color: var(--color-on-surface-variant);
     font-size: 0.85rem;
     margin-bottom: 32px;
   }
   .crumbs a {
-    color: var(--color-gray);
+    color: var(--color-on-surface-variant);
     text-decoration: none;
   }
   .crumbs a:hover {
-    color: var(--color-cyan);
+    color: var(--color-teal);
   }
   .head .icon {
-    color: var(--color-cyan);
+    color: var(--color-teal);
   }
   .head .icon :global(svg) {
     width: 42px;
@@ -77,9 +77,10 @@ const servicesHref = `${homePath}#services`;
     font-family: var(--font-display);
     font-size: clamp(2rem, 4vw, 3rem);
     margin: 12px 0 16px;
+    color: var(--color-primary);
   }
   .intro {
-    color: var(--color-gray);
+    color: var(--color-on-surface-variant);
     font-size: 1.05rem;
     margin-bottom: 28px;
   }
@@ -92,6 +93,7 @@ const servicesHref = `${homePath}#services`;
     font-family: var(--font-display);
     font-size: 1.3rem;
     margin-bottom: 18px;
+    color: var(--color-primary);
   }
   .benefits ul {
     list-style: none;
@@ -102,13 +104,13 @@ const servicesHref = `${homePath}#services`;
   .benefits li {
     padding-left: 28px;
     position: relative;
-    color: var(--color-gray);
+    color: var(--color-on-surface-variant);
   }
   .benefits li::before {
     content: '✓';
     position: absolute;
     left: 0;
-    color: var(--color-cyan);
+    color: var(--color-teal);
     font-weight: 700;
   }
   .tags {
@@ -119,7 +121,7 @@ const servicesHref = `${homePath}#services`;
   .back {
     display: inline-block;
     margin-top: 48px;
-    color: var(--color-cyan);
+    color: var(--color-teal);
     text-decoration: none;
   }
 </style>

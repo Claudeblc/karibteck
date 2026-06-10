@@ -70,9 +70,10 @@ const localizedPaths = { fr: localizePath('blog', 'fr'), en: localizePath('blog'
     font-family: var(--font-display);
     font-size: clamp(2rem, 4vw, 3rem);
     margin-bottom: 12px;
+    color: var(--color-primary);
   }
   .blog-header p {
-    color: var(--color-gray);
+    color: var(--color-on-surface-variant);
     max-width: 60ch;
   }
   .tag-list {
@@ -83,10 +84,10 @@ const localizedPaths = { fr: localizePath('blog', 'fr'), en: localizePath('blog'
   }
   .tag-list a {
     padding: 6px 14px;
-    border-radius: 8px;
-    border: 1px solid var(--color-border-accent-input);
-    background: var(--color-overlay-accent-tag);
-    color: var(--color-gray);
+    border-radius: var(--radius-pill);
+    border: 1px solid var(--color-outline-variant);
+    background: var(--color-overlay-teal);
+    color: var(--color-teal);
     text-decoration: none;
     font-size: 0.85rem;
     transition:
@@ -94,8 +95,8 @@ const localizedPaths = { fr: localizePath('blog', 'fr'), en: localizePath('blog'
       border-color 0.2s;
   }
   .tag-list a:hover {
-    color: var(--color-cyan);
-    border-color: var(--color-cyan);
+    color: var(--color-primary);
+    border-color: var(--color-teal);
   }
   .article-grid {
     display: grid;

@@ -13,7 +13,7 @@ const TEAM_DATA: TeamMemberData[] = [
   {
     initials: 'A',
     name: '[Prénom Nom]',
-    accent: 'var(--color-cyan)',
+    accent: 'var(--color-teal)',
     role: {
       fr: 'Développement web & architecture',
       en: 'Web development & architecture',
@@ -26,7 +26,7 @@ const TEAM_DATA: TeamMemberData[] = [
   {
     initials: 'B',
     name: '[Prénom Nom]',
-    accent: 'var(--color-blue-2)',
+    accent: 'var(--color-teal-bright)',
     role: {
       fr: 'Applications mobiles & design produit',
       en: 'Mobile apps & product design',
@@ -39,7 +39,7 @@ const TEAM_DATA: TeamMemberData[] = [
   {
     initials: 'C',
     name: '[Prénom Nom]',
-    accent: 'var(--color-blue-1)',
+    accent: 'var(--color-primary)',
     role: {
       fr: 'DevOps, cloud & intelligence artificielle',
       en: 'DevOps, cloud & artificial intelligence',
