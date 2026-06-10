@@ -4,8 +4,8 @@ import { getServices } from '@/data/services';
 import { SOCIAL_LINKS } from '@/data/socialLinks';
 import SocialLink from '@/components/molecules/SocialLink.astro';
 import { useTranslations, localizePath } from '@/i18n/utils';
-import { DEFAULT_LOCALE } from '@/lib/constants';
-import type { Locale } from '@/types';
+import { DEFAULT_LOCALE, WHATSAPP_NUMBER } from '@/lib/constants';
+import type { Locale, SocialLink as SocialLinkType } from '@/types';
 
 interface Props {
   locale?: Locale;
@@ -16,6 +16,11 @@ const services = getServices(locale);
 const tagline = getTagline(locale);
 const blogHref = localizePath('blog', locale);
 const year = new Date().getFullYear();
+const socialLinks: SocialLinkType[] = SOCIAL_LINKS.map((s) =>
+  s.label === 'WhatsApp' && WHATSAPP_NUMBER
+    ? { ...s, href: `https://wa.me/${WHATSAPP_NUMBER}` }
+    : s,
+);
 ---
 
 <footer>
@@ -54,7 +59,7 @@ const year = new Date().getFullYear();
     <div>
       <h3>{t('footer.followTitle')}</h3>
       <div class="footer-social">
-        {SOCIAL_LINKS.map((s) => <SocialLink link={s} />)}
+        {socialLinks.map((s) => <SocialLink link={s} />)}
       </div>
     </div>
   </div>

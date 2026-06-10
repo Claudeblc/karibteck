@@ -1,6 +1,8 @@
 ---
 import SectionHeader from '@/components/molecules/SectionHeader.astro';
 import ContactForm from '@/components/molecules/ContactForm.astro';
+import CalButton from '@/components/molecules/CalButton.astro';
+import WhatsAppButton from '@/components/molecules/WhatsAppButton.astro';
 import { getContactDetails } from '@/data/agency';
 import { useTranslations } from '@/i18n/utils';
 import { DEFAULT_LOCALE } from '@/lib/constants';
@@ -39,6 +41,13 @@ const contact = getContactDetails(locale);
         <div class="contact-detail">
           <div class="contact-detail-icon">🕐</div>
           <div>{contact.hours}</div>
+        </div>
+        <div class="contact-cta">
+          <p class="contact-cta-label">{t('contact.orDirect')}</p>
+          <div class="contact-cta-row">
+            <CalButton locale={locale} />
+            <WhatsAppButton locale={locale} />
+          </div>
         </div>
       </div>
       <ContactForm locale={locale} />
@@ -81,6 +90,19 @@ const contact = getContactDetails(locale);
   }
   .contact-detail a:hover {
     color: var(--color-cyan);
+  }
+  .contact-cta {
+    margin-top: 28px;
+  }
+  .contact-cta-label {
+    color: var(--color-gray);
+    font-size: 0.9rem;
+    margin-bottom: 14px;
+  }
+  .contact-cta-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
   }
   .contact-detail-icon {
     width: 38px;

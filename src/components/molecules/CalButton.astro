@@ -1,0 +1,37 @@
+---
+import { CALCOM_URL, DEFAULT_LOCALE } from '@/lib/constants';
+import { useTranslations } from '@/i18n/utils';
+import type { Locale } from '@/types';
+
+interface Props {
+  locale?: Locale;
+}
+const { locale = DEFAULT_LOCALE } = Astro.props;
+const t = useTranslations(locale);
+---
+
+{
+  CALCOM_URL && (
+    <a href={CALCOM_URL} target="_blank" rel="noopener noreferrer" class="cal-btn">
+      📅 {t('contact.cal')}
+    </a>
+  )
+}
+
+<style>
+  .cal-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 22px;
+    border-radius: var(--radius-card);
+    border: 1px solid var(--color-border-accent);
+    color: var(--color-white);
+    text-decoration: none;
+    font-weight: 600;
+    transition: border-color 0.2s;
+  }
+  .cal-btn:hover {
+    border-color: var(--color-cyan);
+  }
+</style>
