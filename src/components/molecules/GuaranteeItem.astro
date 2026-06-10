@@ -21,14 +21,23 @@ const { guarantee } = Astro.props;
     display: flex;
     gap: 16px;
     padding: 20px;
-    background: var(--color-navy-2);
-    border: 1px solid var(--color-gray-2);
+    background: var(--color-surface-card);
+    border: 1px solid var(--color-outline-variant);
     border-radius: var(--radius-card);
+    transition:
+      border-color 0.3s,
+      transform 0.3s,
+      box-shadow 0.3s;
+  }
+  .guarantee:hover {
+    transform: translateY(-4px);
+    border-color: transparent;
+    box-shadow: var(--shadow-card-hover);
   }
   .icon {
     line-height: 1;
     flex-shrink: 0;
-    color: var(--color-cyan);
+    color: var(--color-teal);
   }
   .icon :global(svg) {
     width: 28px;
@@ -38,9 +47,10 @@ const { guarantee } = Astro.props;
     font-family: var(--font-display);
     font-size: 1.02rem;
     margin-bottom: 6px;
+    color: var(--color-on-surface);
   }
   .desc {
-    color: var(--color-gray);
+    color: var(--color-on-surface-variant);
     font-size: 0.92rem;
   }
 </style>

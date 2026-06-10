@@ -22,7 +22,8 @@ const { step } = Astro.props;
   .step-num {
     width: 56px;
     height: 56px;
-    background: var(--gradient-accent);
+    background: var(--color-teal);
+    color: var(--color-on-primary);
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -33,15 +34,17 @@ const { step } = Astro.props;
     margin: 0 auto 20px;
     position: relative;
     z-index: 1;
-    box-shadow: var(--shadow-accent);
+    box-shadow: var(--shadow-card);
   }
   .step-title {
+    font-family: var(--font-display);
     font-weight: 700;
     font-size: 1rem;
     margin-bottom: 8px;
+    color: var(--color-on-surface);
   }
   .step-desc {
-    color: var(--color-gray);
+    color: var(--color-on-surface-variant);
     font-size: 0.85rem;
     line-height: 1.6;
   }

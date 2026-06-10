@@ -17,9 +17,9 @@ const { item } = Astro.props;
 
 <style>
   .faq-item {
-    border: 1px solid var(--color-gray-2);
+    border: 1px solid var(--color-outline-variant);
     border-radius: var(--radius-card);
-    background: var(--color-navy-2);
+    background: var(--color-surface-card);
     padding: 0 20px;
   }
   summary {
@@ -31,13 +31,14 @@ const { item } = Astro.props;
     cursor: pointer;
     font-family: var(--font-display);
     font-size: 1rem;
+    color: var(--color-on-surface);
     list-style: none;
   }
   summary::-webkit-details-marker {
     display: none;
   }
   .chevron {
-    color: var(--color-cyan);
+    color: var(--color-teal);
     font-size: 1.4rem;
     transition: transform 0.2s;
   }
@@ -45,7 +46,7 @@ const { item } = Astro.props;
     transform: rotate(45deg);
   }
   .answer {
-    color: var(--color-gray);
+    color: var(--color-on-surface-variant);
     font-size: 0.95rem;
     padding: 0 0 18px;
   }

@@ -21,24 +21,26 @@ const { project } = Astro.props;
 
 <style>
   .real-card {
-    background: var(--gradient-card);
-    border: 1px solid var(--color-border-accent-soft);
+    background: var(--color-surface-card);
+    border: 1px solid var(--color-outline-variant);
     border-radius: var(--radius-lg);
     overflow: hidden;
     transition:
       transform 0.3s,
+      border-color 0.3s,
       box-shadow 0.3s;
   }
   .real-card:hover {
     transform: translateY(-4px);
-    box-shadow: 0 16px 48px rgba(0, 0, 0, 0.4);
+    border-color: transparent;
+    box-shadow: var(--shadow-card-hover);
   }
   .real-thumb {
     height: 180px;
     display: flex;
     align-items: center;
     justify-content: center;
-    color: var(--color-white);
+    color: var(--color-on-primary);
     position: relative;
     overflow: hidden;
   }
@@ -52,26 +54,30 @@ const { project } = Astro.props;
     content: '';
     position: absolute;
     inset: 0;
-    background: var(--gradient-thumb-overlay);
+    background: var(--gradient-accent);
+    opacity: 0.18;
   }
   .real-body {
     padding: 20px 22px 24px;
   }
   .real-cat {
+    font-family: var(--font-label);
     font-size: 0.72rem;
     font-weight: 700;
-    color: var(--color-cyan);
+    color: var(--color-teal);
     letter-spacing: 0.1em;
     text-transform: uppercase;
     margin-bottom: 6px;
   }
   .real-title {
+    font-family: var(--font-display);
     font-weight: 700;
     font-size: 1.05rem;
     margin-bottom: 8px;
+    color: var(--color-on-surface);
   }
   .real-desc {
-    color: var(--color-gray);
+    color: var(--color-on-surface-variant);
     font-size: 0.85rem;
     line-height: 1.6;
   }

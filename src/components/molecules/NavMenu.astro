@@ -36,13 +36,14 @@ const home = localizePath('home', locale);
     padding: 0;
   }
   .nav-links a {
-    color: var(--color-white);
+    color: var(--color-on-surface-variant);
+    font-family: var(--font-label);
     text-decoration: none;
     font-size: 0.95rem;
     transition: color 0.2s;
   }
   .nav-links a:hover {
-    color: var(--color-cyan);
+    color: var(--color-teal);
   }
   @media (max-width: 860px) {
     .nav-links {
@@ -51,7 +52,7 @@ const home = localizePath('home', locale);
       flex-direction: column;
       gap: 18px;
       padding: 24px 5%;
-      background: var(--color-navy-2);
+      background: var(--color-surface);
       transform: translateY(-120%);
       transition: transform 0.3s ease;
     }

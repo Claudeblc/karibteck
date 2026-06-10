@@ -27,43 +27,46 @@ const ctaLabel = plan.ctaKey === 'requestQuote' ? t('cta.requestQuote') : t('cta
 
 <style>
   .tarif-card {
-    background: var(--gradient-card-deep);
-    border: 1px solid var(--color-border-accent);
+    background: var(--color-surface-card);
+    border: 1px solid var(--color-outline-variant);
     border-radius: var(--radius-lg);
     padding: 36px 28px;
     position: relative;
     transition:
       transform 0.3s,
+      border-color 0.3s,
       box-shadow 0.3s;
   }
   .tarif-card:hover {
     transform: translateY(-4px);
-    box-shadow: var(--shadow-card-hover-soft);
+    border-color: transparent;
+    box-shadow: var(--shadow-card-hover);
   }
   .tarif-card.popular {
-    border-color: var(--color-blue-2);
-    background: var(--gradient-card-popular);
-    box-shadow: var(--ring-accent), var(--shadow-card-popular);
+    border-color: var(--color-teal);
+    box-shadow: var(--shadow-card-hover);
   }
   .popular-badge {
     position: absolute;
     top: -12px;
     left: 50%;
     transform: translateX(-50%);
-    background: var(--gradient-accent);
-    color: #fff;
+    background: var(--color-sunset);
+    color: var(--color-primary);
+    font-family: var(--font-label);
     font-size: 0.72rem;
     font-weight: 700;
     letter-spacing: 0.08em;
     text-transform: uppercase;
     padding: 4px 16px;
-    border-radius: 100px;
+    border-radius: var(--radius-pill);
     white-space: nowrap;
   }
   .tarif-name {
+    font-family: var(--font-label);
     font-size: 0.82rem;
     font-weight: 700;
-    color: var(--color-cyan);
+    color: var(--color-teal);
     letter-spacing: 0.1em;
     text-transform: uppercase;
     margin-bottom: 8px;
@@ -73,9 +76,10 @@ const ctaLabel = plan.ctaKey === 'requestQuote' ? t('cta.requestQuote') : t('cta
     font-size: 2.4rem;
     font-weight: 800;
     margin-bottom: 4px;
+    color: var(--color-on-surface);
   }
   .tarif-desc {
-    color: var(--color-gray);
+    color: var(--color-on-surface-variant);
     font-size: 0.85rem;
     margin-bottom: 24px;
     line-height: 1.6;
@@ -93,11 +97,11 @@ const ctaLabel = plan.ctaKey === 'requestQuote' ? t('cta.requestQuote') : t('cta
     align-items: center;
     gap: 10px;
     font-size: 0.88rem;
-    color: rgba(255, 255, 255, 0.8);
+    color: var(--color-on-surface);
   }
   .tarif-features li::before {
     content: '✓';
-    color: var(--color-cyan);
+    color: var(--color-teal);
     font-weight: 700;
     flex-shrink: 0;
   }
