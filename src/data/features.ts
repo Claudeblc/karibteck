@@ -8,27 +8,27 @@ interface FeatureData {
 
 const FEATURES_DATA: FeatureData[] = [
   {
-    icon: '🎨',
+    icon: 'lucide:palette',
     title: { fr: 'Sites modernes', en: 'Modern sites' },
     subtitle: { fr: 'Design premium & unique', en: 'Premium, unique design' },
   },
   {
-    icon: '🔒',
+    icon: 'lucide:shield-check',
     title: { fr: 'Sécurisés', en: 'Secure' },
     subtitle: { fr: 'Protection avancée', en: 'Advanced protection' },
   },
   {
-    icon: '📱',
+    icon: 'lucide:smartphone',
     title: { fr: '100% Responsive', en: '100% Responsive' },
     subtitle: { fr: 'Optimisé tous écrans', en: 'Optimized for every screen' },
   },
   {
-    icon: '⚡',
+    icon: 'lucide:zap',
     title: { fr: 'Rapides', en: 'Fast' },
     subtitle: { fr: 'Performance maximale', en: 'Maximum performance' },
   },
   {
-    icon: '🛟',
+    icon: 'lucide:life-buoy',
     title: { fr: 'Support 7/7', en: '7/7 Support' },
     subtitle: { fr: 'Accompagnement continu', en: 'Continuous support' },
   },

@@ -8,7 +8,7 @@ interface WhyPointData {
 
 const WHY_POINTS_DATA: WhyPointData[] = [
   {
-    icon: '🎯',
+    icon: 'lucide:target',
     title: { fr: 'Expertise technique solide', en: 'Solid technical expertise' },
     description: {
       fr: 'Développeurs seniors spécialisés en web, mobile et progiciels métier, avec une exigence de qualité sur chaque ligne de code.',
@@ -16,7 +16,7 @@ const WHY_POINTS_DATA: WhyPointData[] = [
     },
   },
   {
-    icon: '🏝️',
+    icon: 'lucide:palmtree',
     title: { fr: 'Connaissance du terrain local', en: 'Local field knowledge' },
     description: {
       fr: 'Nous comprenons les spécificités des entreprises antillaises : fiscalité, logistique, contraintes réglementaires.',
@@ -24,7 +24,7 @@ const WHY_POINTS_DATA: WhyPointData[] = [
     },
   },
   {
-    icon: '📊',
+    icon: 'lucide:bar-chart-3',
     title: { fr: 'Orientés résultats', en: 'Results-driven' },
     description: {
       fr: 'Chaque projet est évalué sur des KPIs concrets : trafic, conversion, ROI. Nous livrons de la valeur, pas juste du code.',
@@ -32,7 +32,7 @@ const WHY_POINTS_DATA: WhyPointData[] = [
     },
   },
   {
-    icon: '🤝',
+    icon: 'lucide:handshake',
     title: { fr: 'Partenariat long terme', en: 'Long-term partnership' },
     description: {
       fr: 'Nous ne disparaissons pas après la livraison. Maintenance, évolutions, support — nous restons à vos côtés.',

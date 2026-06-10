@@ -1,4 +1,5 @@
 ---
+import { Icon } from 'astro-icon/components';
 import Tag from '@/components/atoms/Tag.astro';
 import type { Service } from '@/types';
 
@@ -10,7 +11,7 @@ const { service, href } = Astro.props;
 ---
 
 <article class="service-card fade-up">
-  <div class="service-icon">{service.icon}</div>
+  <div class="service-icon"><Icon name={service.icon} /></div>
   <h3 class="service-title">
     {href ? <a href={href}>{service.title}</a> : service.title}
   </h3>
@@ -37,7 +38,11 @@ const { service, href } = Astro.props;
     box-shadow: var(--shadow-card-hover-soft);
   }
   .service-icon {
-    font-size: 2rem;
+    color: var(--color-cyan);
+  }
+  .service-icon :global(svg) {
+    width: 32px;
+    height: 32px;
   }
   .service-title {
     font-family: var(--font-display);

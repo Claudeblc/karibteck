@@ -1,4 +1,5 @@
 ---
+import { Icon } from 'astro-icon/components';
 import type { TechLogo } from '@/types';
 
 interface Props {
@@ -8,7 +9,7 @@ const { logo } = Astro.props;
 ---
 
 <div class="tech-logo">
-  <span class="tech-logo-icon" style={`color:${logo.color}`}>{logo.icon}</span>
+  <span class="tech-logo-icon" style={`color:${logo.color}`}><Icon name={logo.icon} /></span>
   <span class="tech-logo-name">{logo.name}</span>
 </div>
 
@@ -30,8 +31,11 @@ const { logo } = Astro.props;
     filter: grayscale(0);
   }
   .tech-logo-icon {
-    font-size: 2.2rem;
     line-height: 1;
+  }
+  .tech-logo-icon :global(svg) {
+    width: 28px;
+    height: 28px;
   }
   .tech-logo-name {
     font-size: 0.75rem;

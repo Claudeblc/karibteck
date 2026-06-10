@@ -1,4 +1,5 @@
 ---
+import { Icon } from 'astro-icon/components';
 import type { Feature } from '@/types';
 
 interface Props {
@@ -8,7 +9,7 @@ const { feature } = Astro.props;
 ---
 
 <div class="feat-item">
-  <div class="feat-icon">{feature.icon}</div>
+  <div class="feat-icon"><Icon name={feature.icon} /></div>
   <div>
     <div class="feat-title">{feature.title}</div>
     <div class="feat-sub">{feature.subtitle}</div>
@@ -33,7 +34,11 @@ const { feature } = Astro.props;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 1rem;
+    color: var(--color-cyan);
+  }
+  .feat-icon :global(svg) {
+    width: 20px;
+    height: 20px;
   }
   .feat-sub {
     font-size: 0.72rem;

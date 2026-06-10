@@ -1,4 +1,5 @@
 ---
+import { Icon } from 'astro-icon/components';
 import SectionHeader from '@/components/molecules/SectionHeader.astro';
 import ContactForm from '@/components/molecules/ContactForm.astro';
 import CalButton from '@/components/molecules/CalButton.astro';
@@ -27,19 +28,19 @@ const contact = getContactDetails(locale);
         />
         <p class="contact-intro">{t('contact.intro')}</p>
         <div class="contact-detail">
-          <div class="contact-detail-icon">📧</div>
+          <div class="contact-detail-icon"><Icon name="lucide:mail" /></div>
           <div><a href={`mailto:${contact.email}`}>{contact.email}</a></div>
         </div>
         <div class="contact-detail">
-          <div class="contact-detail-icon">📞</div>
+          <div class="contact-detail-icon"><Icon name="lucide:phone" /></div>
           <div>{contact.phone}</div>
         </div>
         <div class="contact-detail">
-          <div class="contact-detail-icon">📍</div>
+          <div class="contact-detail-icon"><Icon name="lucide:map-pin" /></div>
           <div>{contact.location}</div>
         </div>
         <div class="contact-detail">
-          <div class="contact-detail-icon">🕐</div>
+          <div class="contact-detail-icon"><Icon name="lucide:clock" /></div>
           <div>{contact.hours}</div>
         </div>
         <div class="contact-cta">
@@ -113,8 +114,12 @@ const contact = getContactDetails(locale);
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 1rem;
+    color: var(--color-cyan);
     flex-shrink: 0;
+  }
+  .contact-detail-icon :global(svg) {
+    width: 20px;
+    height: 20px;
   }
   @media (max-width: 860px) {
     .contact-grid {

@@ -13,7 +13,7 @@ interface ServiceData {
 const SERVICES_DATA: ServiceData[] = [
   {
     slug: 'creation-sites-web',
-    icon: '🌐',
+    icon: 'lucide:globe',
     tags: ['WordPress', 'Next.js', 'Figma', 'SEO'],
     title: { fr: 'Création de Sites Web', en: 'Website Design & Development' },
     description: {
@@ -41,7 +41,7 @@ const SERVICES_DATA: ServiceData[] = [
   },
   {
     slug: 'applications-mobiles',
-    icon: '📱',
+    icon: 'lucide:smartphone',
     tags: ['React Native', 'Flutter', 'iOS', 'Android'],
     title: { fr: 'Applications Mobiles', en: 'Mobile Apps' },
     description: {
@@ -69,7 +69,7 @@ const SERVICES_DATA: ServiceData[] = [
   },
   {
     slug: 'logiciels-metier',
-    icon: '⚙️',
+    icon: 'lucide:settings',
     tags: ['PHP / Laravel', 'Node.js', 'PostgreSQL', 'API REST'],
     title: { fr: 'Logiciels Métier (ERP / CRM)', en: 'Business Software (ERP / CRM)' },
     description: {
@@ -97,7 +97,7 @@ const SERVICES_DATA: ServiceData[] = [
   },
   {
     slug: 'e-commerce',
-    icon: '🛒',
+    icon: 'lucide:shopping-cart',
     tags: ['WooCommerce', 'Shopify', 'Paiement sécurisé'],
     title: { fr: 'E-Commerce', en: 'E-Commerce' },
     description: {
@@ -125,7 +125,7 @@ const SERVICES_DATA: ServiceData[] = [
   },
   {
     slug: 'hebergement-devops',
-    icon: '☁️',
+    icon: 'lucide:cloud',
     tags: ['AWS / VPS', 'Docker', 'CI/CD', 'SSL'],
     title: { fr: 'Hébergement & DevOps', en: 'Hosting & DevOps' },
     description: {
@@ -153,7 +153,7 @@ const SERVICES_DATA: ServiceData[] = [
   },
   {
     slug: 'intelligence-artificielle',
-    icon: '🤖',
+    icon: 'lucide:cpu',
     tags: ['ChatGPT API', 'Python', 'Automatisation'],
     title: { fr: 'Intelligence Artificielle', en: 'Artificial Intelligence' },
     description: {

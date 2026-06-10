@@ -12,7 +12,7 @@ interface ProjectData {
 // delivered client work (the agency starts with zero clients).
 const PROJECTS_DATA: ProjectData[] = [
   {
-    emoji: '🛒',
+    emoji: 'lucide:shopping-cart',
     gradient: 'linear-gradient(135deg,#0d2040,#1a3560)',
     category: { fr: 'E-Commerce', en: 'E-Commerce' },
     title: {
@@ -25,7 +25,7 @@ const PROJECTS_DATA: ProjectData[] = [
     },
   },
   {
-    emoji: '⚙️',
+    emoji: 'lucide:settings',
     gradient: 'linear-gradient(135deg,#0a1e40,#0d2d50)',
     category: { fr: 'Logiciel Métier', en: 'Business Software' },
     title: {
@@ -38,7 +38,7 @@ const PROJECTS_DATA: ProjectData[] = [
     },
   },
   {
-    emoji: '📱',
+    emoji: 'lucide:smartphone',
     gradient: 'linear-gradient(135deg,#0f1a38,#152040)',
     category: { fr: 'Application Mobile', en: 'Mobile App' },
     title: {

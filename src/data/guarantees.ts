@@ -8,7 +8,7 @@ interface GuaranteeData {
 
 const GUARANTEES_DATA: GuaranteeData[] = [
   {
-    icon: '⏱️',
+    icon: 'lucide:clock',
     title: { fr: 'Devis sous 24h', en: 'Quote within 24h' },
     description: {
       fr: 'Vous nous contactez, nous revenons vers vous sous 24h avec une première réponse claire.',
@@ -16,7 +16,7 @@ const GUARANTEES_DATA: GuaranteeData[] = [
     },
   },
   {
-    icon: '🧱',
+    icon: 'lucide:blocks',
     title: { fr: 'Code propre & maintenable', en: 'Clean, maintainable code' },
     description: {
       fr: 'Un code structuré et documenté, pensé pour durer et évoluer — jamais une boîte noire.',
@@ -24,7 +24,7 @@ const GUARANTEES_DATA: GuaranteeData[] = [
     },
   },
   {
-    icon: '⚡',
+    icon: 'lucide:zap',
     title: { fr: 'Performance & SEO inclus', en: 'Performance & SEO included' },
     description: {
       fr: 'Rapidité, accessibilité et référencement sont intégrés dès la conception, pas en option.',
@@ -32,7 +32,7 @@ const GUARANTEES_DATA: GuaranteeData[] = [
     },
   },
   {
-    icon: '🔑',
+    icon: 'lucide:key',
     title: { fr: 'Vous êtes propriétaire', en: 'You own everything' },
     description: {
       fr: 'Le code, les accès et les données vous appartiennent intégralement à la livraison.',
@@ -40,7 +40,7 @@ const GUARANTEES_DATA: GuaranteeData[] = [
     },
   },
   {
-    icon: '💬',
+    icon: 'lucide:message-circle',
     title: { fr: 'Accompagnement continu', en: 'Ongoing support' },
     description: {
       fr: 'Nous restons disponibles après la mise en ligne : maintenance, évolutions et conseils.',
@@ -48,7 +48,7 @@ const GUARANTEES_DATA: GuaranteeData[] = [
     },
   },
   {
-    icon: '🪪',
+    icon: 'lucide:badge-check',
     title: { fr: 'Transparence des prix', en: 'Transparent pricing' },
     description: {
       fr: 'Un devis détaillé et sans surprise : vous savez exactement ce que vous payez et pourquoi.',
