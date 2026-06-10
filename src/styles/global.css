@@ -13,9 +13,9 @@ html {
 
 body {
   margin: 0;
-  font-family: var(--font-sans);
-  background: var(--color-navy);
-  color: var(--color-white);
+  font-family: var(--font-body);
+  background: var(--color-surface);
+  color: var(--color-on-surface);
   line-height: 1.6;
   overflow-x: hidden;
 }
@@ -23,7 +23,7 @@ body {
 /* Brand focus ring (accent, visible) */
 *:focus-visible {
   outline: none;
-  box-shadow: 0 0 0 2px var(--color-cyan);
+  box-shadow: 0 0 0 2px var(--color-teal);
 }
 
 /* Respect reduced motion everywhere */
