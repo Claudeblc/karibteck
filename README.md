@@ -39,8 +39,9 @@ Pas de framework JS additionnel (React/Vue/Svelte). Astro statique pur : hydrata
 git clone git@github.com:Claudeblc/karibteck.git
 cd karibteck
 npm install
-cp .env.example .env   # optionnel — voir « Variables d'environnement »
-npm run dev            # http://localhost:4321
+cp .env.example .env             # optionnel — voir « Variables d'environnement »
+npx skills experimental_install  # optionnel — restaure les agent skills (voir « Skills de dev »)
+npm run dev                      # http://localhost:4321
 ```
 
 Le site fonctionne sans `.env` : le formulaire et les boutons Cal/WhatsApp se configurent via les variables `PUBLIC_` (voir plus bas), mais l'app se lance et se build sans elles.
@@ -191,6 +192,24 @@ Le site est livré avec des **placeholders génériques** à remplacer par les v
 Localement, un hook **pre-commit** (Husky + lint-staged) lance ESLint + Prettier sur les fichiers modifiés.
 
 Conventions clés (détail dans `CLAUDE.md`) : composant Astro ≤ 150 lignes, fonction ≤ 20 lignes, TypeScript strict (0 `any`), pas de logique dans le markup, alias d'import `@/`, commits conventionnels.
+
+---
+
+## Skills de dev (agent skills)
+
+Le projet utilise des **agent skills** partagés (outils d'assistant, ex. audit SEO) gérés par le CLI [`skills`](https://skills.sh/). On suit le **modèle lockfile** : seul **`skills-lock.json`** est versionné (il épingle chaque skill par source + hash d'intégrité). Les fichiers des skills et les liens par agent sont **restaurés localement**, pas commités.
+
+```bash
+npx skills experimental_install   # restaure les skills épinglés depuis skills-lock.json
+npx skills list                   # liste les skills installés
+npx skills check                  # vérifie les mises à jour
+npx skills add <owner/repo@skill> # ajoute un skill (met à jour le lock — à committer)
+```
+
+Versionné : `skills-lock.json` uniquement.
+Ignoré (régénéré par la restauration) : `.agents/`, `.claude/skills/`, `*.local.json`.
+
+> Astuce : pour automatiser la restauration au `npm install`, ajouter `"postinstall": "skills experimental_install || true"` dans `package.json`. Note : les commandes `experimental_*` peuvent évoluer — le `skills-lock.json` reste le contrat stable.
 
 ---
 

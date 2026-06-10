@@ -10,3 +10,8 @@ node_modules/
 # os / editor
 .DS_Store
 *.log
+# agent skills — seul skills-lock.json est versionné (modèle A).
+# Les fichiers + symlinks par agent sont restaurés via `npx skills experimental_install`.
+.agents/
+.claude/skills/
+*.local.json
