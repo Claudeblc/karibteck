@@ -1,0 +1,106 @@
+---
+import MainLayout from '@/layouts/MainLayout.astro';
+import Nav from '@/components/organisms/Nav.astro';
+import Footer from '@/components/organisms/Footer.astro';
+import JsonLd from '@/components/atoms/JsonLd.astro';
+import ArticleCard from '@/components/molecules/ArticleCard.astro';
+import { loadPosts, entrySlug, allTags } from '@/lib/blog';
+import { computeReadingTime } from '@/lib/readingTime';
+import { buildBlogIndexGraph } from '@/lib/jsonLd';
+import { useTranslations, localizeBlogPostPath, localizeTagPath, localizePath } from '@/i18n/utils';
+import type { Locale } from '@/types';
+
+const locale: Locale = 'en';
+const t = useTranslations(locale);
+const posts = await loadPosts(locale);
+const tags = await allTags(locale);
+const graph = buildBlogIndexGraph(locale);
+const localizedPaths = { fr: localizePath('blog', 'fr'), en: localizePath('blog', 'en') };
+---
+
+<MainLayout
+  title={`${t('blog.title')} | Karib Teck`}
+  description={t('blog.sub')}
+  locale={locale}
+  route="blog"
+  localizedPaths={localizedPaths}
+>
+  <Fragment slot="head"><JsonLd data={graph} /></Fragment>
+  <Nav slot="nav" locale={locale} route="blog" altHref={localizedPaths.fr} />
+  <section class="blog-index">
+    <header class="blog-header">
+      <h1>{t('blog.title')}</h1>
+      <p>{t('blog.sub')}</p>
+    </header>
+    {
+      tags.length > 0 && (
+        <nav class="tag-list" aria-label={t('blog.tagsTitle')}>
+          {tags.map((tag) => (
+            <a href={localizeTagPath(tag, locale)}>{tag}</a>
+          ))}
+        </nav>
+      )
+    }
+    <div class="article-grid">
+      {
+        posts.map((entry) => (
+          <ArticleCard
+            href={localizeBlogPostPath(entrySlug(entry), locale)}
+            title={entry.data.title}
+            excerpt={entry.data.excerpt}
+            date={entry.data.date}
+            readingMinutes={computeReadingTime(entry.body ?? '')}
+            tags={entry.data.tags}
+            locale={locale}
+          />
+        ))
+      }
+    </div>
+  </section>
+  <Footer slot="footer" locale={locale} />
+</MainLayout>
+
+<style>
+  .blog-index {
+    max-width: var(--content-max);
+    margin: 0 auto;
+    padding: calc(var(--nav-height) + 64px) 5% 96px;
+  }
+  .blog-header h1 {
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 4vw, 3rem);
+    margin-bottom: 12px;
+  }
+  .blog-header p {
+    color: var(--color-gray);
+    max-width: 60ch;
+  }
+  .tag-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: 32px 0;
+  }
+  .tag-list a {
+    padding: 6px 14px;
+    border-radius: 8px;
+    border: 1px solid var(--color-border-accent-input);
+    background: var(--color-overlay-accent-tag);
+    color: var(--color-gray);
+    text-decoration: none;
+    font-size: 0.85rem;
+    transition:
+      color 0.2s,
+      border-color 0.2s;
+  }
+  .tag-list a:hover {
+    color: var(--color-cyan);
+    border-color: var(--color-cyan);
+  }
+  .article-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 24px;
+    margin-top: 16px;
+  }
+</style>
