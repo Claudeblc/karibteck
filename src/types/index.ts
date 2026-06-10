@@ -72,7 +72,8 @@ export interface PricingPlan {
 
 export interface SocialLink {
   label: string;
-  abbr: string;
+  /** Iconify icon name, e.g. "simple-icons:linkedin". */
+  icon: string;
   href: string;
 }
 

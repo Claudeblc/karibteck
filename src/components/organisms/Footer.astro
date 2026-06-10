@@ -15,6 +15,7 @@ const t = useTranslations(locale);
 const services = getServices(locale);
 const tagline = getTagline(locale);
 const blogHref = localizePath('blog', locale);
+const home = localizePath('home', locale);
 const year = new Date().getFullYear();
 const socialLinks: SocialLinkType[] = SOCIAL_LINKS.map((s) =>
   s.label === 'WhatsApp' && WHATSAPP_NUMBER
@@ -36,7 +37,7 @@ const socialLinks: SocialLinkType[] = SOCIAL_LINKS.map((s) =>
         {
           services.map((s) => (
             <li>
-              <a href="#services">{s.title}</a>
+              <a href={`${home}#services`}>{s.title}</a>
             </li>
           ))
         }
