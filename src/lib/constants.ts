@@ -1,5 +1,14 @@
 export const SITE_URL = 'https://karibteck.com';
 
+/**
+ * Public env-driven integrations (Phase 6). Empty fallbacks keep the build
+ * working with no `.env`: the form renders with a blank access key, and the
+ * Cal/WhatsApp CTAs render nothing until real values are provided.
+ */
+export const WEB3FORMS_KEY = import.meta.env.PUBLIC_WEB3FORMS_KEY ?? '';
+export const CALCOM_URL = import.meta.env.PUBLIC_CALCOM_URL ?? '';
+export const WHATSAPP_NUMBER = import.meta.env.PUBLIC_WHATSAPP_NUMBER ?? '';
+
 export const SUPPORTED_LOCALES = ['fr', 'en'] as const;
 export const DEFAULT_LOCALE = 'fr';
 
