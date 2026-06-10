@@ -33,6 +33,11 @@ export const ui = {
     'services.title.hl': 'adaptées à vos ambitions',
     'services.sub':
       "De la vitrine en ligne à l'application métier complexe, nous couvrons l'intégralité de votre besoin digital avec une expertise de pointe.",
+    'services.detail.breadcrumb': 'Services',
+    'services.detail.benefitsTitle': 'Ce que vous obtenez',
+    'services.detail.techTitle': 'Technologies',
+    'services.detail.cta': 'Discuter de ce projet',
+    'services.detail.backToServices': 'Tous nos services',
     'stack.label': 'Des technologies modernes pour des résultats durables',
     'process.badge': 'Notre Méthode',
     'process.title.lead': 'Un processus',
@@ -131,6 +136,11 @@ export const ui = {
     'services.title.hl': 'tailored to your ambitions',
     'services.sub':
       'From an online storefront to a complex business application, we cover your entire digital needs with sharp, senior expertise.',
+    'services.detail.breadcrumb': 'Services',
+    'services.detail.benefitsTitle': 'What you get',
+    'services.detail.techTitle': 'Technologies',
+    'services.detail.cta': 'Discuss this project',
+    'services.detail.backToServices': 'All our services',
     'stack.label': 'Modern technologies for results that last',
     'process.badge': 'Our Method',
     'process.title.lead': 'A',

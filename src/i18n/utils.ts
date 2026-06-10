@@ -33,3 +33,8 @@ export function alternateLocale(locale: Locale): Locale {
 export function alternateUrl(route: RouteKey, locale: Locale): string {
   return routes[alternateLocale(locale)][route];
 }
+
+/** Path to a service detail page for a locale (slug shared across locales). */
+export function localizeServicePath(slug: string, locale: Locale): string {
+  return locale === 'fr' ? `/services/${slug}/` : `/en/services/${slug}/`;
+}

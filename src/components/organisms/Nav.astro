@@ -9,8 +9,9 @@ import type { Locale, RouteKey } from '@/types';
 interface Props {
   locale?: Locale;
   route?: RouteKey;
+  altHref?: string;
 }
-const { locale = DEFAULT_LOCALE, route = 'home' } = Astro.props;
+const { locale = DEFAULT_LOCALE, route = 'home', altHref } = Astro.props;
 const t = useTranslations(locale);
 const logoSub = `— ${getTagline(locale)} —`;
 ---
@@ -22,7 +23,7 @@ const logoSub = `— ${getTagline(locale)} —`;
   </a>
   <div class="nav-actions">
     <NavMenu locale={locale} />
-    <LangToggle locale={locale} route={route} />
+    <LangToggle locale={locale} route={route} altHref={altHref} />
   </div>
   <button class="burger" id="burger" aria-label={t('a11y.openMenu')}>
     <span></span><span></span><span></span>

@@ -5,10 +5,11 @@ import type { Locale, RouteKey } from '@/types';
 interface Props {
   locale: Locale;
   route: RouteKey;
+  altHref?: string;
 }
-const { locale, route } = Astro.props;
+const { locale, route, altHref } = Astro.props;
 const other = alternateLocale(locale);
-const href = alternateUrl(route, locale);
+const href = altHref ?? alternateUrl(route, locale);
 ---
 
 <a
