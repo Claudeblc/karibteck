@@ -19,6 +19,8 @@ export interface Service {
   title: string;
   description: string;
   tags: string[];
+  intro: string;
+  benefits: string[];
 }
 
 export interface Feature {
