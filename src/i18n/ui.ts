@@ -104,6 +104,7 @@ export const ui = {
     'thankYou.body':
       'Votre demande a bien été envoyée. Notre équipe vous répondra sous 24h ouvrées.',
     'thankYou.back': 'Retour à l’accueil',
+    'legal.updated': 'Dernière mise à jour',
     'footer.servicesTitle': 'Services',
     'footer.companyTitle': 'Entreprise',
     'footer.legalTitle': 'Légal',
@@ -221,6 +222,7 @@ export const ui = {
     'thankYou.body':
       'Your request has been sent. Our team will get back to you within 24 business hours.',
     'thankYou.back': 'Back to home',
+    'legal.updated': 'Last updated',
     'footer.servicesTitle': 'Services',
     'footer.companyTitle': 'Company',
     'footer.legalTitle': 'Legal',

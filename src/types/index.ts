@@ -94,3 +94,14 @@ export interface FaqItem {
   question: string;
   answer: string;
 }
+
+export interface LegalSection {
+  heading: string;
+  paragraphs: string[];
+}
+
+export interface LegalDoc {
+  title: string;
+  updated: string;
+  sections: LegalSection[];
+}

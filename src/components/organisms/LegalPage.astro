@@ -1,0 +1,48 @@
+---
+import { useTranslations } from '@/i18n/utils';
+import { DEFAULT_LOCALE } from '@/lib/constants';
+import type { Locale, LegalDoc } from '@/types';
+import '@/styles/prose.css';
+
+interface Props {
+  doc: LegalDoc;
+  locale?: Locale;
+}
+const { doc, locale = DEFAULT_LOCALE } = Astro.props;
+const t = useTranslations(locale);
+---
+
+<section class="legal">
+  <article class="prose">
+    <h1>{doc.title}</h1>
+    <p class="legal-updated">{t('legal.updated')} : {doc.updated}</p>
+    {
+      doc.sections.map((section) => (
+        <Fragment>
+          <h2>{section.heading}</h2>
+          {section.paragraphs.map((p) => (
+            <p>{p}</p>
+          ))}
+        </Fragment>
+      ))
+    }
+  </article>
+</section>
+
+<style>
+  .legal {
+    max-width: var(--content-max);
+    margin: 0 auto;
+    padding: calc(var(--nav-height) + 64px) 5% 96px;
+  }
+  .legal .prose h1 {
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 4vw, 3rem);
+    margin-bottom: 12px;
+  }
+  .legal-updated {
+    color: var(--color-gray);
+    font-size: 0.9rem;
+    margin-bottom: 32px;
+  }
+</style>
