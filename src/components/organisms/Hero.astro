@@ -16,42 +16,50 @@ const t = useTranslations(locale);
 ---
 
 <section id="hero">
-  <div class="hero-inner">
-    <SectionBadge label={t('hero.badge')} />
-    <h1 class="hero-title">
-      {t('hero.title.lead')}
-      <Highlight text={t('hero.title.hl')} />
-      {' '}{t('hero.title.tail')}
-    </h1>
-    <p class="hero-sub">{t('hero.sub')}</p>
-    <div class="hero-ctas">
-      <Button href="#services" variant="primary">{t('cta.discoverServices')}</Button>
-      <Button href="#realisations" variant="outline">{t('cta.seeProjects')}</Button>
+  <div class="hero-grid">
+    <div class="hero-inner">
+      <SectionBadge label={t('hero.badge')} />
+      <h1 class="hero-title">
+        {t('hero.title.lead')}
+        <Highlight text={t('hero.title.hl')} />
+        {' '}{t('hero.title.tail')}
+      </h1>
+      <p class="hero-sub">{t('hero.sub')}</p>
+      <div class="hero-ctas">
+        <Button href="#services" variant="primary">{t('cta.discoverServices')}</Button>
+        <Button href="#realisations" variant="outline">{t('cta.seeProjects')}</Button>
+      </div>
     </div>
-  </div>
-  <div class="hero-img-col">
-    <Image
-      src={heroImage}
-      alt={t('hero.imageAlt')}
-      widths={[480, 768, 1100]}
-      sizes="(max-width: 860px) 90vw, 45vw"
-      loading="eager"
-      fetchpriority="high"
-    />
+    <div class="hero-img-col">
+      <Image
+        src={heroImage}
+        alt={t('hero.imageAlt')}
+        widths={[480, 768, 1100]}
+        sizes="(max-width: 860px) 90vw, 45vw"
+        loading="eager"
+        fetchpriority="high"
+      />
+    </div>
   </div>
 </section>
 
 <style>
   #hero {
+    padding: calc(var(--nav-height) + 64px) 5% 64px;
+    background: var(--color-primary);
+    color: var(--color-on-primary);
+  }
+  .hero-grid {
     display: grid;
     grid-template-columns: 1.1fr 0.9fr;
     align-items: center;
     gap: 40px;
     max-width: var(--content-max);
     margin: 0 auto;
-    padding: calc(var(--nav-height) + 64px) 5% 64px;
-    background: var(--color-primary);
-    color: var(--color-on-primary);
+  }
+  #hero :global(.badge) {
+    color: var(--color-teal-bright);
+    background: rgba(255, 255, 255, 0.08);
   }
   .hero-title {
     font-family: var(--font-display);
@@ -84,7 +92,7 @@ const t = useTranslations(locale);
     border-radius: var(--radius-lg);
   }
   @media (max-width: 860px) {
-    #hero {
+    .hero-grid {
       grid-template-columns: 1fr;
     }
   }
