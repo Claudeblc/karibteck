@@ -35,16 +35,19 @@ Pas de framework JS additionnel (React/Vue/Svelte). Astro statique pur : hydrata
 
 ## Démarrage rapide
 
+**Node 20+ requis** (voir `.nvmrc`).
+
 ```bash
 git clone git@github.com:Claudeblc/karibteck.git
 cd karibteck
-npm install
-cp .env.example .env             # optionnel — voir « Variables d'environnement »
-npx skills experimental_install  # optionnel — restaure les agent skills (voir « Skills de dev »)
-npm run dev                      # http://localhost:4321
+npm install        # deps + bootstrap auto (postinstall) : .env, agent skills, husky
+npm run verify     # prouve que tout build et passe les gates (check + build + lint + format + JSON-LD)
+npm run dev        # http://localhost:4321
 ```
 
-Le site fonctionne sans `.env` : le formulaire et les boutons Cal/WhatsApp se configurent via les variables `PUBLIC_` (voir plus bas), mais l'app se lance et se build sans elles.
+`npm install` lance `scripts/bootstrap.mjs` (idempotent) qui crée `.env` depuis `.env.example` s'il manque et restaure les agent skills — aucune étape manuelle. Le site fonctionne **sans `.env`** ; les variables `PUBLIC_*` n'activent que le formulaire/Cal/WhatsApp (voir « Variables d'environnement »).
+
+> Un agent (ou la CI) peut amener le projet à un état prouvé fonctionnel avec la seule séquence `npm install && npm run verify`. Le détail du contrat de bootstrap est dans [`CLAUDE.md`](./CLAUDE.md).
 
 ---
 
@@ -60,6 +63,8 @@ npm run lint:fix        # ESLint --fix
 npm run format          # Prettier --write
 npm run format:check    # Prettier --check
 npm run validate:jsonld # vérifie qu'aucune page du dist n'oublie son JSON-LD Organization (à lancer après build)
+npm run verify          # porte de preuve : check + build + lint + format:check + validate:jsonld
+npm run bootstrap       # (ré)exécute le setup idempotent (.env, agent skills) — lancé auto au postinstall
 ```
 
 ---

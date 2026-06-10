@@ -9,6 +9,22 @@ Spec de design source : `docs/superpowers/specs/2026-06-09-karibteck-astro-refon
 
 ---
 
+## Bootstrap (mise en place autonome)
+
+Pour mettre en place ce projet depuis un clone, exécute exactement :
+
+```bash
+npm install        # installe les deps + bootstrap auto (postinstall) : .env scaffold, agent skills, husky
+npm run verify     # PREUVE que tout fonctionne (check + build + lint + format + validateur JSON-LD)
+```
+
+- Node **20+** requis (voir `.nvmrc` / `engines`).
+- `npm install` lance `scripts/bootstrap.mjs` (postinstall) — **idempotent**, ré-exécutable via `npm run bootstrap`. Il crée `.env` depuis `.env.example` s'il manque (jamais écrasé) et restaure les agent skills depuis `skills-lock.json` (non bloquant si offline).
+- **Ne jamais considérer la mise en place réussie tant que `npm run verify` n'est pas vert.** C'est le garde-fou : pas « j'ai installé » mais une sortie verte qui le prouve (0 erreur, 36 pages, 0 page sans JSON-LD `Organization`).
+- Le site se lance et se build **sans `.env`** ; les variables `PUBLIC_*` n'activent que le formulaire/Cal/WhatsApp.
+
+---
+
 ## Stack & versions
 
 ```
