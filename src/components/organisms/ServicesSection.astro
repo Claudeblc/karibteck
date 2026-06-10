@@ -2,7 +2,7 @@
 import { getServices } from '@/data/services';
 import ServiceCard from '@/components/molecules/ServiceCard.astro';
 import SectionHeader from '@/components/molecules/SectionHeader.astro';
-import { useTranslations } from '@/i18n/utils';
+import { useTranslations, localizeServicePath } from '@/i18n/utils';
 import { DEFAULT_LOCALE } from '@/lib/constants';
 import type { Locale } from '@/types';
 
@@ -23,7 +23,11 @@ const services = getServices(locale);
       sub={t('services.sub')}
     />
     <div class="services-grid">
-      {services.map((service) => <ServiceCard service={service} />)}
+      {
+        services.map((service) => (
+          <ServiceCard service={service} href={localizeServicePath(service.slug, locale)} />
+        ))
+      }
     </div>
   </div>
 </section>
