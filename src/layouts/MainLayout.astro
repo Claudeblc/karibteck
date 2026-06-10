@@ -14,6 +14,7 @@ interface Props {
   route?: RouteKey;
   ogImage?: string;
   localizedPaths?: { fr: string; en: string };
+  noindex?: boolean;
 }
 const {
   title,
@@ -22,6 +23,7 @@ const {
   route = 'home',
   ogImage,
   localizedPaths,
+  noindex = false,
 } = Astro.props;
 const t = useTranslations(locale);
 const frPath = localizedPaths ? localizedPaths.fr : routes.fr[route];
@@ -40,6 +42,7 @@ const ogLocale = locale === 'fr' ? 'fr_FR' : 'en_US';
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{title}</title>
     <meta name="description" content={description} />
+    {noindex && <meta name="robots" content="noindex" />}
     <link rel="canonical" href={canonical} />
     <link rel="alternate" hreflang="fr" href={frHref} />
     <link rel="alternate" hreflang="en" href={enHref} />

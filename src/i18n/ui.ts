@@ -97,6 +97,13 @@ export const ui = {
     'contact.form.message.placeholder':
       'Parlez-nous de votre projet, de vos objectifs, de votre budget approximatif...',
     'contact.form.submit': 'Envoyer ma demande de devis',
+    'contact.cal': 'Réserver un appel',
+    'contact.whatsapp': 'Discuter sur WhatsApp',
+    'contact.orDirect': 'Ou contactez-nous directement',
+    'thankYou.title': 'Merci pour votre message',
+    'thankYou.body':
+      'Votre demande a bien été envoyée. Notre équipe vous répondra sous 24h ouvrées.',
+    'thankYou.back': 'Retour à l’accueil',
     'footer.servicesTitle': 'Services',
     'footer.companyTitle': 'Entreprise',
     'footer.legalTitle': 'Légal',
@@ -207,6 +214,13 @@ export const ui = {
     'contact.form.message.placeholder':
       'Tell us about your project, your goals, your approximate budget...',
     'contact.form.submit': 'Send my quote request',
+    'contact.cal': 'Book a call',
+    'contact.whatsapp': 'Chat on WhatsApp',
+    'contact.orDirect': 'Or reach us directly',
+    'thankYou.title': 'Thank you for your message',
+    'thankYou.body':
+      'Your request has been sent. Our team will get back to you within 24 business hours.',
+    'thankYou.back': 'Back to home',
     'footer.servicesTitle': 'Services',
     'footer.companyTitle': 'Company',
     'footer.legalTitle': 'Legal',
@@ -238,10 +252,12 @@ export const routes = {
   fr: {
     home: '/',
     blog: '/blog/',
+    thankYou: '/merci/',
   },
   en: {
     home: '/en/',
     blog: '/en/blog/',
+    thankYou: '/en/thank-you/',
   },
 } as const;
 

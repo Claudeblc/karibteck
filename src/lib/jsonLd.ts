@@ -172,6 +172,17 @@ export function buildBlogIndexGraph(locale: Locale) {
   };
 }
 
+/**
+ * Graph for simple standalone pages (legal, thank-you): Organization + WebSite.
+ * Ensures the JSON-LD validator finds an Organization node on every page.
+ */
+export function buildSimplePageGraph(locale: Locale) {
+  return {
+    '@context': 'https://schema.org',
+    '@graph': [buildOrganization(locale), buildWebSite(locale)],
+  };
+}
+
 /** Full graph for the home page. */
 export function buildHomeGraph(locale: Locale, url: string) {
   return {
