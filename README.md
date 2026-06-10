@@ -127,13 +127,13 @@ Créer la paire FR/EN sous `src/content/blog/{fr,en}/` avec le **même `translat
 
 ```yaml
 ---
-title: 'Titre de l'article'
+title: "Mon titre d'article" # apostrophe en YAML : la doubler, ou utiliser des guillemets doubles
 date: 2026-06-10
 locale: fr
-translationKey: mon-article        # identique dans les 2 fichiers
+translationKey: mon-article # identique dans les 2 fichiers
 tags: ['seo', 'performance']
 excerpt: 'Résumé court pour les listes et le RSS.'
-draft: false                       # true = exclu du build
+draft: false # true = exclu du build
 ---
 ```
 
