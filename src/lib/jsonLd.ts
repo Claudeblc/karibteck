@@ -12,7 +12,8 @@ import { getServices } from '@/data/services';
 import { getFaq } from '@/data/faq';
 import { getContactDetails } from '@/data/agency';
 import { useTranslations } from '@/i18n/utils';
-import type { Locale } from '@/types';
+import { routes } from '@/i18n/ui';
+import type { Locale, Service } from '@/types';
 
 const ORG_ID = `${SITE_URL}/#organization`;
 const WEBSITE_ID = `${SITE_URL}/#website`;
@@ -100,6 +101,40 @@ export function buildBreadcrumb(locale: Locale, url: string) {
         position: 1,
         name: t('nav.home'),
         item: url,
+      },
+    ],
+  };
+}
+
+/** Full graph for a single service detail page. */
+export function buildServiceGraph(locale: Locale, service: Service, url: string) {
+  const t = useTranslations(locale);
+  const homeUrl = new URL(routes[locale].home, SITE_URL).href;
+  return {
+    '@context': 'https://schema.org',
+    '@graph': [
+      buildOrganization(locale),
+      {
+        '@type': 'Service',
+        name: service.title,
+        description: service.intro,
+        serviceType: service.title,
+        provider: { '@id': ORG_ID },
+        areaServed: areaServedNodes(),
+        url,
+      },
+      {
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          { '@type': 'ListItem', position: 1, name: t('nav.home'), item: homeUrl },
+          {
+            '@type': 'ListItem',
+            position: 2,
+            name: t('services.detail.breadcrumb'),
+            item: `${homeUrl}#services`,
+          },
+          { '@type': 'ListItem', position: 3, name: service.title, item: url },
+        ],
       },
     ],
   };
