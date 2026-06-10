@@ -1,0 +1,91 @@
+---
+import MainLayout from '@/layouts/MainLayout.astro';
+import Nav from '@/components/organisms/Nav.astro';
+import Footer from '@/components/organisms/Footer.astro';
+import JsonLd from '@/components/atoms/JsonLd.astro';
+import Tag from '@/components/atoms/Tag.astro';
+import { buildBlogPostGraph } from '@/lib/jsonLd';
+import { formatDate } from '@/lib/dates';
+import { useTranslations, localizeBlogPostPath, localizePath } from '@/i18n/utils';
+import { SITE_URL } from '@/lib/constants';
+import '@/styles/prose.css';
+import type { Locale } from '@/types';
+import type { BlogEntry } from '@/lib/blog';
+
+interface Props {
+  entry: BlogEntry;
+  slug: string;
+  locale: Locale;
+  readingMinutes: number;
+  translationSlug?: string;
+}
+const { entry, slug, locale, readingMinutes, translationSlug } = Astro.props;
+const t = useTranslations(locale);
+const selfPath = localizeBlogPostPath(slug, locale);
+const url = new URL(selfPath, SITE_URL).href;
+const localizedPaths = translationSlug
+  ? {
+      fr: localizeBlogPostPath(locale === 'fr' ? slug : translationSlug, 'fr'),
+      en: localizeBlogPostPath(locale === 'en' ? slug : translationSlug, 'en'),
+    }
+  : undefined;
+const altHref = localizedPaths
+  ? locale === 'fr'
+    ? localizedPaths.en
+    : localizedPaths.fr
+  : undefined;
+const graph = buildBlogPostGraph(locale, {
+  title: entry.data.title,
+  excerpt: entry.data.excerpt,
+  date: entry.data.date,
+  url,
+});
+const blogHref = localizePath('blog', locale);
+---
+
+<MainLayout
+  title={`${entry.data.title} | Karib Teck`}
+  description={entry.data.excerpt}
+  locale={locale}
+  localizedPaths={localizedPaths}
+>
+  <Fragment slot="head"><JsonLd data={graph} /></Fragment>
+  <Nav slot="nav" locale={locale} altHref={altHref} />
+  <article class="prose">
+    <p class="meta">
+      {formatDate(entry.data.date, locale)} · {readingMinutes}
+      {t('blog.readingTime')}
+    </p>
+    <h1>{entry.data.title}</h1>
+    <div class="tags">{entry.data.tags.map((tag) => <Tag label={tag} />)}</div>
+    <slot />
+    <p class="back"><a href={blogHref}>← {t('blog.backToBlog')}</a></p>
+  </article>
+  <Footer slot="footer" locale={locale} />
+</MainLayout>
+
+<style>
+  .prose {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: calc(var(--nav-height) + 64px) 5% 96px;
+  }
+  .prose .meta {
+    color: var(--color-gray);
+    font-size: 0.9rem;
+  }
+  .prose h1 {
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 4vw, 2.8rem);
+    margin: 8px 0 16px;
+  }
+  .prose .tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 32px;
+  }
+  .prose .back {
+    margin-top: 48px;
+  }
+</style>
