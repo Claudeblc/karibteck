@@ -1,0 +1,120 @@
+---
+import Tag from '@/components/atoms/Tag.astro';
+import Button from '@/components/atoms/Button.astro';
+import { useTranslations, localizePath } from '@/i18n/utils';
+import { DEFAULT_LOCALE } from '@/lib/constants';
+import type { Locale, Service } from '@/types';
+
+interface Props {
+  service: Service;
+  locale?: Locale;
+}
+const { service, locale = DEFAULT_LOCALE } = Astro.props;
+const t = useTranslations(locale);
+const homePath = localizePath('home', locale);
+const contactHref = `${homePath}#contact`;
+const servicesHref = `${homePath}#services`;
+---
+
+<article class="service-detail">
+  <nav class="crumbs" aria-label="Breadcrumb">
+    <a href={homePath}>{t('nav.home')}</a>
+    <span aria-hidden="true">›</span>
+    <a href={servicesHref}>{t('services.detail.breadcrumb')}</a>
+  </nav>
+
+  <header class="head">
+    <div class="icon" aria-hidden="true">{service.icon}</div>
+    <h1>{service.title}</h1>
+    <p class="intro">{service.intro}</p>
+    <Button href={contactHref} variant="primary">{t('services.detail.cta')}</Button>
+  </header>
+
+  <section class="benefits">
+    <h2>{t('services.detail.benefitsTitle')}</h2>
+    <ul>
+      {service.benefits.map((b) => <li>{b}</li>)}
+    </ul>
+  </section>
+
+  <section class="tech">
+    <h2>{t('services.detail.techTitle')}</h2>
+    <div class="tags">{service.tags.map((tag) => <Tag label={tag} />)}</div>
+  </section>
+
+  <a class="back" href={servicesHref}>← {t('services.detail.backToServices')}</a>
+</article>
+
+<style>
+  .service-detail {
+    max-width: 820px;
+    margin: 0 auto;
+    padding: calc(var(--nav-height) + 64px) 5% 96px;
+  }
+  .crumbs {
+    display: flex;
+    gap: 10px;
+    color: var(--color-gray);
+    font-size: 0.85rem;
+    margin-bottom: 32px;
+  }
+  .crumbs a {
+    color: var(--color-gray);
+    text-decoration: none;
+  }
+  .crumbs a:hover {
+    color: var(--color-cyan);
+  }
+  .head .icon {
+    font-size: 2.6rem;
+  }
+  .head h1 {
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 4vw, 3rem);
+    margin: 12px 0 16px;
+  }
+  .intro {
+    color: var(--color-gray);
+    font-size: 1.05rem;
+    margin-bottom: 28px;
+  }
+  .benefits,
+  .tech {
+    margin-top: 48px;
+  }
+  .benefits h2,
+  .tech h2 {
+    font-family: var(--font-display);
+    font-size: 1.3rem;
+    margin-bottom: 18px;
+  }
+  .benefits ul {
+    list-style: none;
+    padding: 0;
+    display: grid;
+    gap: 12px;
+  }
+  .benefits li {
+    padding-left: 28px;
+    position: relative;
+    color: var(--color-gray);
+  }
+  .benefits li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: var(--color-cyan);
+    font-weight: 700;
+  }
+  .tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .back {
+    display: inline-block;
+    margin-top: 48px;
+    color: var(--color-cyan);
+    text-decoration: none;
+  }
+</style>
