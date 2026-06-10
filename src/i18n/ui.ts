@@ -11,6 +11,7 @@ export const ui = {
     'nav.pricing': 'Tarifs',
     'nav.faq': 'FAQ',
     'nav.contact': 'Contact',
+    'nav.blog': 'Blog',
     'cta.requestQuote': 'Demander un devis',
     'cta.discoverServices': 'Découvrir nos services',
     'cta.seeProjects': 'Voir nos réalisations',
@@ -104,6 +105,14 @@ export const ui = {
     'footer.legal.privacy': 'Politique de confidentialité',
     'footer.legal.cgv': 'CGV',
     'footer.rights': 'Tous droits réservés.',
+    'blog.title': 'Le blog Karib Teck',
+    'blog.sub':
+      'Conseils, retours d’expérience et repères sur le web, le mobile et le digital pour les entreprises des Antilles et des DOM.',
+    'blog.readingTime': 'min de lecture',
+    'blog.backToBlog': 'Retour au blog',
+    'blog.tagsTitle': 'Explorer par thème',
+    'blog.allArticles': 'Tous les articles',
+    'blog.tagPrefix': 'Articles : ',
   },
   en: {
     'nav.home': 'Home',
@@ -114,6 +123,7 @@ export const ui = {
     'nav.pricing': 'Pricing',
     'nav.faq': 'FAQ',
     'nav.contact': 'Contact',
+    'nav.blog': 'Blog',
     'cta.requestQuote': 'Request a quote',
     'cta.discoverServices': 'Explore our services',
     'cta.seeProjects': 'See our work',
@@ -205,6 +215,14 @@ export const ui = {
     'footer.legal.privacy': 'Privacy policy',
     'footer.legal.cgv': 'Terms of sale',
     'footer.rights': 'All rights reserved.',
+    'blog.title': 'The Karib Teck blog',
+    'blog.sub':
+      'Advice, lessons learned and pointers on web, mobile and digital for businesses across the French West Indies and overseas territories.',
+    'blog.readingTime': 'min read',
+    'blog.backToBlog': 'Back to blog',
+    'blog.tagsTitle': 'Browse by topic',
+    'blog.allArticles': 'All articles',
+    'blog.tagPrefix': 'Articles: ',
   },
 } as const;
 
@@ -219,9 +237,11 @@ export type _UiSymmetry = AssertSameKeys<
 export const routes = {
   fr: {
     home: '/',
+    blog: '/blog/',
   },
   en: {
     home: '/en/',
+    blog: '/en/blog/',
   },
 } as const;
 

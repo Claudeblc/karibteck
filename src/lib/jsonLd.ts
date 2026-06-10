@@ -140,6 +140,38 @@ export function buildServiceGraph(locale: Locale, service: Service, url: string)
   };
 }
 
+/** Full graph for a single blog article (Organization + BlogPosting). */
+export function buildBlogPostGraph(
+  locale: Locale,
+  post: { title: string; excerpt: string; date: Date; url: string },
+) {
+  return {
+    '@context': 'https://schema.org',
+    '@graph': [
+      buildOrganization(locale),
+      {
+        '@type': 'BlogPosting',
+        headline: post.title,
+        description: post.excerpt,
+        datePublished: post.date.toISOString(),
+        inLanguage: locale,
+        url: post.url,
+        author: { '@id': ORG_ID },
+        publisher: { '@id': ORG_ID },
+        mainEntityOfPage: post.url,
+      },
+    ],
+  };
+}
+
+/** Graph for the blog index / tag listing pages (Organization + WebSite). */
+export function buildBlogIndexGraph(locale: Locale) {
+  return {
+    '@context': 'https://schema.org',
+    '@graph': [buildOrganization(locale), buildWebSite(locale)],
+  };
+}
+
 /** Full graph for the home page. */
 export function buildHomeGraph(locale: Locale, url: string) {
   return {

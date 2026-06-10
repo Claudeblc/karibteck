@@ -38,3 +38,13 @@ export function alternateUrl(route: RouteKey, locale: Locale): string {
 export function localizeServicePath(slug: string, locale: Locale): string {
   return locale === 'fr' ? `/services/${slug}/` : `/en/services/${slug}/`;
 }
+
+/** Path to a blog article for a locale (slug derived from the entry). */
+export function localizeBlogPostPath(slug: string, locale: Locale): string {
+  return locale === 'fr' ? `/blog/${slug}/` : `/en/blog/${slug}/`;
+}
+
+/** Path to a blog tag listing for a locale. */
+export function localizeTagPath(tag: string, locale: Locale): string {
+  return locale === 'fr' ? `/blog/tags/${tag}/` : `/en/blog/tags/${tag}/`;
+}
