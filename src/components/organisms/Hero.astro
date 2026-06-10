@@ -50,15 +50,18 @@ const t = useTranslations(locale);
     max-width: var(--content-max);
     margin: 0 auto;
     padding: calc(var(--nav-height) + 64px) 5% 64px;
+    background: var(--color-primary);
+    color: var(--color-on-primary);
   }
   .hero-title {
     font-family: var(--font-display);
     font-size: clamp(2.2rem, 5vw, 3.6rem);
     line-height: 1.1;
+    letter-spacing: -0.02em;
     margin: 18px 0;
   }
   .hero-sub {
-    color: var(--color-gray);
+    color: var(--color-on-primary-variant);
     max-width: 46ch;
   }
   .hero-ctas {
@@ -66,6 +69,14 @@ const t = useTranslations(locale);
     flex-wrap: wrap;
     gap: 14px;
     margin-top: 28px;
+  }
+  .hero-ctas :global(.btn-outline) {
+    color: var(--color-on-primary);
+    border-color: rgba(255, 255, 255, 0.4);
+  }
+  .hero-ctas :global(.btn-outline):hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--color-on-primary);
   }
   .hero-img-col :global(img) {
     width: 100%;
