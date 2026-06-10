@@ -22,8 +22,9 @@ body {
 
 /* Brand focus ring (accent, visible) */
 *:focus-visible {
-  outline: none;
-  box-shadow: 0 0 0 2px var(--color-teal);
+  outline: 2px solid var(--color-teal);
+  outline-offset: 2px;
+  box-shadow: 0 0 0 3px var(--color-teal);
 }
 
 /* Respect reduced motion everywhere */
