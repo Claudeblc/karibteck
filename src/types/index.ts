@@ -102,6 +102,7 @@ export interface LegalSection {
 
 export interface LegalDoc {
   title: string;
+  description: string;
   updated: string;
   sections: LegalSection[];
 }

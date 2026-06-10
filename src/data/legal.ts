@@ -12,6 +12,7 @@ const UPDATED = '2026-06-09';
 const LEGAL_NOTICE: Localized<LegalDoc> = {
   fr: {
     title: 'Mentions légales',
+    description: `Mentions légales de ${ORGANIZATION_NAME}, agence web aux Antilles : éditeur, hébergeur et propriété intellectuelle.`,
     updated: UPDATED,
     sections: [
       {
@@ -42,6 +43,7 @@ const LEGAL_NOTICE: Localized<LegalDoc> = {
   },
   en: {
     title: 'Legal notice',
+    description: `Legal notice for ${ORGANIZATION_NAME}, a web agency in the French Caribbean: publisher, host and intellectual property.`,
     updated: UPDATED,
     sections: [
       {
@@ -75,6 +77,7 @@ const LEGAL_NOTICE: Localized<LegalDoc> = {
 const PRIVACY: Localized<LegalDoc> = {
   fr: {
     title: 'Politique de confidentialité',
+    description: `Comment ${ORGANIZATION_NAME} protège vos données personnelles : collecte, finalité, conservation et vos droits au titre du RGPD.`,
     updated: UPDATED,
     sections: [
       {
@@ -112,6 +115,7 @@ const PRIVACY: Localized<LegalDoc> = {
   },
   en: {
     title: 'Privacy policy',
+    description: `How ${ORGANIZATION_NAME} protects your personal data: collection, purpose, retention and your rights under the GDPR.`,
     updated: UPDATED,
     sections: [
       {
@@ -152,6 +156,7 @@ const PRIVACY: Localized<LegalDoc> = {
 const TERMS: Localized<LegalDoc> = {
   fr: {
     title: 'Conditions générales de vente',
+    description: `Conditions générales de vente de ${ORGANIZATION_NAME} : devis, commande, tarifs, délais, livraison et responsabilité.`,
     updated: UPDATED,
     sections: [
       {
@@ -189,6 +194,7 @@ const TERMS: Localized<LegalDoc> = {
   },
   en: {
     title: 'Terms of sale',
+    description: `Terms of sale for ${ORGANIZATION_NAME}: quotes, orders, prices, timelines, delivery and liability.`,
     updated: UPDATED,
     sections: [
       {
