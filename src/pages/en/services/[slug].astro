@@ -1,0 +1,38 @@
+---
+import MainLayout from '@/layouts/MainLayout.astro';
+import Nav from '@/components/organisms/Nav.astro';
+import Footer from '@/components/organisms/Footer.astro';
+import ServiceDetail from '@/components/organisms/ServiceDetail.astro';
+import JsonLd from '@/components/atoms/JsonLd.astro';
+import { getServices } from '@/data/services';
+import { buildServiceGraph } from '@/lib/jsonLd';
+import { localizeServicePath } from '@/i18n/utils';
+import { SITE_URL } from '@/lib/constants';
+import type { GetStaticPaths } from 'astro';
+import type { Locale } from '@/types';
+
+const locale: Locale = 'en';
+
+export const getStaticPaths = (() => {
+  return getServices('en').map((service) => ({
+    params: { slug: service.slug },
+    props: { service },
+  }));
+}) satisfies GetStaticPaths;
+
+const { service } = Astro.props;
+const paths = {
+  fr: localizeServicePath(service.slug, 'fr'),
+  en: localizeServicePath(service.slug, 'en'),
+};
+const url = new URL(paths.en, SITE_URL).href;
+const graph = buildServiceGraph(locale, service, url);
+const title = `${service.title} in the French West Indies | Karib Teck`;
+---
+
+<MainLayout title={title} description={service.intro} locale={locale} localizedPaths={paths}>
+  <Fragment slot="head"><JsonLd data={graph} /></Fragment>
+  <Nav slot="nav" locale={locale} altHref={paths.fr} />
+  <ServiceDetail service={service} locale={locale} />
+  <Footer slot="footer" locale={locale} />
+</MainLayout>
