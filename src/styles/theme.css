@@ -28,10 +28,10 @@
   --color-outline: #72787e;
   --color-outline-variant: #c2c7ce;
 
-  /* Radii */
+  /* Radii — aligned to the Stitch rendered maquette (rounded-xl = 0.75rem) */
   --radius-sm: 0.25rem;
   --radius-card: 0.5rem;
-  --radius-lg: 1.5rem;
+  --radius-lg: 0.75rem;
   --radius-pill: 9999px;
 
   /* Fonts (self-hosted variable, loaded in MainLayout) */
