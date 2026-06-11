@@ -183,6 +183,33 @@ export function buildSimplePageGraph(locale: Locale) {
   };
 }
 
+/** Full graph for the /services index page. */
+export function buildServicesIndexGraph(locale: Locale) {
+  const t = useTranslations(locale);
+  const homeUrl = new URL(routes[locale].home, SITE_URL).href;
+  const servicesUrl = new URL(routes[locale].services, SITE_URL).href;
+  return {
+    '@context': 'https://schema.org',
+    '@graph': [
+      buildOrganization(locale),
+      buildWebSite(locale),
+      ...buildServices(locale),
+      {
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          { '@type': 'ListItem', position: 1, name: t('nav.home'), item: homeUrl },
+          {
+            '@type': 'ListItem',
+            position: 2,
+            name: t('services.detail.breadcrumb'),
+            item: servicesUrl,
+          },
+        ],
+      },
+    ],
+  };
+}
+
 /** Full graph for the home page. */
 export function buildHomeGraph(locale: Locale, url: string) {
   return {

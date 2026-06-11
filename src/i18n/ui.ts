@@ -39,6 +39,15 @@ export const ui = {
     'services.detail.techTitle': 'Technologies',
     'services.detail.cta': 'Discuter de ce projet',
     'services.detail.backToServices': 'Tous nos services',
+    'services.page.metaTitle': 'Nos services digitaux aux Antilles | Karib Teck',
+    'services.page.metaDescription':
+      "Création de sites web, applications mobiles, logiciels métier, e-commerce, hébergement DevOps et intelligence artificielle. Découvrez l'ensemble des services de Karib Teck aux Antilles.",
+    'services.page.badge': 'Nos Services',
+    'services.page.title.lead': 'Des solutions',
+    'services.page.title.hl': 'adaptées à vos ambitions',
+    'services.page.sub':
+      "De la vitrine en ligne à l'application métier complexe, nous couvrons l'intégralité de votre besoin digital avec une expertise de pointe.",
+    'services.allLink': 'Voir tous nos services',
     'stack.label': 'Des technologies modernes pour des résultats durables',
     'process.badge': 'Notre Méthode',
     'process.title.lead': 'Un processus',
@@ -170,6 +179,15 @@ export const ui = {
     'services.detail.techTitle': 'Technologies',
     'services.detail.cta': 'Discuss this project',
     'services.detail.backToServices': 'All our services',
+    'services.page.metaTitle': 'Our digital services in the French West Indies | Karib Teck',
+    'services.page.metaDescription':
+      'Website creation, mobile apps, business software, e-commerce, DevOps hosting and artificial intelligence. Explore the full range of Karib Teck services in the French West Indies.',
+    'services.page.badge': 'Our Services',
+    'services.page.title.lead': 'Solutions',
+    'services.page.title.hl': 'tailored to your ambitions',
+    'services.page.sub':
+      'From an online storefront to a complex business application, we cover your entire digital needs with sharp, senior expertise.',
+    'services.allLink': 'View all our services',
     'stack.label': 'Modern technologies for results that last',
     'process.badge': 'Our Method',
     'process.title.lead': 'A',
