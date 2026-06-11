@@ -43,6 +43,10 @@
 /* Non-utility custom properties (used as var() in scoped styles). */
 :root {
   --gradient-accent: linear-gradient(135deg, #007ea7, #3dbeff);
+  --gradient-cover-a: linear-gradient(135deg, #001f34, #007ea7);
+  --gradient-cover-b: linear-gradient(135deg, #003554, #3dbeff);
+  --gradient-cover-c: linear-gradient(135deg, #051923, #00658d);
+  --gradient-cover-d: linear-gradient(135deg, #007ea7, #3dbeff);
   --color-overlay-teal: rgba(0, 126, 167, 0.08);
   --shadow-card: 0 4px 20px rgba(0, 53, 84, 0.08);
   --shadow-card-hover: 0 12px 32px rgba(0, 53, 84, 0.14);
