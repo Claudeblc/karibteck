@@ -49,11 +49,11 @@ export function getContactDetails(locale: Locale): ContactDetails {
   };
 }
 
-// Lean nav (Stitch "Minimalist" spirit): 5 items max. Removed sections
-// (Accueil = the logo, Équipe, FAQ, Contact) stay reachable in-page + via the footer.
+// Lean multi-page nav (Stitch "Minimalist" spirit): 4 page links, each resolving
+// to a real route. Accueil = the logo; Devis CTA lives separately in NavMenu.
 export const NAV_LINKS: NavLink[] = [
-  { labelKey: 'nav.services', href: '#services' },
-  { labelKey: 'nav.projects', href: '#realisations' },
-  { labelKey: 'nav.about', href: '#pourquoi' },
-  { labelKey: 'nav.pricing', href: '#tarifs' },
+  { labelKey: 'nav.services', routeKey: 'services' },
+  { labelKey: 'nav.aboutPage', routeKey: 'about' },
+  { labelKey: 'nav.blog', routeKey: 'blog' },
+  { labelKey: 'nav.contact', routeKey: 'contact' },
 ];

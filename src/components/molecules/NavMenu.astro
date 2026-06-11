@@ -9,21 +9,21 @@ interface Props {
 }
 const { locale } = Astro.props;
 const t = useTranslations(locale);
-// Section anchors must be home-relative so they work from any page (blog, services, legal…),
-// not only the homepage. e.g. "#services" -> "/#services" (FR) / "/en/#services" (EN).
-const home = localizePath('home', locale);
 ---
 
 <ul class="nav-links" id="navLinks">
   {
     NAV_LINKS.map((link) => (
       <li>
-        <a href={`${home}${link.href}`}>{t(link.labelKey)}</a>
+        <a href={localizePath(link.routeKey, locale)}>{t(link.labelKey)}</a>
       </li>
     ))
   }
-  <li><a href={localizePath('blog', locale)}>{t('nav.blog')}</a></li>
-  <li><Button href={`${home}#contact`} variant="devis">{t('cta.requestQuote')}</Button></li>
+  <li>
+    <Button href={localizePath('contact', locale)} variant="devis">
+      {t('cta.requestQuote')}
+    </Button>
+  </li>
 </ul>
 
 <style>

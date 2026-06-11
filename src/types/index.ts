@@ -1,5 +1,5 @@
 import type { SUPPORTED_LOCALES } from '@/lib/constants';
-import type { UiKey } from '@/i18n/ui';
+import type { UiKey, RouteKey } from '@/i18n/ui';
 
 export type Locale = (typeof SUPPORTED_LOCALES)[number];
 
@@ -10,7 +10,7 @@ export type { RouteKey } from '@/i18n/ui';
 
 export interface NavLink {
   labelKey: UiKey;
-  href: string;
+  routeKey: RouteKey;
 }
 
 export interface Service {
