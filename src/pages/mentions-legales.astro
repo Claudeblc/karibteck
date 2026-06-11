@@ -1,7 +1,5 @@
 ---
 import MainLayout from '@/layouts/MainLayout.astro';
-import Nav from '@/components/organisms/Nav.astro';
-import Footer from '@/components/organisms/Footer.astro';
 import LegalPage from '@/components/organisms/LegalPage.astro';
 import JsonLd from '@/components/atoms/JsonLd.astro';
 import { getLegalNotice } from '@/data/legal';
@@ -23,7 +21,5 @@ const graph = buildSimplePageGraph(locale);
   localizedPaths={localizedPaths}
 >
   <Fragment slot="head"><JsonLd data={graph} /></Fragment>
-  <Nav slot="nav" locale={locale} altHref={localizedPaths.en} />
   <LegalPage doc={doc} locale={locale} />
-  <Footer slot="footer" locale={locale} />
 </MainLayout>

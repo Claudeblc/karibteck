@@ -1,7 +1,5 @@
 ---
 import MainLayout from '@/layouts/MainLayout.astro';
-import Nav from '@/components/organisms/Nav.astro';
-import Footer from '@/components/organisms/Footer.astro';
 import JsonLd from '@/components/atoms/JsonLd.astro';
 import Button from '@/components/atoms/Button.astro';
 import { buildSimplePageGraph } from '@/lib/jsonLd';
@@ -24,13 +22,11 @@ const localizedPaths = { fr: routes.fr.thankYou, en: routes.en.thankYou };
   noindex={true}
 >
   <Fragment slot="head"><JsonLd data={graph} /></Fragment>
-  <Nav slot="nav" locale={locale} altHref={localizedPaths.fr} />
   <section class="thank-you">
     <h1>{t('thankYou.title')}</h1>
     <p>{t('thankYou.body')}</p>
     <Button href={localizePath('home', locale)} variant="primary">{t('thankYou.back')}</Button>
   </section>
-  <Footer slot="footer" locale={locale} />
 </MainLayout>
 
 <style>

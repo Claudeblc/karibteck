@@ -1,7 +1,5 @@
 ---
 import MainLayout from '@/layouts/MainLayout.astro';
-import Nav from '@/components/organisms/Nav.astro';
-import Footer from '@/components/organisms/Footer.astro';
 import JsonLd from '@/components/atoms/JsonLd.astro';
 import ArticleCard from '@/components/molecules/ArticleCard.astro';
 import { loadPostsByTag, entrySlug, allTags } from '@/lib/blog';
@@ -35,7 +33,6 @@ const metaDescription = t('blog.tagMetaTemplate').replace('{tag}', tag);
   localizedPaths={localizedPaths}
 >
   <Fragment slot="head"><JsonLd data={graph} /></Fragment>
-  <Nav slot="nav" locale={locale} route="blog" altHref={localizedPaths.en} />
   <section class="tag-page">
     <header class="tag-header">
       <h1>{title}</h1>
@@ -57,7 +54,6 @@ const metaDescription = t('blog.tagMetaTemplate').replace('{tag}', tag);
       }
     </div>
   </section>
-  <Footer slot="footer" locale={locale} />
 </MainLayout>
 
 <style>

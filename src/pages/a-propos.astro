@@ -1,14 +1,12 @@
 ---
 import MainLayout from '@/layouts/MainLayout.astro';
 import JsonLd from '@/components/atoms/JsonLd.astro';
-import Nav from '@/components/organisms/Nav.astro';
 import PageHero from '@/components/organisms/PageHero.astro';
 import ExpertiseSection from '@/components/organisms/ExpertiseSection.astro';
 import GuaranteesSection from '@/components/organisms/GuaranteesSection.astro';
 import WhySection from '@/components/organisms/WhySection.astro';
 import TeamSection from '@/components/organisms/TeamSection.astro';
 import CtaBand from '@/components/organisms/CtaBand.astro';
-import Footer from '@/components/organisms/Footer.astro';
 import { useTranslations } from '@/i18n/utils';
 import { buildAboutGraph } from '@/lib/jsonLd';
 import type { Locale } from '@/types';
@@ -27,7 +25,6 @@ const graph = buildAboutGraph(locale);
   localizedPaths={localizedPaths}
 >
   <Fragment slot="head"><JsonLd data={graph} /></Fragment>
-  <Nav slot="nav" locale={locale} route="about" altHref="/en/about/" />
   <PageHero
     badge={t('about.page.badge')}
     titleLead={t('about.page.title.lead')}
@@ -39,5 +36,4 @@ const graph = buildAboutGraph(locale);
   <WhySection locale={locale} />
   <TeamSection locale={locale} />
   <CtaBand locale={locale} />
-  <Footer slot="footer" locale={locale} />
 </MainLayout>

@@ -2,6 +2,8 @@
 import { DEFAULT_LOCALE, SITE_URL } from '@/lib/constants';
 import { routes } from '@/i18n/ui';
 import { useTranslations } from '@/i18n/utils';
+import Nav from '@/components/organisms/Nav.astro';
+import Footer from '@/components/organisms/Footer.astro';
 import type { Locale, RouteKey } from '@/types';
 import '@fontsource-variable/sora';
 import '@fontsource-variable/plus-jakarta-sans';
@@ -34,6 +36,7 @@ const frHref = new URL(frPath, SITE_URL).href;
 const enHref = new URL(enPath, SITE_URL).href;
 const ogImageUrl = ogImage ? new URL(ogImage, SITE_URL).href : undefined;
 const ogLocale = locale === 'fr' ? 'fr_FR' : 'en_US';
+const navAltHref = locale === 'fr' ? enPath : frPath;
 ---
 
 <!doctype html>
@@ -64,11 +67,11 @@ const ogLocale = locale === 'fr' ? 'fr_FR' : 'en_US';
   </head>
   <body>
     <a href="#main" class="skip-link">{t('a11y.skipToContent')}</a>
-    <slot name="nav" />
+    <Nav locale={locale} route={route} altHref={navAltHref} />
     <main id="main">
       <slot />
     </main>
-    <slot name="footer" />
+    <Footer locale={locale} />
     <script>
       import '@/scripts/reveal.ts';
     </script>
