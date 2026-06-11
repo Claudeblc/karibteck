@@ -3,7 +3,7 @@ import { getProjects } from '@/data/projects';
 import ProjectCard from '@/components/molecules/ProjectCard.astro';
 import SectionHeader from '@/components/molecules/SectionHeader.astro';
 import Button from '@/components/atoms/Button.astro';
-import { useTranslations } from '@/i18n/utils';
+import { useTranslations, localizePath } from '@/i18n/utils';
 import { DEFAULT_LOCALE } from '@/lib/constants';
 import type { Locale } from '@/types';
 
@@ -27,7 +27,9 @@ const projects = getProjects(locale);
       {projects.map((project) => <ProjectCard project={project} />)}
     </div>
     <div class="projects-cta fade-up">
-      <Button href="#contact" variant="outline">{t('cta.discussProject')}</Button>
+      <Button href={localizePath('contact', locale)} variant="outline">
+        {t('cta.discussProject')}
+      </Button>
     </div>
   </div>
 </section>

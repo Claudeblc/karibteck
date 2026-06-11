@@ -13,8 +13,8 @@ interface Props {
 const { service, locale = DEFAULT_LOCALE } = Astro.props;
 const t = useTranslations(locale);
 const homePath = localizePath('home', locale);
-const contactHref = `${homePath}#contact`;
-const servicesHref = `${homePath}#services`;
+const contactHref = localizePath('contact', locale);
+const servicesHref = localizePath('services', locale);
 ---
 
 <article class="service-detail">

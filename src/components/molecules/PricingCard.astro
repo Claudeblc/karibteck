@@ -1,6 +1,6 @@
 ---
 import Button from '@/components/atoms/Button.astro';
-import { useTranslations } from '@/i18n/utils';
+import { useTranslations, localizePath } from '@/i18n/utils';
 import type { Locale, PricingPlan } from '@/types';
 
 interface Props {
@@ -20,7 +20,11 @@ const ctaLabel = plan.ctaKey === 'requestQuote' ? t('cta.requestQuote') : t('cta
   <ul class="tarif-features">
     {plan.features.map((feature) => <li>{feature}</li>)}
   </ul>
-  <Button href="#contact" variant={plan.popular ? 'primary' : 'outline'} class="tarif-cta">
+  <Button
+    href={localizePath('contact', locale)}
+    variant={plan.popular ? 'primary' : 'outline'}
+    class="tarif-cta"
+  >
     {ctaLabel}
   </Button>
 </article>

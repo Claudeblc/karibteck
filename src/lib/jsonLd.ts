@@ -275,7 +275,6 @@ export function buildHomeGraph(locale: Locale, url: string) {
       buildOrganization(locale),
       buildWebSite(locale),
       ...buildServices(locale),
-      buildFaqPage(locale),
       buildBreadcrumb(locale, url),
     ],
   };
