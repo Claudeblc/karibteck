@@ -1,6 +1,7 @@
 ---
 import { useTranslations, localizePath } from '@/i18n/utils';
 import { DEFAULT_LOCALE, SITE_URL, WEB3FORMS_KEY } from '@/lib/constants';
+import BudgetChips from '@/components/molecules/BudgetChips.astro';
 import type { Locale } from '@/types';
 
 interface Props {
@@ -85,6 +86,7 @@ const subject =
       aria-label={t('contact.form.company')}
     />
   </div>
+  <BudgetChips locale={locale} />
   <div class="form-group">
     <label for="message">{t('contact.form.message')} *</label>
     <textarea

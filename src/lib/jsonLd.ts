@@ -238,6 +238,35 @@ export function buildAboutGraph(locale: Locale) {
   };
 }
 
+/** Full graph for the /contact page. */
+export function buildContactGraph(locale: Locale) {
+  const t = useTranslations(locale);
+  const homeUrl = new URL(routes[locale].home, SITE_URL).href;
+  const contactUrl = new URL(routes[locale].contact, SITE_URL).href;
+  return {
+    '@context': 'https://schema.org',
+    '@graph': [
+      buildOrganization(locale),
+      buildWebSite(locale),
+      {
+        '@type': 'ContactPage',
+        '@id': `${SITE_URL}/#contactpage`,
+        url: contactUrl,
+        name: t('contact.page.metaTitle'),
+        inLanguage: locale,
+      },
+      buildFaqPage(locale),
+      {
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          { '@type': 'ListItem', position: 1, name: t('nav.home'), item: homeUrl },
+          { '@type': 'ListItem', position: 2, name: t('nav.contact'), item: contactUrl },
+        ],
+      },
+    ],
+  };
+}
+
 /** Full graph for the home page. */
 export function buildHomeGraph(locale: Locale, url: string) {
   return {

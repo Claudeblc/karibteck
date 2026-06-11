@@ -1,0 +1,89 @@
+---
+import { useTranslations } from '@/i18n/utils';
+import { DEFAULT_LOCALE } from '@/lib/constants';
+import type { Locale } from '@/types';
+
+interface Props {
+  locale?: Locale;
+}
+const { locale = DEFAULT_LOCALE } = Astro.props;
+const t = useTranslations(locale);
+const options = [
+  t('contact.budget.opt1'),
+  t('contact.budget.opt2'),
+  t('contact.budget.opt3'),
+  t('contact.budget.opt4'),
+];
+---
+
+<fieldset class="budget">
+  <legend class="budget-label">{t('contact.budget.label')}</legend>
+  <div class="budget-chips">
+    {
+      options.map((opt) => (
+        <label class="chip">
+          <input type="radio" name="budget" value={opt} />
+          <span>{opt}</span>
+        </label>
+      ))
+    }
+  </div>
+</fieldset>
+
+<style>
+  .budget {
+    border: none;
+    padding: 0;
+    margin: 0 0 18px;
+  }
+  .budget-label {
+    display: block;
+    font-family: var(--font-label);
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--color-on-surface-variant);
+    margin-bottom: 8px;
+    padding: 0;
+  }
+  .budget-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  .chip input {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+  .chip span {
+    display: inline-block;
+    padding: 9px 16px;
+    border-radius: var(--radius-pill);
+    background: var(--color-surface-gray);
+    border: 1px solid var(--color-outline-variant);
+    color: var(--color-on-surface);
+    font-family: var(--font-label);
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition:
+      background 0.2s,
+      border-color 0.2s,
+      color 0.2s;
+  }
+  .chip input:checked + span {
+    background: var(--color-teal);
+    border-color: var(--color-teal);
+    color: var(--color-on-primary);
+  }
+  .chip input:focus-visible + span {
+    outline: 2px solid var(--color-teal);
+    outline-offset: 2px;
+  }
+</style>

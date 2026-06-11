@@ -1,0 +1,39 @@
+---
+import MainLayout from '@/layouts/MainLayout.astro';
+import JsonLd from '@/components/atoms/JsonLd.astro';
+import Nav from '@/components/organisms/Nav.astro';
+import PageHero from '@/components/organisms/PageHero.astro';
+import ContactColumns from '@/components/organisms/ContactColumns.astro';
+import FaqSection from '@/components/organisms/FaqSection.astro';
+import LocalExcellence from '@/components/organisms/LocalExcellence.astro';
+import Footer from '@/components/organisms/Footer.astro';
+import { useTranslations } from '@/i18n/utils';
+import { buildContactGraph } from '@/lib/jsonLd';
+import type { Locale } from '@/types';
+
+const locale: Locale = 'fr';
+const t = useTranslations(locale);
+const localizedPaths = { fr: '/contact/', en: '/en/contact/' } as const;
+const graph = buildContactGraph(locale);
+---
+
+<MainLayout
+  title={t('contact.page.metaTitle')}
+  description={t('contact.page.metaDescription')}
+  locale={locale}
+  route="contact"
+  localizedPaths={localizedPaths}
+>
+  <Fragment slot="head"><JsonLd data={graph} /></Fragment>
+  <Nav slot="nav" locale={locale} route="contact" altHref="/en/contact/" />
+  <PageHero
+    badge={t('contact.page.badge')}
+    titleLead={t('contact.page.title.lead')}
+    titleHl={t('contact.page.title.hl')}
+    sub={t('contact.page.sub')}
+  />
+  <ContactColumns locale={locale} />
+  <FaqSection locale={locale} />
+  <LocalExcellence locale={locale} />
+  <Footer slot="footer" locale={locale} />
+</MainLayout>
