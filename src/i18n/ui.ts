@@ -121,6 +121,17 @@ export const ui = {
     'blog.tagsTitle': 'Explorer par thème',
     'blog.allArticles': 'Tous les articles',
     'blog.tagPrefix': 'Articles : ',
+    'nav.aboutPage': 'À propos',
+    'cta.band.title.lead': 'Prêt à transformer',
+    'cta.band.title.hl': 'votre entreprise',
+    'cta.band.sub':
+      'Parlons de votre projet — nous vous répondons sous 24h avec une première réponse claire.',
+    'cta.band.button': 'Démarrer un projet',
+    'expertise.badge': 'Notre Expertise',
+    'expertise.title.lead': 'Une agence',
+    'expertise.title.hl': 'ancrée et exigeante',
+    'expertise.sub':
+      'Le savoir-faire d’une équipe locale qui maîtrise les standards internationaux.',
   },
   en: {
     'nav.home': 'Home',
@@ -239,6 +250,16 @@ export const ui = {
     'blog.tagsTitle': 'Browse by topic',
     'blog.allArticles': 'All articles',
     'blog.tagPrefix': 'Articles: ',
+    'nav.aboutPage': 'About',
+    'cta.band.title.lead': 'Ready to transform',
+    'cta.band.title.hl': 'your business',
+    'cta.band.sub':
+      "Let's talk about your project — we reply within 24h with a clear first answer.",
+    'cta.band.button': 'Start a project',
+    'expertise.badge': 'Our Expertise',
+    'expertise.title.lead': 'An agency',
+    'expertise.title.hl': 'rooted and rigorous',
+    'expertise.sub': 'The craft of a local team that masters international standards.',
   },
 } as const;
 
@@ -258,6 +279,9 @@ export const routes = {
     legalNotice: '/mentions-legales/',
     privacy: '/confidentialite/',
     terms: '/cgv/',
+    services: '/services/',
+    about: '/a-propos/',
+    contact: '/contact/',
   },
   en: {
     home: '/en/',
@@ -266,6 +290,9 @@ export const routes = {
     legalNotice: '/en/legal-notice/',
     privacy: '/en/privacy/',
     terms: '/en/terms/',
+    services: '/en/services/',
+    about: '/en/about/',
+    contact: '/en/contact/',
   },
 } as const;
 
