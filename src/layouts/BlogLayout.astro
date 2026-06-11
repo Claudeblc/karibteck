@@ -41,10 +41,13 @@ const graph = buildBlogPostGraph(locale, {
   url,
 });
 const blogHref = localizePath('blog', locale);
+const baseTitle = entry.data.seoTitle ?? entry.data.title;
+const withBrand = `${baseTitle} | Karib Teck`;
+const pageTitle = withBrand.length <= 60 ? withBrand : baseTitle;
 ---
 
 <MainLayout
-  title={`${entry.data.title} | Karib Teck`}
+  title={pageTitle}
   description={entry.data.excerpt}
   locale={locale}
   localizedPaths={localizedPaths}
