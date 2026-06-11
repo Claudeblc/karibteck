@@ -1,0 +1,111 @@
+---
+import { DEFAULT_LOCALE, SITE_URL } from '@/lib/constants';
+import { routes } from '@/i18n/ui';
+import { useTranslations } from '@/i18n/utils';
+import Nav from '@/components/organisms/Nav.astro';
+import Footer from '@/components/organisms/Footer.astro';
+import type { Locale, RouteKey } from '@/types';
+import '@fontsource-variable/sora';
+import '@fontsource-variable/plus-jakarta-sans';
+import '@fontsource-variable/hanken-grotesk';
+import '@/styles/global.css';
+
+interface Props {
+  title: string;
+  description: string;
+  locale?: Locale;
+  route?: RouteKey;
+  ogImage?: string;
+  localizedPaths?: { fr: string; en: string };
+  noindex?: boolean;
+}
+const {
+  title,
+  description,
+  locale = DEFAULT_LOCALE,
+  route = 'home',
+  ogImage,
+  localizedPaths,
+  noindex = false,
+} = Astro.props;
+const t = useTranslations(locale);
+const frPath = localizedPaths ? localizedPaths.fr : routes.fr[route];
+const enPath = localizedPaths ? localizedPaths.en : routes.en[route];
+const canonical = new URL(locale === 'fr' ? frPath : enPath, SITE_URL).href;
+const frHref = new URL(frPath, SITE_URL).href;
+const enHref = new URL(enPath, SITE_URL).href;
+const ogImageUrl = ogImage ? new URL(ogImage, SITE_URL).href : undefined;
+const ogLocale = locale === 'fr' ? 'fr_FR' : 'en_US';
+const navAltHref = locale === 'fr' ? enPath : frPath;
+---
+
+<!doctype html>
+<html lang={locale}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    {noindex && <meta name="robots" content="noindex" />}
+    <link rel="canonical" href={canonical} />
+    <link rel="alternate" hreflang="fr" href={frHref} />
+    <link rel="alternate" hreflang="en" href={enHref} />
+    <link rel="alternate" hreflang="x-default" href={frHref} />
+    {/* TODO Phase V1.1: dynamic OG image (Satori) — og:image omitted until an asset exists */}
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Karib Teck" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:locale" content={ogLocale} />
+    {ogImageUrl && <meta property="og:image" content={ogImageUrl} />}
+    <meta name="twitter:card" content={ogImageUrl ? 'summary_large_image' : 'summary'} />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    {ogImageUrl && <meta name="twitter:image" content={ogImageUrl} />}
+    <slot name="head" />
+  </head>
+  <body>
+    <a href="#main" class="skip-link">{t('a11y.skipToContent')}</a>
+    <Nav locale={locale} route={route} altHref={navAltHref} />
+    <main id="main">
+      <slot />
+    </main>
+    <Footer locale={locale} />
+    <script>
+      import '@/scripts/reveal.ts';
+    </script>
+    <style is:global>
+      .skip-link {
+        position: absolute;
+        left: -999px;
+        top: 0;
+        background: var(--color-teal);
+        color: var(--color-on-primary);
+        padding: 8px 16px;
+        z-index: 2000;
+      }
+      .skip-link:focus {
+        left: 0;
+      }
+      .fade-up {
+        opacity: 0;
+        transform: translateY(24px);
+        transition:
+          opacity 0.6s ease,
+          transform 0.6s ease;
+      }
+      .fade-up.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      @media (prefers-reduced-motion: reduce) {
+        .fade-up {
+          opacity: 1;
+          transform: none;
+          transition: none;
+        }
+      }
+    </style>
+  </body>
+</html>

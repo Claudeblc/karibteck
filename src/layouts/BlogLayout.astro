@@ -1,0 +1,86 @@
+---
+import MainLayout from '@/layouts/MainLayout.astro';
+import JsonLd from '@/components/atoms/JsonLd.astro';
+import Tag from '@/components/atoms/Tag.astro';
+import { buildBlogPostGraph } from '@/lib/jsonLd';
+import { formatDate } from '@/lib/dates';
+import { useTranslations, localizeBlogPostPath, localizePath } from '@/i18n/utils';
+import { SITE_URL } from '@/lib/constants';
+import '@/styles/prose.css';
+import type { Locale } from '@/types';
+import type { BlogEntry } from '@/lib/blog';
+
+interface Props {
+  entry: BlogEntry;
+  slug: string;
+  locale: Locale;
+  readingMinutes: number;
+  translationSlug?: string;
+}
+const { entry, slug, locale, readingMinutes, translationSlug } = Astro.props;
+const t = useTranslations(locale);
+const selfPath = localizeBlogPostPath(slug, locale);
+const url = new URL(selfPath, SITE_URL).href;
+const localizedPaths = translationSlug
+  ? {
+      fr: localizeBlogPostPath(locale === 'fr' ? slug : translationSlug, 'fr'),
+      en: localizeBlogPostPath(locale === 'en' ? slug : translationSlug, 'en'),
+    }
+  : undefined;
+const graph = buildBlogPostGraph(locale, {
+  title: entry.data.title,
+  excerpt: entry.data.excerpt,
+  date: entry.data.date,
+  url,
+});
+const blogHref = localizePath('blog', locale);
+const baseTitle = entry.data.seoTitle ?? entry.data.title;
+const withBrand = `${baseTitle} | Karib Teck`;
+const pageTitle = withBrand.length <= 60 ? withBrand : baseTitle;
+---
+
+<MainLayout
+  title={pageTitle}
+  description={entry.data.excerpt}
+  locale={locale}
+  localizedPaths={localizedPaths}
+>
+  <Fragment slot="head"><JsonLd data={graph} /></Fragment>
+  <article class="prose">
+    <p class="meta">
+      {formatDate(entry.data.date, locale)} · {readingMinutes}
+      {t('blog.readingTime')}
+    </p>
+    <h1>{entry.data.title}</h1>
+    <div class="tags">{entry.data.tags.map((tag) => <Tag label={tag} />)}</div>
+    <slot />
+    <p class="back"><a href={blogHref}>← {t('blog.backToBlog')}</a></p>
+  </article>
+</MainLayout>
+
+<style>
+  .prose {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: calc(var(--nav-height) + 40px) 5% var(--section-pad-y);
+  }
+  .prose .meta {
+    color: var(--color-on-surface-variant);
+    font-size: 0.9rem;
+  }
+  .prose h1 {
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 4vw, 2.8rem);
+    margin: 8px 0 16px;
+    color: var(--color-primary);
+  }
+  .prose .tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 32px;
+  }
+  .prose .back {
+    margin-top: 48px;
+  }
+</style>

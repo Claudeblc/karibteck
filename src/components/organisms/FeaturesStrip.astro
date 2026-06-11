@@ -1,0 +1,36 @@
+---
+import { getFeatures } from '@/data/features';
+import FeatureItem from '@/components/molecules/FeatureItem.astro';
+import { DEFAULT_LOCALE } from '@/lib/constants';
+import type { Locale } from '@/types';
+
+interface Props {
+  locale?: Locale;
+}
+const { locale = DEFAULT_LOCALE } = Astro.props;
+const features = getFeatures(locale);
+---
+
+<div class="features-strip">
+  <div class="features-strip-inner">
+    {features.map((feature) => <FeatureItem feature={feature} />)}
+  </div>
+</div>
+
+<style>
+  .features-strip {
+    background: var(--color-surface-alt);
+    border-top: 1px solid var(--color-outline-variant);
+    border-bottom: 1px solid var(--color-outline-variant);
+    padding: 28px 5%;
+  }
+  .features-strip-inner {
+    max-width: var(--content-max);
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+</style>

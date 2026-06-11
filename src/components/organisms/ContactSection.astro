@@ -1,0 +1,129 @@
+---
+import { Icon } from 'astro-icon/components';
+import SectionHeader from '@/components/molecules/SectionHeader.astro';
+import ContactForm from '@/components/molecules/ContactForm.astro';
+import CalButton from '@/components/molecules/CalButton.astro';
+import WhatsAppButton from '@/components/molecules/WhatsAppButton.astro';
+import { getContactDetails } from '@/data/agency';
+import { useTranslations } from '@/i18n/utils';
+import { DEFAULT_LOCALE } from '@/lib/constants';
+import type { Locale } from '@/types';
+
+interface Props {
+  locale?: Locale;
+}
+const { locale = DEFAULT_LOCALE } = Astro.props;
+const t = useTranslations(locale);
+const contact = getContactDetails(locale);
+---
+
+<section id="contact">
+  <div class="section-inner">
+    <div class="contact-grid">
+      <div class="fade-up">
+        <SectionHeader
+          badge={t('contact.badge')}
+          lead={t('contact.title.lead')}
+          highlight={t('contact.title.hl')}
+        />
+        <p class="contact-intro">{t('contact.intro')}</p>
+        <div class="contact-detail">
+          <div class="contact-detail-icon"><Icon name="lucide:mail" /></div>
+          <div><a href={`mailto:${contact.email}`}>{contact.email}</a></div>
+        </div>
+        <div class="contact-detail">
+          <div class="contact-detail-icon"><Icon name="lucide:phone" /></div>
+          <div>{contact.phone}</div>
+        </div>
+        <div class="contact-detail">
+          <div class="contact-detail-icon"><Icon name="lucide:map-pin" /></div>
+          <div>{contact.location}</div>
+        </div>
+        <div class="contact-detail">
+          <div class="contact-detail-icon"><Icon name="lucide:clock" /></div>
+          <div>{contact.hours}</div>
+        </div>
+        <div class="contact-cta">
+          <p class="contact-cta-label">{t('contact.orDirect')}</p>
+          <div class="contact-cta-row">
+            <CalButton locale={locale} />
+            <WhatsAppButton locale={locale} />
+          </div>
+        </div>
+      </div>
+      <ContactForm locale={locale} />
+    </div>
+  </div>
+</section>
+
+<style>
+  #contact {
+    background: var(--color-surface-alt);
+    padding: var(--section-pad-y) 5%;
+  }
+  .section-inner {
+    max-width: var(--content-max);
+    margin: 0 auto;
+  }
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.4fr;
+    gap: 60px;
+    align-items: start;
+  }
+  .contact-intro {
+    color: var(--color-on-surface-variant);
+    font-size: 0.95rem;
+    line-height: 1.7;
+    margin-bottom: 32px;
+  }
+  .contact-detail {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 16px;
+    color: var(--color-on-surface);
+    font-size: 0.9rem;
+  }
+  .contact-detail a {
+    color: inherit;
+    text-decoration: none;
+  }
+  .contact-detail a:hover {
+    color: var(--color-teal);
+  }
+  .contact-cta {
+    margin-top: 28px;
+  }
+  .contact-cta-label {
+    color: var(--color-on-surface-variant);
+    font-size: 0.9rem;
+    margin-bottom: 14px;
+  }
+  .contact-cta-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  .contact-detail-icon {
+    width: 38px;
+    height: 38px;
+    background: var(--color-overlay-teal);
+    border: 1px solid var(--color-surface-gray);
+    border-radius: var(--radius-card);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-teal);
+    flex-shrink: 0;
+  }
+  .contact-detail-icon :global(svg) {
+    width: 20px;
+    height: 20px;
+  }
+  @media (max-width: 860px) {
+    .contact-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

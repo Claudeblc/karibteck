@@ -1,0 +1,47 @@
+---
+import { alternateLocale, alternateUrl } from '@/i18n/utils';
+import type { Locale, RouteKey } from '@/types';
+
+interface Props {
+  locale: Locale;
+  route: RouteKey;
+  altHref?: string;
+}
+const { locale, route, altHref } = Astro.props;
+const other = alternateLocale(locale);
+const href = altHref ?? alternateUrl(route, locale);
+---
+
+<a
+  class="lang-toggle"
+  href={href}
+  hreflang={other}
+  aria-label={`Switch language to ${other.toUpperCase()}`}
+>
+  {other.toUpperCase()}
+</a>
+
+<style>
+  .lang-toggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 38px;
+    height: 32px;
+    padding: 0 10px;
+    border-radius: var(--radius-card);
+    border: 1px solid var(--color-surface-gray);
+    color: var(--color-on-surface-variant);
+    font-family: var(--font-label);
+    text-decoration: none;
+    font-size: 0.8rem;
+    font-weight: 600;
+    transition:
+      border-color 0.2s,
+      color 0.2s;
+  }
+  .lang-toggle:hover {
+    color: var(--color-teal);
+    border-color: var(--color-teal);
+  }
+</style>

@@ -1,0 +1,51 @@
+---
+import { getServices } from '@/data/services';
+import ServiceCard from '@/components/molecules/ServiceCard.astro';
+import BentoGrid from '@/components/molecules/BentoGrid.astro';
+import { localizeServicePath } from '@/i18n/utils';
+import { DEFAULT_LOCALE } from '@/lib/constants';
+import type { Locale } from '@/types';
+
+interface Props {
+  locale?: Locale;
+}
+const { locale = DEFAULT_LOCALE } = Astro.props;
+const services = getServices(locale);
+const spans = [4, 4, 4] as const;
+---
+
+<section id="solutions">
+  <div class="section-inner">
+    <BentoGrid>
+      {
+        services.map((service, i) => (
+          <div style={`--col:${spans[i] ?? 4}`}>
+            <ServiceCard
+              service={service}
+              href={localizeServicePath(service.slug, locale)}
+              locale={locale}
+            />
+          </div>
+        ))
+      }
+    </BentoGrid>
+  </div>
+</section>
+
+<style>
+  #solutions {
+    background: var(--color-surface);
+    padding: var(--section-pad-y) 5%;
+  }
+  .section-inner {
+    max-width: var(--content-max);
+    margin: 0 auto;
+  }
+  /* The bento child wrapper must let the ServiceCard fill the cell. */
+  #solutions :global(.bento > div) {
+    display: flex;
+  }
+  #solutions :global(.bento > div > .service-card) {
+    width: 100%;
+  }
+</style>

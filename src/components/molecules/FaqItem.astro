@@ -1,0 +1,59 @@
+---
+import type { FaqItem } from '@/types';
+
+interface Props {
+  item: FaqItem;
+}
+const { item } = Astro.props;
+---
+
+<details class="faq-item fade-up">
+  <summary>
+    <span>{item.question}</span>
+    <span class="chevron" aria-hidden="true">+</span>
+  </summary>
+  <p class="answer">{item.answer}</p>
+</details>
+
+<style>
+  .faq-item {
+    border: 1px solid var(--color-surface-gray);
+    border-radius: var(--radius-card);
+    background: var(--color-surface-card);
+    padding: 0 20px;
+    box-shadow: var(--shadow-card);
+  }
+  summary {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 18px 0;
+    cursor: pointer;
+    font-family: var(--font-display);
+    font-size: 1rem;
+    color: var(--color-on-surface);
+    list-style: none;
+  }
+  summary::-webkit-details-marker {
+    display: none;
+  }
+  .chevron {
+    color: var(--color-teal);
+    font-size: 1.4rem;
+    transition: transform 0.2s;
+  }
+  .faq-item[open] .chevron {
+    transform: rotate(45deg);
+  }
+  .answer {
+    color: var(--color-on-surface-variant);
+    font-size: 0.95rem;
+    padding: 0 0 18px;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .chevron {
+      transition: none;
+    }
+  }
+</style>

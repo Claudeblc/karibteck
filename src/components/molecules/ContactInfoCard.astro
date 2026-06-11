@@ -1,0 +1,59 @@
+---
+import { Icon } from 'astro-icon/components';
+
+interface Props {
+  icon: string;
+  title: string;
+}
+const { icon, title } = Astro.props;
+---
+
+<div class="info-card">
+  <div class="info-icon" aria-hidden="true">
+    <Icon name={icon} />
+  </div>
+  <div class="info-body">
+    <h3 class="info-title">{title}</h3>
+    <div class="info-content"><slot /></div>
+  </div>
+</div>
+
+<style>
+  .info-card {
+    display: flex;
+    gap: 16px;
+    background: var(--color-surface-card);
+    border: 1px solid var(--color-surface-gray);
+    border-radius: var(--radius-lg);
+    padding: 22px;
+    box-shadow: var(--shadow-card);
+  }
+  .info-icon :global(svg) {
+    width: 24px;
+    height: 24px;
+    color: var(--color-teal);
+  }
+  .info-body {
+    flex: 1;
+    min-width: 0;
+  }
+  .info-title {
+    font-family: var(--font-display);
+    font-size: 1.05rem;
+    margin-bottom: 6px;
+    color: var(--color-on-surface);
+  }
+  .info-content {
+    font-size: 0.92rem;
+    line-height: 1.6;
+    color: var(--color-on-surface-variant);
+  }
+  .info-content :global(a) {
+    color: var(--color-teal);
+    text-decoration: none;
+    word-break: break-word;
+  }
+  .info-content :global(a:hover) {
+    text-decoration: underline;
+  }
+</style>

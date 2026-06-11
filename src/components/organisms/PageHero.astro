@@ -1,0 +1,50 @@
+---
+import SectionBadge from '@/components/atoms/SectionBadge.astro';
+import Highlight from '@/components/atoms/Highlight.astro';
+
+interface Props {
+  badge?: string;
+  titleLead: string;
+  titleHl: string;
+  sub: string;
+}
+const { badge, titleLead, titleHl, sub } = Astro.props;
+---
+
+<section class="page-hero">
+  <div class="page-hero-inner">
+    {badge && <SectionBadge label={badge} />}
+    <h1 class="page-hero-title font-display">
+      {titleLead}
+      <Highlight text={titleHl} />
+    </h1>
+    <p class="page-hero-sub">{sub}</p>
+  </div>
+</section>
+
+<style>
+  .page-hero {
+    background: var(--color-primary);
+    color: var(--color-on-primary);
+  }
+  .page-hero-inner {
+    max-width: var(--content-max);
+    margin: 0 auto;
+    padding: calc(var(--nav-height) + 44px) 5% var(--section-pad-y);
+  }
+  .page-hero-title {
+    font-family: var(--font-display);
+    font-size: clamp(2.2rem, 5vw, 3.6rem);
+    font-weight: 800;
+    line-height: 1.1;
+    letter-spacing: -0.01em;
+    margin: 18px 0 16px;
+    color: var(--color-on-primary);
+  }
+  .page-hero-sub {
+    color: var(--color-on-primary-variant);
+    font-size: 1.1rem;
+    line-height: 1.7;
+    max-width: 640px;
+  }
+</style>

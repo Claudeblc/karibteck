@@ -1,0 +1,35 @@
+---
+import { CALCOM_URL, DEFAULT_LOCALE } from '@/lib/constants';
+import { useTranslations } from '@/i18n/utils';
+import type { Locale } from '@/types';
+
+interface Props {
+  locale?: Locale;
+}
+const { locale = DEFAULT_LOCALE } = Astro.props;
+const t = useTranslations(locale);
+---
+
+{
+  CALCOM_URL ? (
+    <Fragment>
+      <div class="cal-embed" id="cal-inline" data-cal-link={CALCOM_URL} />
+      <script>import '@/scripts/cal-embed.ts';</script>
+    </Fragment>
+  ) : (
+    <p class="cal-soon">{t('contact.cal.soon')}</p>
+  )
+}
+
+<style>
+  .cal-embed {
+    width: 100%;
+    min-height: 320px;
+    overflow: hidden;
+    border-radius: var(--radius-card);
+  }
+  .cal-soon {
+    font-size: 0.92rem;
+    color: var(--color-on-surface-variant);
+  }
+</style>

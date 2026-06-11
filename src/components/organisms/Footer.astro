@@ -1,0 +1,156 @@
+---
+import { AGENCY, getTagline } from '@/data/agency';
+import { getServices } from '@/data/services';
+import { SOCIAL_LINKS } from '@/data/socialLinks';
+import SocialLink from '@/components/molecules/SocialLink.astro';
+import { useTranslations, localizePath } from '@/i18n/utils';
+import { DEFAULT_LOCALE, WHATSAPP_NUMBER } from '@/lib/constants';
+import type { Locale, SocialLink as SocialLinkType } from '@/types';
+
+interface Props {
+  locale?: Locale;
+}
+const { locale = DEFAULT_LOCALE } = Astro.props;
+const t = useTranslations(locale);
+const services = getServices(locale);
+const tagline = getTagline(locale);
+const blogHref = localizePath('blog', locale);
+const servicesHref = localizePath('services', locale);
+const aboutHref = localizePath('about', locale);
+const contactHref = localizePath('contact', locale);
+const year = new Date().getFullYear();
+const socialLinks: SocialLinkType[] = SOCIAL_LINKS.map((s) =>
+  s.label === 'WhatsApp' && WHATSAPP_NUMBER
+    ? { ...s, href: `https://wa.me/${WHATSAPP_NUMBER}` }
+    : s,
+).filter((s) => s.href !== '' && s.href !== '#');
+const hasSocials = socialLinks.length > 0;
+---
+
+<footer>
+  <div class:list={['footer-grid', { 'no-social': !hasSocials }]}>
+    <div class="footer-brand">
+      <span class="footer-name">{AGENCY.name}</span>
+      <p>{tagline}</p>
+      <a href={`mailto:${AGENCY.email}`}>{AGENCY.email}</a>
+    </div>
+    <div>
+      <h3>{t('footer.servicesTitle')}</h3>
+      <ul>
+        {
+          services.map((s) => (
+            <li>
+              <a href={servicesHref}>{s.title}</a>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+    <div>
+      <h3>{t('footer.companyTitle')}</h3>
+      <ul>
+        <li><a href={servicesHref}>{t('nav.services')}</a></li>
+        <li><a href={aboutHref}>{t('nav.aboutPage')}</a></li>
+        <li><a href={contactHref}>{t('nav.contact')}</a></li>
+        <li><a href={blogHref}>{t('nav.blog')}</a></li>
+      </ul>
+    </div>
+    <div>
+      <h3>{t('footer.legalTitle')}</h3>
+      <ul>
+        <li><a href={localizePath('legalNotice', locale)}>{t('footer.legal.mentions')}</a></li>
+        <li><a href={localizePath('privacy', locale)}>{t('footer.legal.privacy')}</a></li>
+        <li><a href={localizePath('terms', locale)}>{t('footer.legal.cgv')}</a></li>
+      </ul>
+    </div>
+    {
+      hasSocials && (
+        <div>
+          <h3>{t('footer.followTitle')}</h3>
+          <div class="footer-social">
+            {socialLinks.map((s) => (
+              <SocialLink link={s} />
+            ))}
+          </div>
+        </div>
+      )
+    }
+  </div>
+  <p class="footer-copy">© {year} {AGENCY.name}. {t('footer.rights')}</p>
+
+  <style>
+    footer {
+      background: var(--color-deep-ocean);
+      padding: 64px 5% 32px;
+      border-top: 1px solid var(--color-primary-container);
+    }
+    .footer-grid {
+      max-width: var(--content-max);
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr 1fr;
+      gap: 32px;
+    }
+    .footer-grid.no-social {
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+    }
+    .footer-name {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 1.2rem;
+      color: var(--color-on-primary);
+    }
+    .footer-brand p {
+      color: var(--color-on-primary-variant);
+      margin: 8px 0;
+    }
+    footer h3 {
+      font-family: var(--font-label);
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--color-on-primary-variant);
+      margin-bottom: 14px;
+    }
+    footer ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    footer a {
+      color: var(--color-on-primary-variant);
+      text-decoration: none;
+      font-size: 0.92rem;
+    }
+    footer a:hover {
+      color: var(--color-on-primary);
+    }
+    .footer-social {
+      display: flex;
+      gap: 10px;
+    }
+    .footer-social :global(.social-btn) {
+      border-color: rgba(255, 255, 255, 0.2);
+      color: var(--color-on-primary-variant);
+    }
+    .footer-social :global(.social-btn):hover {
+      background: rgba(255, 255, 255, 0.1);
+      border-color: var(--color-on-primary);
+      color: var(--color-on-primary);
+    }
+    .footer-copy {
+      text-align: center;
+      color: var(--color-on-primary-variant);
+      font-size: 0.85rem;
+      margin-top: 40px;
+    }
+    @media (max-width: 860px) {
+      .footer-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+  </style>
+</footer>

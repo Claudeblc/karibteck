@@ -1,0 +1,53 @@
+---
+import { Icon } from 'astro-icon/components';
+import type { WhyPoint } from '@/types';
+
+interface Props {
+  point: WhyPoint;
+}
+const { point } = Astro.props;
+---
+
+<li class="why-item">
+  <div class="why-check"><Icon name={point.icon} /></div>
+  <div>
+    <div class="why-item-title">{point.title}</div>
+    <div class="why-item-desc">{point.description}</div>
+  </div>
+</li>
+
+<style>
+  .why-item {
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+  }
+  .why-check {
+    width: 36px;
+    height: 36px;
+    background: var(--color-overlay-teal);
+    border: 1px solid var(--color-surface-gray);
+    border-radius: var(--radius-card);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    color: var(--color-teal);
+  }
+  .why-check :global(svg) {
+    width: 20px;
+    height: 20px;
+  }
+  .why-item-title {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 0.95rem;
+    margin-bottom: 4px;
+    color: var(--color-on-surface);
+  }
+  .why-item-desc {
+    color: var(--color-on-surface-variant);
+    font-size: 0.85rem;
+    line-height: 1.6;
+  }
+</style>

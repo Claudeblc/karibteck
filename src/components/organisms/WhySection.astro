@@ -1,0 +1,117 @@
+---
+import { getWhyPoints, getWhyStats, getExpertiseTags } from '@/data/why';
+import WhyPoint from '@/components/molecules/WhyPoint.astro';
+import StatCard from '@/components/molecules/StatCard.astro';
+import SectionHeader from '@/components/molecules/SectionHeader.astro';
+import Tag from '@/components/atoms/Tag.astro';
+import { useTranslations } from '@/i18n/utils';
+import { DEFAULT_LOCALE } from '@/lib/constants';
+import type { Locale } from '@/types';
+
+interface Props {
+  locale?: Locale;
+}
+const { locale = DEFAULT_LOCALE } = Astro.props;
+const t = useTranslations(locale);
+const whyPoints = getWhyPoints(locale);
+const whyStats = getWhyStats(locale);
+const expertiseTags = getExpertiseTags(locale);
+---
+
+<section id="pourquoi">
+  <div class="section-inner">
+    <div class="why-grid">
+      <div class="fade-up">
+        <SectionHeader
+          badge={t('why.badge')}
+          lead={t('why.title.lead')}
+          highlight={t('why.title.hl')}
+          tail={t('why.title.tail')}
+          sub={t('why.sub')}
+          subWidth="none"
+          subSpacing={32}
+        />
+        <ul class="why-list">
+          {whyPoints.map((point) => <WhyPoint point={point} />)}
+        </ul>
+      </div>
+      <div class="why-visual fade-up">
+        <div class="why-stat-grid">
+          {whyStats.map((stat) => <StatCard stat={stat} />)}
+        </div>
+        <div class="why-expertise">
+          <div class="why-expertise-label">{t('why.expertiseLabel')}</div>
+          <div class="why-expertise-tags">
+            {expertiseTags.map((label) => <Tag label={label} />)}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  #pourquoi {
+    background: var(--color-surface-alt);
+    padding: var(--section-pad-y) 5%;
+  }
+  .section-inner {
+    max-width: var(--content-max);
+    margin: 0 auto;
+  }
+  .why-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+  }
+  .why-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+    padding: 0;
+    margin: 0;
+  }
+  .why-visual {
+    background: var(--color-surface-card);
+    border: 1px solid var(--color-surface-gray);
+    border-radius: var(--radius-lg);
+    padding: 36px;
+    box-shadow: var(--shadow-card);
+  }
+  .why-stat-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+  .why-expertise {
+    margin-top: 24px;
+    padding: 20px;
+    background: var(--color-overlay-teal);
+    border: 1px solid var(--color-surface-gray);
+    border-radius: var(--radius-card);
+  }
+  .why-expertise-label {
+    font-family: var(--font-label);
+    font-size: 0.8rem;
+    color: var(--color-teal-text);
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+  .why-expertise-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  @media (max-width: 860px) {
+    .why-grid {
+      grid-template-columns: 1fr;
+    }
+    .why-stat-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

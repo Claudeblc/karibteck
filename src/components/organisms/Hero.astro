@@ -1,0 +1,106 @@
+---
+import { Image } from 'astro:assets';
+import heroImage from '@/assets/hero.png';
+import Highlight from '@/components/atoms/Highlight.astro';
+import HeroFloatBadge from '@/components/molecules/HeroFloatBadge.astro';
+import Button from '@/components/atoms/Button.astro';
+import SectionBadge from '@/components/atoms/SectionBadge.astro';
+import { useTranslations, localizePath } from '@/i18n/utils';
+import { DEFAULT_LOCALE } from '@/lib/constants';
+import type { Locale } from '@/types';
+
+interface Props {
+  locale?: Locale;
+}
+const { locale = DEFAULT_LOCALE } = Astro.props;
+const t = useTranslations(locale);
+---
+
+<section id="hero">
+  <div class="hero-grid">
+    <div class="hero-inner">
+      <SectionBadge label={t('hero.badge')} />
+      <h1 class="hero-title">
+        {t('hero.title.lead')}
+        <Highlight text={t('hero.title.hl')} />
+        {' '}{t('hero.title.tail')}
+      </h1>
+      <p class="hero-sub">{t('hero.sub')}</p>
+      <div class="hero-ctas">
+        <Button href="#services" variant="primary">{t('cta.discoverServices')}</Button>
+        <Button href={localizePath('contact', locale)} variant="outline">
+          {t('cta.contactUs')}
+        </Button>
+      </div>
+    </div>
+    <div class="hero-img-col">
+      <Image
+        src={heroImage}
+        alt={t('hero.imageAlt')}
+        widths={[480, 768, 1100]}
+        sizes="(max-width: 860px) 90vw, 45vw"
+        loading="eager"
+        fetchpriority="high"
+      />
+      <HeroFloatBadge value="100%" label={t('hero.float.label')} />
+    </div>
+  </div>
+</section>
+
+<style>
+  #hero {
+    padding: calc(var(--nav-height) + 44px) 5% var(--section-pad-y);
+    background: var(--color-primary);
+    color: var(--color-on-primary);
+  }
+  .hero-grid {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    align-items: center;
+    gap: 40px;
+    max-width: var(--content-max);
+    margin: 0 auto;
+  }
+  #hero :global(.badge) {
+    color: var(--color-teal-bright);
+    background: rgba(255, 255, 255, 0.08);
+  }
+  .hero-title {
+    font-family: var(--font-display);
+    font-size: clamp(2.2rem, 5vw, 3.6rem);
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    margin: 18px 0;
+  }
+  .hero-sub {
+    color: var(--color-on-primary-variant);
+    max-width: 46ch;
+  }
+  .hero-ctas {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    margin-top: 28px;
+  }
+  .hero-ctas :global(.btn-outline) {
+    color: var(--color-on-primary);
+    border-color: rgba(255, 255, 255, 0.4);
+  }
+  .hero-ctas :global(.btn-outline):hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--color-on-primary);
+  }
+  .hero-img-col {
+    position: relative;
+  }
+  .hero-img-col :global(img) {
+    width: 100%;
+    height: auto;
+    border-radius: var(--radius-lg);
+  }
+  @media (max-width: 860px) {
+    .hero-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

@@ -1,0 +1,63 @@
+---
+import { getProcessSteps } from '@/data/process';
+import ProcessStep from '@/components/molecules/ProcessStep.astro';
+import SectionHeader from '@/components/molecules/SectionHeader.astro';
+import { useTranslations } from '@/i18n/utils';
+import { DEFAULT_LOCALE } from '@/lib/constants';
+import type { Locale } from '@/types';
+
+interface Props {
+  locale?: Locale;
+}
+const { locale = DEFAULT_LOCALE } = Astro.props;
+const t = useTranslations(locale);
+const steps = getProcessSteps(locale);
+---
+
+<section id="processus">
+  <div class="section-inner">
+    <SectionHeader
+      badge={t('process.badge')}
+      lead={t('process.title.lead')}
+      highlight={t('process.title.hl')}
+      sub={t('process.sub')}
+      align="center"
+      subSpacing={56}
+    />
+    <div class="process-steps fade-up">
+      {steps.map((step) => <ProcessStep step={step} />)}
+    </div>
+  </div>
+</section>
+
+<style>
+  #processus {
+    background: var(--color-surface);
+    padding: var(--section-pad-y) 5%;
+  }
+  .section-inner {
+    max-width: var(--content-max);
+    margin: 0 auto;
+  }
+  .process-steps {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 0;
+    position: relative;
+    margin-top: 20px;
+  }
+  .process-steps::before {
+    content: '';
+    position: absolute;
+    top: 28px;
+    left: 10%;
+    right: 10%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--color-outline-variant), transparent);
+  }
+  @media (max-width: 860px) {
+    .process-steps::before {
+      display: none;
+    }
+  }
+</style>

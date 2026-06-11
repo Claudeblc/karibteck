@@ -1,0 +1,55 @@
+{
+  "name": "karibteck",
+  "type": "module",
+  "version": "0.1.0",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro",
+    "check": "astro check",
+    "lint": "eslint \"src/**/*.{js,ts,astro}\"",
+    "lint:fix": "eslint --fix \"src/**/*.{js,ts,astro}\"",
+    "format": "prettier --write \"**/*.{astro,ts,js,mjs,css,md,mdx,json}\"",
+    "format:check": "prettier --check \"**/*.{astro,ts,js,mjs,css,md,mdx,json}\"",
+    "validate:jsonld": "node scripts/validate-jsonld.mjs",
+    "check:links": "astro build && node scripts/check-links.mjs",
+    "verify": "npm run check && npm run build && npm run lint && npm run format:check && npm run validate:jsonld",
+    "bootstrap": "node scripts/bootstrap.mjs",
+    "postinstall": "node scripts/bootstrap.mjs",
+    "prepare": "husky"
+  },
+  "dependencies": {
+    "@astrojs/mdx": "^5.0.6",
+    "@astrojs/rss": "^4.0.18",
+    "@astrojs/sitemap": "^3.7.2",
+    "@fontsource-variable/hanken-grotesk": "^5.2.8",
+    "@fontsource-variable/plus-jakarta-sans": "^5.2.8",
+    "@fontsource-variable/sora": "^5.2.8",
+    "@iconify-json/lucide": "^1.2.109",
+    "@iconify-json/simple-icons": "^1.2.83",
+    "@tailwindcss/vite": "4.1.18",
+    "astro": "^6.3.6",
+    "astro-icon": "^1.1.5",
+    "reading-time": "^1.5.0",
+    "tailwindcss": "4.1.18",
+    "zod": "^4.4.3"
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.9.9",
+    "@eslint/js": "^9.39.2",
+    "eslint": "^9.39.2",
+    "eslint-plugin-astro": "^1.5.0",
+    "globals": "^17.1.0",
+    "husky": "^9.1.7",
+    "lint-staged": "^16.2.7",
+    "prettier": "^3.8.1",
+    "prettier-plugin-astro": "^0.14.1",
+    "prettier-plugin-tailwindcss": "^0.7.2",
+    "typescript": "^5.9.3",
+    "typescript-eslint": "^8.53.1"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

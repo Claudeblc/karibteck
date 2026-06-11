@@ -1,0 +1,38 @@
+---
+import BlogLayout from '@/layouts/BlogLayout.astro';
+import { loadPosts, entrySlug, findTranslation } from '@/lib/blog';
+import { computeReadingTime } from '@/lib/readingTime';
+import { render } from 'astro:content';
+import type { GetStaticPaths } from 'astro';
+import type { Locale } from '@/types';
+
+const locale: Locale = 'fr';
+
+export const getStaticPaths = (async () => {
+  const posts = await loadPosts('fr');
+  return Promise.all(
+    posts.map(async (entry) => {
+      const translation = await findTranslation(entry, 'en');
+      return {
+        params: { slug: entrySlug(entry) },
+        props: { entry, translationSlug: translation ? entrySlug(translation) : undefined },
+      };
+    }),
+  );
+}) satisfies GetStaticPaths;
+
+const { entry, translationSlug } = Astro.props;
+const { Content } = await render(entry);
+const readingMinutes = computeReadingTime(entry.body ?? '');
+const slug = entrySlug(entry);
+---
+
+<BlogLayout
+  entry={entry}
+  slug={slug}
+  locale={locale}
+  readingMinutes={readingMinutes}
+  translationSlug={translationSlug}
+>
+  <Content />
+</BlogLayout>

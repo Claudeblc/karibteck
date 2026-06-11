@@ -1,0 +1,39 @@
+---
+interface Props {
+  title: string;
+  text: string;
+  /** 'pain' = sunset accent (the problem), 'gain' = teal accent (the result). */
+  variant?: 'pain' | 'gain';
+}
+const { title, text, variant = 'gain' } = Astro.props;
+---
+
+<section class:list={['callout', `callout-${variant}`]}>
+  <h2>{title}</h2>
+  <p>{text}</p>
+</section>
+
+<style>
+  .callout {
+    margin-top: 48px;
+    border-left: 3px solid var(--color-teal);
+    background: var(--color-surface-alt);
+    border-radius: var(--radius-card);
+    padding: 20px 24px;
+  }
+  .callout-pain {
+    border-left-color: var(--color-sunset);
+  }
+  .callout h2 {
+    font-family: var(--font-display);
+    font-size: 1.3rem;
+    margin-bottom: 10px;
+    color: var(--color-primary);
+  }
+  .callout p {
+    color: var(--color-on-surface-variant);
+    font-size: 1.02rem;
+    line-height: 1.6;
+    margin: 0;
+  }
+</style>

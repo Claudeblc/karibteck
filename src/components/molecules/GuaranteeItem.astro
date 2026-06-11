@@ -1,0 +1,55 @@
+---
+import { Icon } from 'astro-icon/components';
+import type { Guarantee } from '@/types';
+
+interface Props {
+  guarantee: Guarantee;
+}
+const { guarantee } = Astro.props;
+---
+
+<article class="guarantee fade-up">
+  <div class="icon" aria-hidden="true"><Icon name={guarantee.icon} /></div>
+  <div>
+    <h3 class="title">{guarantee.title}</h3>
+    <p class="desc">{guarantee.description}</p>
+  </div>
+</article>
+
+<style>
+  .guarantee {
+    display: flex;
+    gap: 16px;
+    padding: 20px;
+    background: var(--color-surface-card);
+    border: 1px solid var(--color-surface-gray);
+    border-radius: var(--radius-card);
+    box-shadow: var(--shadow-card);
+    transition:
+      transform 0.3s,
+      box-shadow 0.3s;
+  }
+  .guarantee:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-card-hover);
+  }
+  .icon {
+    line-height: 1;
+    flex-shrink: 0;
+    color: var(--color-teal);
+  }
+  .icon :global(svg) {
+    width: 28px;
+    height: 28px;
+  }
+  .title {
+    font-family: var(--font-display);
+    font-size: 1.02rem;
+    margin-bottom: 6px;
+    color: var(--color-on-surface);
+  }
+  .desc {
+    color: var(--color-on-surface-variant);
+    font-size: 0.92rem;
+  }
+</style>

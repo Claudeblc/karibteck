@@ -1,0 +1,47 @@
+---
+import { getPricingPlans } from '@/data/pricing';
+import PricingCard from '@/components/molecules/PricingCard.astro';
+import SectionHeader from '@/components/molecules/SectionHeader.astro';
+import { useTranslations } from '@/i18n/utils';
+import { DEFAULT_LOCALE } from '@/lib/constants';
+import type { Locale } from '@/types';
+
+interface Props {
+  locale?: Locale;
+}
+const { locale = DEFAULT_LOCALE } = Astro.props;
+const t = useTranslations(locale);
+const plans = getPricingPlans(locale);
+---
+
+<section id="tarifs">
+  <div class="section-inner">
+    <SectionHeader
+      badge={t('pricing.badge')}
+      lead={t('pricing.title.lead')}
+      highlight={t('pricing.title.hl')}
+      sub={t('pricing.sub')}
+      align="center"
+    />
+    <div class="tarifs-grid">
+      {plans.map((plan) => <PricingCard plan={plan} locale={locale} />)}
+    </div>
+  </div>
+</section>
+
+<style>
+  #tarifs {
+    background: var(--color-surface-alt);
+    padding: var(--section-pad-y) 5%;
+  }
+  .section-inner {
+    max-width: var(--content-max);
+    margin: 0 auto;
+  }
+  .tarifs-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+    align-items: start;
+  }
+</style>

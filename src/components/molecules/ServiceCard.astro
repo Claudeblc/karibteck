@@ -1,0 +1,98 @@
+---
+import { Icon } from 'astro-icon/components';
+import Tag from '@/components/atoms/Tag.astro';
+import { useTranslations } from '@/i18n/utils';
+import { DEFAULT_LOCALE } from '@/lib/constants';
+import type { Locale, Service } from '@/types';
+
+interface Props {
+  service: Service;
+  href?: string;
+  locale?: Locale;
+}
+const { service, href, locale = DEFAULT_LOCALE } = Astro.props;
+const t = useTranslations(locale);
+---
+
+<article class="service-card fade-up">
+  <div class="service-icon"><Icon name={service.icon} /></div>
+  <h3 class="service-title">
+    {href ? <a href={href}>{service.title}</a> : service.title}
+  </h3>
+  <p class="service-desc">{service.description}</p>
+  <div class="service-tags">
+    {service.tags.map((tag) => <Tag label={tag} />)}
+  </div>
+  {
+    href && (
+      <a class="service-cta" href={href}>
+        {t('cta.learnMore')}
+        <span aria-hidden="true">→</span>
+      </a>
+    )
+  }
+</article>
+
+<style>
+  .service-card {
+    background: var(--color-surface-card);
+    border: 1px solid var(--color-surface-gray);
+    border-radius: var(--radius-lg);
+    padding: 28px;
+    box-shadow: var(--shadow-card);
+    transition:
+      transform 0.3s,
+      box-shadow 0.3s;
+  }
+  .service-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-card-hover);
+  }
+  .service-icon {
+    color: var(--color-teal);
+  }
+  .service-icon :global(svg) {
+    width: 32px;
+    height: 32px;
+  }
+  .service-title {
+    font-family: var(--font-display);
+    font-size: 1.15rem;
+    margin: 14px 0 10px;
+    color: var(--color-on-surface);
+  }
+  .service-title a {
+    color: inherit;
+    text-decoration: none;
+  }
+  .service-title a:hover {
+    color: var(--color-teal);
+  }
+  .service-desc {
+    color: var(--color-on-surface-variant);
+    font-size: 0.95rem;
+  }
+  .service-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 16px;
+  }
+  .service-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 18px;
+    color: var(--color-teal-text);
+    font-family: var(--font-label);
+    font-weight: 600;
+    font-size: 0.9rem;
+    text-decoration: none;
+  }
+  .service-cta span {
+    transition: transform 0.2s;
+  }
+  .service-card:hover .service-cta span {
+    transform: translateX(4px);
+  }
+</style>

@@ -1,0 +1,79 @@
+---
+import { NAV_LINKS } from '@/data/agency';
+import { useTranslations, localizePath } from '@/i18n/utils';
+import Button from '@/components/atoms/Button.astro';
+import type { Locale, RouteKey } from '@/types';
+
+interface Props {
+  locale: Locale;
+  route?: RouteKey;
+}
+const { locale, route = 'home' } = Astro.props;
+const t = useTranslations(locale);
+---
+
+<ul class="nav-links" id="navLinks">
+  {
+    NAV_LINKS.map((link) => (
+      <li>
+        <a
+          href={localizePath(link.routeKey, locale)}
+          class:list={[{ 'is-active': link.routeKey === route }]}
+          aria-current={link.routeKey === route ? 'page' : undefined}
+        >
+          {t(link.labelKey)}
+        </a>
+      </li>
+    ))
+  }
+  <li>
+    <Button href={localizePath('contact', locale)} variant="devis">
+      {t('cta.requestQuote')}
+    </Button>
+  </li>
+</ul>
+
+<style>
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  .nav-links a {
+    color: var(--color-on-surface-variant);
+    font-family: var(--font-label);
+    text-decoration: none;
+    font-size: 0.95rem;
+    border-bottom: 2px solid transparent;
+    padding-bottom: 3px;
+    transition:
+      color 0.2s,
+      border-color 0.2s;
+  }
+  .nav-links a:hover {
+    color: var(--color-teal);
+  }
+  .nav-links a.is-active {
+    color: var(--color-teal-text);
+    font-weight: 700;
+    border-bottom-color: var(--color-teal);
+  }
+  @media (max-width: 860px) {
+    .nav-links {
+      position: fixed;
+      inset: var(--nav-height) 0 auto 0;
+      flex-direction: column;
+      gap: 18px;
+      padding: 24px 5%;
+      background: var(--color-surface);
+      transform: translateY(-120%);
+      transition: transform 0.3s ease;
+    }
+    .nav-links.open {
+      transform: translateY(0);
+    }
+  }
+</style>

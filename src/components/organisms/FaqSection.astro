@@ -1,0 +1,47 @@
+---
+import SectionHeader from '@/components/molecules/SectionHeader.astro';
+import FaqItem from '@/components/molecules/FaqItem.astro';
+import { getFaq } from '@/data/faq';
+import { useTranslations } from '@/i18n/utils';
+import { DEFAULT_LOCALE } from '@/lib/constants';
+import type { Locale } from '@/types';
+
+interface Props {
+  locale?: Locale;
+}
+const { locale = DEFAULT_LOCALE } = Astro.props;
+const t = useTranslations(locale);
+const faq = getFaq(locale);
+---
+
+<section id="faq">
+  <div class="section-inner">
+    <SectionHeader
+      badge={t('faq.badge')}
+      lead={t('faq.title.lead')}
+      highlight={t('faq.title.hl')}
+      sub={t('faq.sub')}
+      align="center"
+    />
+    <div class="faq-list">
+      {faq.map((item) => <FaqItem item={item} />)}
+    </div>
+  </div>
+
+  <style>
+    #faq {
+      padding: var(--section-pad-y) 5%;
+    }
+    .section-inner {
+      max-width: var(--content-max);
+      margin: 0 auto;
+    }
+    .faq-list {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      max-width: 760px;
+      margin: 48px auto 0;
+    }
+  </style>
+</section>

@@ -1,0 +1,117 @@
+---
+import Button from '@/components/atoms/Button.astro';
+import { useTranslations, localizePath } from '@/i18n/utils';
+import type { Locale, PricingPlan } from '@/types';
+
+interface Props {
+  plan: PricingPlan;
+  locale: Locale;
+}
+const { plan, locale } = Astro.props;
+const t = useTranslations(locale);
+const ctaLabel = plan.ctaKey === 'requestQuote' ? t('cta.requestQuote') : t('cta.contactUs');
+---
+
+<article class:list={['tarif-card', 'fade-up', { popular: plan.popular }]}>
+  {plan.popular && <div class="popular-badge">{t('pricing.popular')}</div>}
+  <div class="tarif-name">{plan.name}</div>
+  <div class="tarif-price">{plan.price}</div>
+  <p class="tarif-desc">{plan.description}</p>
+  <ul class="tarif-features">
+    {plan.features.map((feature) => <li>{feature}</li>)}
+  </ul>
+  <Button
+    href={localizePath('contact', locale)}
+    variant={plan.popular ? 'primary' : 'outline'}
+    class="tarif-cta"
+  >
+    {ctaLabel}
+  </Button>
+</article>
+
+<style>
+  .tarif-card {
+    background: var(--color-surface-card);
+    border: 1px solid var(--color-surface-gray);
+    border-radius: var(--radius-lg);
+    padding: 36px 28px;
+    position: relative;
+    box-shadow: var(--shadow-card);
+    transition:
+      transform 0.3s,
+      border-color 0.3s,
+      box-shadow 0.3s;
+  }
+  .tarif-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-card-hover);
+  }
+  .tarif-card.popular {
+    border-color: var(--color-teal);
+    box-shadow: var(--shadow-card-hover);
+  }
+  .popular-badge {
+    position: absolute;
+    top: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--color-sunset);
+    color: var(--color-primary);
+    font-family: var(--font-label);
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 4px 16px;
+    border-radius: var(--radius-pill);
+    white-space: nowrap;
+  }
+  .tarif-name {
+    font-family: var(--font-label);
+    font-size: 0.82rem;
+    font-weight: 700;
+    color: var(--color-teal-text);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .tarif-price {
+    font-family: var(--font-display);
+    font-size: 2.4rem;
+    font-weight: 800;
+    margin-bottom: 4px;
+    color: var(--color-on-surface);
+  }
+  .tarif-desc {
+    color: var(--color-on-surface-variant);
+    font-size: 0.85rem;
+    margin-bottom: 24px;
+    line-height: 1.6;
+  }
+  .tarif-features {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 11px;
+    margin-bottom: 28px;
+    padding: 0;
+  }
+  .tarif-features li {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.88rem;
+    color: var(--color-on-surface);
+  }
+  .tarif-features li::before {
+    content: '✓';
+    color: var(--color-teal);
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+  .tarif-card :global(.tarif-cta) {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+  }
+</style>

@@ -1,0 +1,87 @@
+---
+import { AGENCY, getTagline } from '@/data/agency';
+import NavMenu from '@/components/molecules/NavMenu.astro';
+import LangToggle from '@/components/molecules/LangToggle.astro';
+import { useTranslations, localizePath } from '@/i18n/utils';
+import { DEFAULT_LOCALE } from '@/lib/constants';
+import type { Locale, RouteKey } from '@/types';
+
+interface Props {
+  locale?: Locale;
+  route?: RouteKey;
+  altHref?: string;
+}
+const { locale = DEFAULT_LOCALE, route = 'home', altHref } = Astro.props;
+const t = useTranslations(locale);
+const logoSub = `— ${getTagline(locale)} —`;
+---
+
+<nav>
+  <a href={localizePath('home', locale)} class="nav-logo">
+    <span class="nav-logo-name">{AGENCY.name.toUpperCase()}</span>
+    <span class="nav-logo-sub">{logoSub}</span>
+  </a>
+  <div class="nav-actions">
+    <NavMenu locale={locale} route={route} />
+    <LangToggle locale={locale} route={route} altHref={altHref} />
+  </div>
+  <button class="burger" id="burger" aria-label={t('a11y.openMenu')}>
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<style>
+  nav {
+    position: fixed;
+    inset: 0 0 auto 0;
+    z-index: 1000;
+    height: var(--nav-height);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 0 5%;
+    background: var(--color-surface-card);
+    border-bottom: 1px solid var(--color-surface-gray);
+    box-shadow: var(--shadow-card);
+  }
+  .nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+  .nav-logo {
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+  }
+  .nav-logo-name {
+    font-family: var(--font-display);
+    font-weight: 700;
+    color: var(--color-primary);
+    letter-spacing: 0.04em;
+  }
+  .nav-logo-sub {
+    font-size: 0.62rem;
+    color: var(--color-on-surface-variant);
+    letter-spacing: 0.05em;
+  }
+  .burger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+  .burger span {
+    width: 24px;
+    height: 2px;
+    background: var(--color-primary);
+  }
+  @media (max-width: 860px) {
+    .burger {
+      display: flex;
+    }
+  }
+</style>

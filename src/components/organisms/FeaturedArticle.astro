@@ -1,0 +1,102 @@
+---
+import ArticleCover from '@/components/molecules/ArticleCover.astro';
+import { formatDate } from '@/lib/dates';
+import { useTranslations, localizeBlogPostPath } from '@/i18n/utils';
+import { DEFAULT_LOCALE } from '@/lib/constants';
+import type { Locale } from '@/types';
+import type { BlogEntry } from '@/lib/blog';
+
+interface Props {
+  entry: BlogEntry;
+  slug: string;
+  locale?: Locale;
+  readingMinutes: number;
+}
+const { entry, slug, locale = DEFAULT_LOCALE, readingMinutes } = Astro.props;
+const t = useTranslations(locale);
+const href = localizeBlogPostPath(slug, locale);
+const category = entry.data.tags[0];
+---
+
+<section class="featured">
+  <div class="featured-inner">
+    <a class="featured-cover" href={href} aria-label={entry.data.title}>
+      <ArticleCover seed={entry.data.translationKey} category={category} size="lg" />
+    </a>
+    <div class="featured-body">
+      <span class="featured-label">{t('blog.featuredLabel')}</span>
+      <h2 class="featured-title"><a href={href}>{entry.data.title}</a></h2>
+      <p class="featured-excerpt">{entry.data.excerpt}</p>
+      <p class="featured-meta">
+        {t('blog.author')} · {formatDate(entry.data.date, locale)} · {readingMinutes}
+        {t('blog.readingTime')}
+      </p>
+      <a class="featured-link" href={href}>{t('cta.readArticle')} →</a>
+    </div>
+  </div>
+
+  <style>
+    .featured {
+      padding: var(--section-pad-y) 5% 0;
+    }
+    .featured-inner {
+      max-width: var(--content-max);
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      align-items: stretch;
+    }
+    .featured-cover {
+      display: block;
+      min-height: 320px;
+    }
+    .featured-body {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .featured-label {
+      font-family: var(--font-label);
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--color-teal-text);
+    }
+    .featured-title {
+      font-family: var(--font-display);
+      font-size: clamp(1.6rem, 3vw, 2.4rem);
+      margin: 12px 0 14px;
+    }
+    .featured-title a {
+      color: var(--color-on-surface);
+      text-decoration: none;
+    }
+    .featured-title a:hover {
+      color: var(--color-teal);
+    }
+    .featured-excerpt {
+      color: var(--color-on-surface-variant);
+      font-size: 1.02rem;
+    }
+    .featured-meta {
+      color: var(--color-on-surface-variant);
+      font-size: 0.85rem;
+      margin: 16px 0;
+    }
+    .featured-link {
+      color: var(--color-teal);
+      font-weight: 600;
+      text-decoration: none;
+    }
+    @media (max-width: 860px) {
+      .featured-inner {
+        grid-template-columns: 1fr;
+      }
+      .featured-cover {
+        min-height: 220px;
+      }
+    }
+  </style>
+</section>

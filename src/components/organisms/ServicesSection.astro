@@ -1,0 +1,53 @@
+---
+import { getServices } from '@/data/services';
+import ServiceCard from '@/components/molecules/ServiceCard.astro';
+import SectionHeader from '@/components/molecules/SectionHeader.astro';
+import { useTranslations, localizeServicePath } from '@/i18n/utils';
+import { DEFAULT_LOCALE } from '@/lib/constants';
+import type { Locale } from '@/types';
+
+interface Props {
+  locale?: Locale;
+}
+const { locale = DEFAULT_LOCALE } = Astro.props;
+const t = useTranslations(locale);
+const services = getServices(locale);
+---
+
+<section id="services">
+  <div class="section-inner">
+    <SectionHeader
+      badge={t('services.badge')}
+      lead={t('services.title.lead')}
+      highlight={t('services.title.hl')}
+      sub={t('services.sub')}
+    />
+    <div class="services-grid">
+      {
+        services.map((service) => (
+          <ServiceCard
+            service={service}
+            href={localizeServicePath(service.slug, locale)}
+            locale={locale}
+          />
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  #services {
+    background: var(--color-surface);
+    padding: var(--section-pad-y) 5%;
+  }
+  .section-inner {
+    max-width: var(--content-max);
+    margin: 0 auto;
+  }
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 24px;
+  }
+</style>

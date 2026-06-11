@@ -1,0 +1,71 @@
+---
+import SectionBadge from '@/components/atoms/SectionBadge.astro';
+import Highlight from '@/components/atoms/Highlight.astro';
+
+interface Props {
+  badge: string;
+  lead: string;
+  highlight: string;
+  tail?: string;
+  sub?: string;
+  align?: 'left' | 'center';
+  /** Width cap on the sub paragraph. `none` lets it fill its column (grid layouts). */
+  subWidth?: 'wide' | 'none';
+  /** Bottom margin under the sub paragraph (px). */
+  subSpacing?: number;
+}
+const {
+  badge,
+  lead,
+  highlight,
+  tail,
+  sub,
+  align = 'left',
+  subWidth = 'wide',
+  subSpacing = 52,
+} = Astro.props;
+const subStyle = [
+  subWidth === 'none' ? 'max-width:none' : 'max-width:600px',
+  `margin-bottom:${subSpacing}px`,
+].join(';');
+---
+
+<div class:list={['section-head', 'fade-up', { center: align === 'center' }]}>
+  <SectionBadge label={badge} />
+  <h2 class="section-title">
+    {lead}
+    <Highlight text={highlight} />
+    {tail && <> {tail}</>}
+  </h2>
+  {
+    sub && (
+      <p class="section-sub" style={subStyle}>
+        {sub}
+      </p>
+    )
+  }
+</div>
+
+<style>
+  .section-head.center {
+    text-align: center;
+  }
+  .section-title {
+    font-family: var(--font-display);
+    font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+    font-weight: 800;
+    line-height: 1.15;
+    letter-spacing: -0.01em;
+    margin: 16px 0 14px;
+    color: var(--color-on-surface);
+  }
+  .section-sub {
+    color: var(--color-on-surface-variant);
+    font-size: 1rem;
+    line-height: 1.7;
+  }
+  .section-head.center .section-sub {
+    margin-left: auto;
+    margin-right: auto;
+  }
+</style>

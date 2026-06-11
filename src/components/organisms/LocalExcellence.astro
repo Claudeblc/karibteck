@@ -1,0 +1,118 @@
+---
+import { Icon } from 'astro-icon/components';
+import SectionHeader from '@/components/molecules/SectionHeader.astro';
+import StatCard from '@/components/molecules/StatCard.astro';
+import AccentBlock from '@/components/molecules/AccentBlock.astro';
+import { AREA_SERVED, DEFAULT_LOCALE } from '@/lib/constants';
+import { useTranslations } from '@/i18n/utils';
+import type { Locale } from '@/types';
+
+interface Props {
+  locale?: Locale;
+}
+const { locale = DEFAULT_LOCALE } = Astro.props;
+const t = useTranslations(locale);
+const zonesStat = { value: String(AREA_SERVED.length), label: t('local.zonesLabel') };
+---
+
+<section class="local">
+  <div class="local-inner">
+    <SectionHeader
+      badge={t('local.badge')}
+      lead={t('local.title.lead')}
+      highlight={t('local.title.hl')}
+      sub={t('local.sub')}
+      align="center"
+    />
+    <div class="local-grid">
+      <div class="local-stat"><StatCard stat={zonesStat} /></div>
+      <div class="zones-card">
+        <h3 class="zones-title">{t('local.zonesLabel')}</h3>
+        <ul class="zones-list">
+          {
+            AREA_SERVED.map((zone) => (
+              <li>
+                <Icon name="lucide:map-pin" aria-hidden="true" />
+                <span>{zone}</span>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+      <AccentBlock variant="teal" icon="lucide:languages" title={t('local.support')} />
+      <AccentBlock variant="sunset" icon="lucide:code-2" title={t('local.code')} />
+    </div>
+  </div>
+</section>
+
+<style>
+  .local {
+    padding: var(--section-pad-y) 5%;
+    background: var(--color-overlay-teal);
+  }
+  .local-inner {
+    max-width: var(--content-max);
+    margin: 0 auto;
+  }
+  .local-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    margin-top: 48px;
+    align-items: stretch;
+  }
+  .local-stat {
+    display: flex;
+  }
+  .local-stat :global(.why-stat) {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .zones-card {
+    grid-column: span 3;
+    background: var(--color-surface-card);
+    border: 1px solid var(--color-surface-gray);
+    border-radius: var(--radius-lg);
+    padding: 28px;
+    box-shadow: var(--shadow-card);
+  }
+  .zones-title {
+    font-family: var(--font-display);
+    font-size: 1.15rem;
+    margin-bottom: 14px;
+    color: var(--color-on-surface);
+  }
+  .zones-list {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px 18px;
+  }
+  .zones-list li {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    font-size: 0.95rem;
+    color: var(--color-on-surface-variant);
+  }
+  .zones-list :global(svg) {
+    width: 16px;
+    height: 16px;
+    color: var(--color-teal);
+  }
+  /* Row 2: the two accent blocks each take half the row. */
+  .local-grid > :global(.accent) {
+    grid-column: span 2;
+  }
+  @media (max-width: 860px) {
+    .local-grid {
+      grid-template-columns: 1fr;
+    }
+    .zones-card,
+    .local-grid > :global(.accent) {
+      grid-column: span 1;
+    }
+  }
+</style>

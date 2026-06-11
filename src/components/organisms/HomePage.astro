@@ -1,0 +1,38 @@
+---
+import MainLayout from '@/layouts/MainLayout.astro';
+import JsonLd from '@/components/atoms/JsonLd.astro';
+import Hero from '@/components/organisms/Hero.astro';
+import ExpertiseSection from '@/components/organisms/ExpertiseSection.astro';
+import ServicesSection from '@/components/organisms/ServicesSection.astro';
+import ProjectsSection from '@/components/organisms/ProjectsSection.astro';
+import WhySection from '@/components/organisms/WhySection.astro';
+import CtaBand from '@/components/organisms/CtaBand.astro';
+import { useTranslations } from '@/i18n/utils';
+import { buildHomeGraph } from '@/lib/jsonLd';
+import { routes } from '@/i18n/ui';
+import { SITE_URL } from '@/lib/constants';
+import type { Locale } from '@/types';
+
+interface Props {
+  locale: Locale;
+}
+const { locale } = Astro.props;
+const t = useTranslations(locale);
+const homeUrl = new URL(routes[locale].home, SITE_URL).href;
+const graph = buildHomeGraph(locale, homeUrl);
+---
+
+<MainLayout
+  title={t('meta.home.title')}
+  description={t('meta.home.description')}
+  locale={locale}
+  route="home"
+>
+  <Fragment slot="head"><JsonLd data={graph} /></Fragment>
+  <Hero locale={locale} />
+  <ExpertiseSection locale={locale} />
+  <ServicesSection locale={locale} />
+  <ProjectsSection locale={locale} />
+  <WhySection locale={locale} />
+  <CtaBand locale={locale} />
+</MainLayout>

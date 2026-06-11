@@ -1,0 +1,49 @@
+---
+import MainLayout from '@/layouts/MainLayout.astro';
+import JsonLd from '@/components/atoms/JsonLd.astro';
+import Button from '@/components/atoms/Button.astro';
+import { buildSimplePageGraph } from '@/lib/jsonLd';
+import { useTranslations, localizePath } from '@/i18n/utils';
+import { routes } from '@/i18n/ui';
+import type { Locale } from '@/types';
+
+const locale: Locale = 'en';
+const t = useTranslations(locale);
+const graph = buildSimplePageGraph(locale);
+const localizedPaths = { fr: routes.fr.thankYou, en: routes.en.thankYou };
+---
+
+<MainLayout
+  title={`${t('thankYou.title')} | Karib Teck`}
+  description={t('thankYou.body')}
+  locale={locale}
+  route="thankYou"
+  localizedPaths={localizedPaths}
+  noindex={true}
+>
+  <Fragment slot="head"><JsonLd data={graph} /></Fragment>
+  <section class="thank-you">
+    <h1>{t('thankYou.title')}</h1>
+    <p>{t('thankYou.body')}</p>
+    <Button href={localizePath('home', locale)} variant="primary">{t('thankYou.back')}</Button>
+  </section>
+</MainLayout>
+
+<style>
+  .thank-you {
+    max-width: 60ch;
+    margin: 0 auto;
+    padding: calc(var(--nav-height) + 96px) 5% 120px;
+    text-align: center;
+  }
+  .thank-you h1 {
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 4vw, 3rem);
+    margin-bottom: 16px;
+    color: var(--color-primary);
+  }
+  .thank-you p {
+    color: var(--color-on-surface-variant);
+    margin-bottom: 32px;
+  }
+</style>

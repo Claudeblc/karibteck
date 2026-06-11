@@ -1,0 +1,55 @@
+---
+import { getProjects } from '@/data/projects';
+import ProjectCard from '@/components/molecules/ProjectCard.astro';
+import SectionHeader from '@/components/molecules/SectionHeader.astro';
+import Button from '@/components/atoms/Button.astro';
+import { useTranslations, localizePath } from '@/i18n/utils';
+import { DEFAULT_LOCALE } from '@/lib/constants';
+import type { Locale } from '@/types';
+
+interface Props {
+  locale?: Locale;
+}
+const { locale = DEFAULT_LOCALE } = Astro.props;
+const t = useTranslations(locale);
+const projects = getProjects(locale);
+---
+
+<section id="realisations">
+  <div class="section-inner">
+    <SectionHeader
+      badge={t('projects.badge')}
+      lead={t('projects.title.lead')}
+      highlight={t('projects.title.hl')}
+      sub={t('projects.sub')}
+    />
+    <div class="real-grid">
+      {projects.map((project) => <ProjectCard project={project} />)}
+    </div>
+    <div class="projects-cta fade-up">
+      <Button href={localizePath('contact', locale)} variant="outline">
+        {t('cta.discussProject')}
+      </Button>
+    </div>
+  </div>
+</section>
+
+<style>
+  #realisations {
+    background: var(--color-surface);
+    padding: var(--section-pad-y) 5%;
+  }
+  .section-inner {
+    max-width: var(--content-max);
+    margin: 0 auto;
+  }
+  .real-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 24px;
+  }
+  .projects-cta {
+    text-align: center;
+    margin-top: 40px;
+  }
+</style>

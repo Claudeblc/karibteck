@@ -1,0 +1,68 @@
+---
+import ContactForm from '@/components/molecules/ContactForm.astro';
+import ContactInfoCard from '@/components/molecules/ContactInfoCard.astro';
+import CalEmbed from '@/components/molecules/CalEmbed.astro';
+import { getContactDetails } from '@/data/agency';
+import { useTranslations } from '@/i18n/utils';
+import { DEFAULT_LOCALE } from '@/lib/constants';
+import type { Locale } from '@/types';
+
+interface Props {
+  locale?: Locale;
+}
+const { locale = DEFAULT_LOCALE } = Astro.props;
+const t = useTranslations(locale);
+const contact = getContactDetails(locale);
+---
+
+<section class="contact-cols">
+  <div class="cols-inner">
+    <div class="col-form">
+      <h2 class="col-title">{t('contact.start.title')}</h2>
+      <ContactForm locale={locale} />
+    </div>
+    <aside class="col-info">
+      <ContactInfoCard icon="lucide:map-pin" title={t('contact.info.office')}>
+        <p>{contact.location}</p>
+        <p>{contact.phone}</p>
+      </ContactInfoCard>
+      <ContactInfoCard icon="lucide:mail" title={t('contact.info.email')}>
+        <a href={`mailto:${contact.email}`}>{contact.email}</a>
+      </ContactInfoCard>
+      <ContactInfoCard icon="lucide:calendar" title={t('contact.info.booking')}>
+        <CalEmbed locale={locale} />
+      </ContactInfoCard>
+    </aside>
+  </div>
+</section>
+
+<style>
+  .contact-cols {
+    padding: var(--section-pad-y) 5%;
+  }
+  .cols-inner {
+    max-width: var(--content-max);
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 32px;
+    align-items: start;
+  }
+  .col-title {
+    font-family: var(--font-display);
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    font-weight: 800;
+    margin-bottom: 24px;
+    color: var(--color-on-surface);
+  }
+  .col-info {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  @media (max-width: 900px) {
+    .cols-inner {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

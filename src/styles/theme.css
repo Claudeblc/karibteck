@@ -1,0 +1,57 @@
+/* KaribTeck — "Maritime Professional" design tokens (light theme).
+   Tailwind 4 exposes @theme tokens as utilities (bg-surface, text-teal, rounded-card…). */
+@theme {
+  /* Surfaces (light) */
+  --color-surface: #f8f9fa;
+  --color-surface-card: #ffffff;
+  --color-surface-alt: #f3f4f5;
+  --color-surface-gray: #e9ecef;
+
+  /* Deep ocean (dark bands + strong text) */
+  --color-deep-ocean: #051923;
+  --color-primary: #001f34;
+  --color-primary-container: #003554;
+
+  /* Text */
+  --color-on-surface: #191c1d;
+  --color-on-surface-variant: #42474d;
+  --color-on-primary: #ffffff;
+  --color-on-primary-variant: #779ec2;
+
+  /* Accents */
+  --color-teal: #007ea7;
+  --color-teal-text: #00658d;
+  --color-teal-bright: #3dbeff;
+  --color-sunset: #ffbf69;
+
+  /* Lines */
+  --color-outline: #72787e;
+  --color-outline-variant: #c2c7ce;
+
+  /* Radii — aligned to the Stitch rendered maquette (rounded-xl = 0.75rem) */
+  --radius-sm: 0.25rem;
+  --radius-card: 0.5rem;
+  --radius-lg: 0.75rem;
+  --radius-pill: 9999px;
+
+  /* Fonts (self-hosted variable, loaded in MainLayout) */
+  --font-display: 'Sora Variable', sans-serif;
+  --font-body: 'Plus Jakarta Sans Variable', sans-serif;
+  --font-label: 'Hanken Grotesk Variable', sans-serif;
+}
+
+/* Non-utility custom properties (used as var() in scoped styles). */
+:root {
+  --gradient-accent: linear-gradient(135deg, #007ea7, #3dbeff);
+  --gradient-cover-a: linear-gradient(135deg, #001f34, #007ea7);
+  --gradient-cover-b: linear-gradient(135deg, #003554, #3dbeff);
+  --gradient-cover-c: linear-gradient(135deg, #051923, #00658d);
+  --gradient-cover-d: linear-gradient(135deg, #007ea7, #3dbeff);
+  --color-overlay-teal: rgba(0, 126, 167, 0.08);
+  --shadow-card: 0 4px 20px rgba(0, 53, 84, 0.08);
+  --shadow-card-hover: 0 12px 32px rgba(0, 53, 84, 0.14);
+  --nav-height: 80px;
+  --section-pad-y: 64px;
+  --section-gap: 80px;
+  --content-max: 1280px;
+}

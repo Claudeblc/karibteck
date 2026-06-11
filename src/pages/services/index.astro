@@ -1,0 +1,39 @@
+---
+import MainLayout from '@/layouts/MainLayout.astro';
+import JsonLd from '@/components/atoms/JsonLd.astro';
+import PageHero from '@/components/organisms/PageHero.astro';
+import SolutionsBento from '@/components/organisms/SolutionsBento.astro';
+import ProcessSection from '@/components/organisms/ProcessSection.astro';
+import ProjectsSection from '@/components/organisms/ProjectsSection.astro';
+import PricingSection from '@/components/organisms/PricingSection.astro';
+import CtaBand from '@/components/organisms/CtaBand.astro';
+import { useTranslations } from '@/i18n/utils';
+import { buildServicesIndexGraph } from '@/lib/jsonLd';
+import type { Locale } from '@/types';
+
+const locale: Locale = 'fr';
+const t = useTranslations(locale);
+const localizedPaths = { fr: '/services/', en: '/en/services/' } as const;
+const graph = buildServicesIndexGraph(locale);
+---
+
+<MainLayout
+  title={t('services.page.metaTitle')}
+  description={t('services.page.metaDescription')}
+  locale={locale}
+  route="services"
+  localizedPaths={localizedPaths}
+>
+  <Fragment slot="head"><JsonLd data={graph} /></Fragment>
+  <PageHero
+    badge={t('services.page.badge')}
+    titleLead={t('services.page.title.lead')}
+    titleHl={t('services.page.title.hl')}
+    sub={t('services.page.sub')}
+  />
+  <SolutionsBento locale={locale} />
+  <ProcessSection locale={locale} />
+  <ProjectsSection locale={locale} />
+  <PricingSection locale={locale} />
+  <CtaBand locale={locale} />
+</MainLayout>

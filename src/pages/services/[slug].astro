@@ -1,0 +1,35 @@
+---
+import MainLayout from '@/layouts/MainLayout.astro';
+import ServiceDetail from '@/components/organisms/ServiceDetail.astro';
+import JsonLd from '@/components/atoms/JsonLd.astro';
+import { getServices } from '@/data/services';
+import { buildServiceGraph } from '@/lib/jsonLd';
+import { localizeServicePath } from '@/i18n/utils';
+import { SITE_URL } from '@/lib/constants';
+import type { GetStaticPaths } from 'astro';
+import type { Locale } from '@/types';
+
+const locale: Locale = 'fr';
+
+export const getStaticPaths = (() => {
+  return getServices('fr').map((service) => ({
+    params: { slug: service.slug },
+    props: { service },
+  }));
+}) satisfies GetStaticPaths;
+
+const { service } = Astro.props;
+const paths = {
+  fr: localizeServicePath(service.slug, 'fr'),
+  en: localizeServicePath(service.slug, 'en'),
+};
+const url = new URL(paths.fr, SITE_URL).href;
+const graph = buildServiceGraph(locale, service, url);
+const title = `${service.title} aux Antilles | Karib Teck`;
+const description = (service.metaDescription ?? service.intro).slice(0, 160);
+---
+
+<MainLayout title={title} description={description} locale={locale} localizedPaths={paths}>
+  <Fragment slot="head"><JsonLd data={graph} /></Fragment>
+  <ServiceDetail service={service} locale={locale} />
+</MainLayout>

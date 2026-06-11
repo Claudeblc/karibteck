@@ -1,0 +1,25 @@
+---
+import MainLayout from '@/layouts/MainLayout.astro';
+import LegalPage from '@/components/organisms/LegalPage.astro';
+import JsonLd from '@/components/atoms/JsonLd.astro';
+import { getLegalNotice } from '@/data/legal';
+import { buildSimplePageGraph } from '@/lib/jsonLd';
+import { routes } from '@/i18n/ui';
+import type { Locale } from '@/types';
+
+const locale: Locale = 'en';
+const doc = getLegalNotice(locale);
+const localizedPaths = { fr: routes.fr.legalNotice, en: routes.en.legalNotice };
+const graph = buildSimplePageGraph(locale);
+---
+
+<MainLayout
+  title={`${doc.title} | Karib Teck`}
+  description={doc.description}
+  locale={locale}
+  route="legalNotice"
+  localizedPaths={localizedPaths}
+>
+  <Fragment slot="head"><JsonLd data={graph} /></Fragment>
+  <LegalPage doc={doc} locale={locale} />
+</MainLayout>

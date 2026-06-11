@@ -1,0 +1,39 @@
+---
+import MainLayout from '@/layouts/MainLayout.astro';
+import JsonLd from '@/components/atoms/JsonLd.astro';
+import PageHero from '@/components/organisms/PageHero.astro';
+import ExpertiseSection from '@/components/organisms/ExpertiseSection.astro';
+import GuaranteesSection from '@/components/organisms/GuaranteesSection.astro';
+import WhySection from '@/components/organisms/WhySection.astro';
+import TeamSection from '@/components/organisms/TeamSection.astro';
+import CtaBand from '@/components/organisms/CtaBand.astro';
+import { useTranslations } from '@/i18n/utils';
+import { buildAboutGraph } from '@/lib/jsonLd';
+import type { Locale } from '@/types';
+
+const locale: Locale = 'fr';
+const t = useTranslations(locale);
+const localizedPaths = { fr: '/a-propos/', en: '/en/about/' } as const;
+const graph = buildAboutGraph(locale);
+---
+
+<MainLayout
+  title={t('about.page.metaTitle')}
+  description={t('about.page.metaDescription')}
+  locale={locale}
+  route="about"
+  localizedPaths={localizedPaths}
+>
+  <Fragment slot="head"><JsonLd data={graph} /></Fragment>
+  <PageHero
+    badge={t('about.page.badge')}
+    titleLead={t('about.page.title.lead')}
+    titleHl={t('about.page.title.hl')}
+    sub={t('about.page.sub')}
+  />
+  <ExpertiseSection locale={locale} />
+  <GuaranteesSection locale={locale} />
+  <WhySection locale={locale} />
+  <TeamSection locale={locale} />
+  <CtaBand locale={locale} />
+</MainLayout>

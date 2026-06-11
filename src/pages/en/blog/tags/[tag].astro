@@ -1,0 +1,81 @@
+---
+import MainLayout from '@/layouts/MainLayout.astro';
+import JsonLd from '@/components/atoms/JsonLd.astro';
+import ArticleCard from '@/components/molecules/ArticleCard.astro';
+import { loadPostsByTag, entrySlug, allTags } from '@/lib/blog';
+import { computeReadingTime } from '@/lib/readingTime';
+import { buildBlogIndexGraph } from '@/lib/jsonLd';
+import { useTranslations, localizeBlogPostPath, localizeTagPath, localizePath } from '@/i18n/utils';
+import type { GetStaticPaths } from 'astro';
+import type { Locale } from '@/types';
+
+const locale: Locale = 'en';
+
+export const getStaticPaths = (async () => {
+  const tags = await allTags('en');
+  return tags.map((tag) => ({ params: { tag }, props: { tag } }));
+}) satisfies GetStaticPaths;
+
+const { tag } = Astro.props;
+const t = useTranslations(locale);
+const posts = await loadPostsByTag(locale, tag);
+const graph = buildBlogIndexGraph(locale);
+const localizedPaths = { fr: localizeTagPath(tag, 'fr'), en: localizeTagPath(tag, 'en') };
+const title = `${t('blog.tagPrefix')}${tag}`;
+const metaDescription = t('blog.tagMetaTemplate').replace('{tag}', tag);
+---
+
+<MainLayout
+  title={`${title} | Karib Teck`}
+  description={metaDescription}
+  locale={locale}
+  route="blog"
+  localizedPaths={localizedPaths}
+>
+  <Fragment slot="head"><JsonLd data={graph} /></Fragment>
+  <section class="tag-page">
+    <header class="tag-header">
+      <h1>{title}</h1>
+      <p><a href={localizePath('blog', locale)}>← {t('blog.allArticles')}</a></p>
+    </header>
+    <div class="article-grid">
+      {
+        posts.map((entry) => (
+          <ArticleCard
+            href={localizeBlogPostPath(entrySlug(entry), locale)}
+            title={entry.data.title}
+            excerpt={entry.data.excerpt}
+            date={entry.data.date}
+            readingMinutes={computeReadingTime(entry.body ?? '')}
+            tags={entry.data.tags}
+            locale={locale}
+          />
+        ))
+      }
+    </div>
+  </section>
+</MainLayout>
+
+<style>
+  .tag-page {
+    max-width: var(--content-max);
+    margin: 0 auto;
+    padding: calc(var(--nav-height) + 64px) 5% 96px;
+  }
+  .tag-header h1 {
+    font-family: var(--font-display);
+    font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+    margin-bottom: 12px;
+    color: var(--color-primary);
+  }
+  .tag-header a {
+    color: var(--color-teal);
+    text-decoration: none;
+  }
+  .article-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 24px;
+    margin-top: 32px;
+  }
+</style>
