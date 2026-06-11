@@ -71,7 +71,7 @@ const zonesStat = { value: String(AREA_SERVED.length), label: t('local.zonesLabe
     justify-content: center;
   }
   .zones-card {
-    grid-column: span 2;
+    grid-column: span 3;
     background: var(--color-surface-card);
     border: 1px solid var(--color-surface-gray);
     border-radius: var(--radius-lg);
@@ -102,11 +102,16 @@ const zonesStat = { value: String(AREA_SERVED.length), label: t('local.zonesLabe
     height: 16px;
     color: var(--color-teal);
   }
+  /* Row 2: the two accent blocks each take half the row. */
+  .local-grid > :global(.accent) {
+    grid-column: span 2;
+  }
   @media (max-width: 860px) {
     .local-grid {
       grid-template-columns: 1fr;
     }
-    .zones-card {
+    .zones-card,
+    .local-grid > :global(.accent) {
       grid-column: span 1;
     }
   }
