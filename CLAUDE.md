@@ -1,9 +1,9 @@
 # CLAUDE.md — karibteck.com
 
-Tu travailles sur **karibteck.com** : le site de **KaribTeck**, agence web aux Antilles/DOM (Guadeloupe, Martinique, Guyane…), montée par 3 ingénieurs.
+Tu travailles sur **karibteck.com** : le site de **KaribTeck**, agence web aux Antilles/DOM (Guadeloupe, Martinique, Guyane…), montée par 2 fondateurs (Aymeric et Claude).
 Site **statique Astro multi-pages, bilingue FR (par défaut) / EN**, déployé sur un VPS (nginx).
 
-Positionnement : **agence ancrée aux Antilles, standards internationaux**. Sites web, applications mobiles, logiciels métier, e-commerce, IA.
+Positionnement : **agence ancrée aux Antilles, standards internationaux**. 3 verticaux : sites web, applications mobiles, intelligence artificielle (agents IA).
 
 Spec de design source : `docs/superpowers/specs/2026-06-09-karibteck-astro-refonte-design.md`. En cas de conflit entre ce CLAUDE.md et le spec, le spec gagne pour les décisions produit/design ; ce CLAUDE.md gagne pour les règles de code.
 

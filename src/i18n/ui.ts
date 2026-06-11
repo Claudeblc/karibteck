@@ -79,8 +79,9 @@ export const ui = {
     'pricing.sub':
       'Chaque projet est unique. Ces tarifs sont indicatifs — contactez-nous pour un devis sur mesure adapté à vos besoins exacts.',
     'pricing.popular': '⭐ Le plus choisi',
+    'hero.float.label': 'Performance localisée',
     'team.badge': 'L’équipe',
-    'team.title.lead': 'Trois ingénieurs,',
+    'team.title.lead': 'Deux ingénieurs,',
     'team.title.hl': 'une exigence commune',
     'team.sub':
       'Une équipe à taille humaine, où chaque projet est porté par des développeurs seniors qui maîtrisent leur sujet de bout en bout.',
@@ -274,8 +275,9 @@ export const ui = {
     'pricing.sub':
       'Every project is unique. These prices are indicative — contact us for a tailored quote matched to your exact needs.',
     'pricing.popular': '⭐ Most chosen',
+    'hero.float.label': 'Localized performance',
     'team.badge': 'The team',
-    'team.title.lead': 'Three engineers,',
+    'team.title.lead': 'Two engineers,',
     'team.title.hl': 'one shared standard',
     'team.sub':
       'A small, focused team where every project is led by senior developers who own their craft end to end.',

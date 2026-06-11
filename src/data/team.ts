@@ -8,45 +8,32 @@ interface TeamMemberData {
   bio: Localized<string>;
 }
 
-// Names are placeholders to fill once finalized; roles are real.
+// Two founders. Roles split the three verticals (web, mobile, IA) across them.
 const TEAM_DATA: TeamMemberData[] = [
   {
     initials: 'A',
-    name: '[Prénom Nom]',
+    name: 'Aymeric',
     accent: 'var(--color-teal)',
     role: {
-      fr: 'Développement web & architecture',
-      en: 'Web development & architecture',
+      fr: 'Développement web, mobile & architecture',
+      en: 'Web & mobile development, architecture',
     },
     bio: {
-      fr: 'Conception et développement de sites et applications web performants, du front-end à l’architecture back-end.',
-      en: 'Designs and builds high-performance websites and web apps, from the front-end to the back-end architecture.',
-    },
-  },
-  {
-    initials: 'B',
-    name: '[Prénom Nom]',
-    accent: 'var(--color-teal-bright)',
-    role: {
-      fr: 'Applications mobiles & design produit',
-      en: 'Mobile apps & product design',
-    },
-    bio: {
-      fr: 'Applications iOS et Android sur mesure et design d’interfaces centrées sur l’expérience utilisateur.',
-      en: 'Custom iOS and Android apps and interface design focused on the user experience.',
+      fr: 'Conception et développement de sites, d’applications web et mobiles performants, du front-end à l’architecture back-end.',
+      en: 'Designs and builds high-performance websites, web and mobile apps, from the front-end to the back-end architecture.',
     },
   },
   {
     initials: 'C',
-    name: '[Prénom Nom]',
-    accent: 'var(--color-primary)',
+    name: 'Claude',
+    accent: 'var(--color-teal-bright)',
     role: {
-      fr: 'DevOps, cloud & intelligence artificielle',
-      en: 'DevOps, cloud & artificial intelligence',
+      fr: 'Intelligence artificielle, DevOps & cloud',
+      en: 'Artificial intelligence, DevOps & cloud',
     },
     bio: {
-      fr: 'Infrastructure cloud, déploiement continu et intégration de solutions d’IA dans les produits livrés.',
-      en: 'Cloud infrastructure, continuous deployment and AI integration into the products we ship.',
+      fr: 'Conception d’agents IA intégrés aux produits livrés, infrastructure cloud et déploiement continu.',
+      en: 'Builds AI agents integrated into the products we ship, cloud infrastructure and continuous deployment.',
     },
   },
 ];
