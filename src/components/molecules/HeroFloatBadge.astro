@@ -1,0 +1,71 @@
+---
+import { Icon } from 'astro-icon/components';
+
+interface Props {
+  value: string;
+  label: string;
+  icon?: string;
+}
+const { value, label, icon = 'lucide:rocket' } = Astro.props;
+---
+
+<div class="hero-float">
+  <Icon name={icon} aria-hidden="true" />
+  <div>
+    <span class="value">{value}</span>
+    <span class="label">{label}</span>
+  </div>
+</div>
+
+<style>
+  .hero-float {
+    position: absolute;
+    bottom: -18px;
+    left: -18px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 20px;
+    background: var(--color-surface-card);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-card-hover);
+    animation: hero-float-bounce 3s ease-in-out infinite;
+  }
+  .hero-float :global(svg) {
+    width: 34px;
+    height: 34px;
+    color: var(--color-sunset);
+  }
+  .value {
+    display: block;
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 1.35rem;
+    line-height: 1;
+    color: var(--color-primary);
+  }
+  .label {
+    font-size: 0.8rem;
+    color: var(--color-on-surface-variant);
+  }
+  @keyframes hero-float-bounce {
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+  @media (max-width: 860px) {
+    .hero-float {
+      left: 10px;
+      bottom: 10px;
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .hero-float {
+      animation: none;
+    }
+  }
+</style>

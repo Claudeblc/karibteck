@@ -2,6 +2,7 @@
 import { Image } from 'astro:assets';
 import heroImage from '@/assets/hero.png';
 import Highlight from '@/components/atoms/Highlight.astro';
+import HeroFloatBadge from '@/components/molecules/HeroFloatBadge.astro';
 import Button from '@/components/atoms/Button.astro';
 import SectionBadge from '@/components/atoms/SectionBadge.astro';
 import { useTranslations, localizePath } from '@/i18n/utils';
@@ -41,6 +42,7 @@ const t = useTranslations(locale);
         loading="eager"
         fetchpriority="high"
       />
+      <HeroFloatBadge value="100%" label={t('hero.float.label')} />
     </div>
   </div>
 </section>
@@ -87,6 +89,9 @@ const t = useTranslations(locale);
   .hero-ctas :global(.btn-outline):hover {
     background: rgba(255, 255, 255, 0.1);
     color: var(--color-on-primary);
+  }
+  .hero-img-col {
+    position: relative;
   }
   .hero-img-col :global(img) {
     width: 100%;
