@@ -31,7 +31,7 @@ export function buildLlmsTxt(): string {
   return [
     `# ${ORGANIZATION_NAME}`,
     '',
-    `> Agence web aux Antilles/DOM. Création de sites web, applications mobiles, logiciels métier, e-commerce et intégration d'IA pour les entreprises de ${AREA_SERVED.join(', ')}.`,
+    `> Agence web aux Antilles/DOM. Création de sites web, applications mobiles et intégration d'IA pour les entreprises de ${AREA_SERVED.join(', ')}.`,
     '',
     '## Services',
     ...services.map((s) => `- [${s.title}](${SITE_URL}/#services): ${s.description}`),

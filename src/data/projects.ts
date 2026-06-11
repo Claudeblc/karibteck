@@ -12,29 +12,29 @@ interface ProjectData {
 // delivered client work (the agency starts with zero clients).
 const PROJECTS_DATA: ProjectData[] = [
   {
-    emoji: 'lucide:shopping-cart',
+    emoji: 'lucide:globe',
     gradient: 'linear-gradient(135deg,#0d2040,#1a3560)',
-    category: { fr: 'E-Commerce', en: 'E-Commerce' },
+    category: { fr: 'Site Web', en: 'Website' },
     title: {
-      fr: 'Boutique en ligne — Distribution alimentaire',
-      en: 'Online store — Food distribution',
+      fr: 'Site vitrine — Cabinet de conseil',
+      en: 'Brochure site — Consulting firm',
     },
     description: {
-      fr: 'Plateforme e-commerce complète avec gestion des stocks, livraison locale et paiement en ligne, pensée pour un distributeur alimentaire des DOM.',
-      en: 'A complete e-commerce platform with inventory management, local delivery and online payment, designed for a food distributor in the overseas territories.',
+      fr: 'Site vitrine rapide et optimisé SEO, avec prise de rendez-vous en ligne et espace actualités, pensé pour un cabinet de conseil local.',
+      en: 'A fast, SEO-optimized brochure site with online booking and a news section, designed for a local consulting firm.',
     },
   },
   {
-    emoji: 'lucide:settings',
+    emoji: 'lucide:cpu',
     gradient: 'linear-gradient(135deg,#0a1e40,#0d2d50)',
-    category: { fr: 'Logiciel Métier', en: 'Business Software' },
+    category: { fr: 'Intelligence Artificielle', en: 'Artificial Intelligence' },
     title: {
-      fr: 'ERP de gestion — Entreprise du BTP',
-      en: 'Management ERP — Construction company',
+      fr: 'Assistant IA — Service client',
+      en: 'AI assistant — Customer support',
     },
     description: {
-      fr: 'Progiciel de gestion intégré couvrant devis, facturation, gestion de chantiers et suivi RH pour une PME du bâtiment.',
-      en: 'An integrated management suite covering quotes, invoicing, site management and HR tracking for a construction SME.',
+      fr: 'Chatbot intelligent connecté à la base de connaissances de l’entreprise, répondant automatiquement aux questions fréquentes des clients.',
+      en: 'A smart chatbot connected to the company knowledge base, answering customers’ frequent questions automatically.',
     },
   },
   {

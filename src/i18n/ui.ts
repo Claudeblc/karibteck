@@ -41,7 +41,7 @@ export const ui = {
     'services.detail.backToServices': 'Tous nos services',
     'services.page.metaTitle': 'Nos services digitaux aux Antilles | Karib Teck',
     'services.page.metaDescription':
-      'Sites web, applications mobiles, logiciels métier, e-commerce, hébergement DevOps et IA : découvrez tous les services de Karib Teck aux Antilles.',
+      'Sites web, applications mobiles et intelligence artificielle : découvrez les services de Karib Teck aux Antilles.',
     'services.page.badge': 'Nos Services',
     'services.page.title.lead': 'Des solutions',
     'services.page.title.hl': 'adaptées à vos ambitions',
@@ -229,7 +229,7 @@ export const ui = {
     'services.detail.backToServices': 'All our services',
     'services.page.metaTitle': 'Our digital services in the French West Indies | Karib Teck',
     'services.page.metaDescription':
-      'Website creation, mobile apps, business software, e-commerce, DevOps hosting and AI: explore the full range of Karib Teck services in the French West Indies.',
+      'Website creation, mobile apps and artificial intelligence: explore the services of Karib Teck in the French West Indies.',
     'services.page.badge': 'Our Services',
     'services.page.title.lead': 'Solutions',
     'services.page.title.hl': 'tailored to your ambitions',
