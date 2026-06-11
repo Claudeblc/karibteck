@@ -2,7 +2,7 @@
 import { AGENCY, getTagline } from '@/data/agency';
 import NavMenu from '@/components/molecules/NavMenu.astro';
 import LangToggle from '@/components/molecules/LangToggle.astro';
-import { useTranslations } from '@/i18n/utils';
+import { useTranslations, localizePath } from '@/i18n/utils';
 import { DEFAULT_LOCALE } from '@/lib/constants';
 import type { Locale, RouteKey } from '@/types';
 
@@ -17,7 +17,7 @@ const logoSub = `— ${getTagline(locale)} —`;
 ---
 
 <nav>
-  <a href="#hero" class="nav-logo">
+  <a href={localizePath('home', locale)} class="nav-logo">
     <span class="nav-logo-name">{AGENCY.name.toUpperCase()}</span>
     <span class="nav-logo-sub">{logoSub}</span>
   </a>
