@@ -22,7 +22,7 @@ const logoSub = `— ${getTagline(locale)} —`;
     <span class="nav-logo-sub">{logoSub}</span>
   </a>
   <div class="nav-actions">
-    <NavMenu locale={locale} />
+    <NavMenu locale={locale} route={route} />
     <LangToggle locale={locale} route={route} altHref={altHref} />
   </div>
   <button class="burger" id="burger" aria-label={t('a11y.openMenu')}>

@@ -2,12 +2,13 @@
 import { NAV_LINKS } from '@/data/agency';
 import { useTranslations, localizePath } from '@/i18n/utils';
 import Button from '@/components/atoms/Button.astro';
-import type { Locale } from '@/types';
+import type { Locale, RouteKey } from '@/types';
 
 interface Props {
   locale: Locale;
+  route?: RouteKey;
 }
-const { locale } = Astro.props;
+const { locale, route = 'home' } = Astro.props;
 const t = useTranslations(locale);
 ---
 
@@ -15,7 +16,13 @@ const t = useTranslations(locale);
   {
     NAV_LINKS.map((link) => (
       <li>
-        <a href={localizePath(link.routeKey, locale)}>{t(link.labelKey)}</a>
+        <a
+          href={localizePath(link.routeKey, locale)}
+          class:list={[{ 'is-active': link.routeKey === route }]}
+          aria-current={link.routeKey === route ? 'page' : undefined}
+        >
+          {t(link.labelKey)}
+        </a>
       </li>
     ))
   }
@@ -40,10 +47,19 @@ const t = useTranslations(locale);
     font-family: var(--font-label);
     text-decoration: none;
     font-size: 0.95rem;
-    transition: color 0.2s;
+    border-bottom: 2px solid transparent;
+    padding-bottom: 3px;
+    transition:
+      color 0.2s,
+      border-color 0.2s;
   }
   .nav-links a:hover {
     color: var(--color-teal);
+  }
+  .nav-links a.is-active {
+    color: var(--color-teal-text);
+    font-weight: 700;
+    border-bottom-color: var(--color-teal);
   }
   @media (max-width: 860px) {
     .nav-links {
