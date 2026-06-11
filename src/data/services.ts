@@ -7,6 +7,7 @@ interface ServiceData {
   title: Localized<string>;
   description: Localized<string>;
   intro: Localized<string>;
+  metaDescription: Localized<string>;
   benefits: Localized<string[]>;
 }
 
@@ -23,6 +24,10 @@ const SERVICES_DATA: ServiceData[] = [
     intro: {
       fr: 'Nous concevons des sites web sur mesure pour les entreprises des Antilles : vitrines élégantes, sites e-commerce et portails corporate, pensés pour être rapides, bien référencés et faciles à gérer.',
       en: 'We design custom websites for businesses in the French West Indies: elegant brochure sites, e-commerce stores and corporate portals — built to be fast, well-ranked and easy to manage.',
+    },
+    metaDescription: {
+      fr: 'Création de sites web sur mesure pour les entreprises des Antilles : vitrines, e-commerce et portails corporate, rapides, bien référencés et faciles à gérer.',
+      en: 'Custom website design and development for businesses in the French West Indies: fast, SEO-optimized brochure, e-commerce and corporate sites built to convert.',
     },
     benefits: {
       fr: [
@@ -52,6 +57,10 @@ const SERVICES_DATA: ServiceData[] = [
       fr: 'Nous développons des applications iOS et Android natives ou cross-platform pour digitaliser votre activité : commandes, réservations, suivi client, tableaux de bord.',
       en: 'We build native or cross-platform iOS and Android apps to digitize your business: orders, bookings, customer tracking, dashboards.',
     },
+    metaDescription: {
+      fr: "Développement d'applications mobiles iOS et Android pour les entreprises des Antilles : commandes, réservations, suivi client et tableaux de bord sur mesure.",
+      en: 'iOS and Android mobile app development for businesses in the French West Indies: orders, bookings, customer tracking and custom dashboards in one app.',
+    },
     benefits: {
       fr: [
         'Une seule base de code pour iOS et Android',
@@ -79,6 +88,10 @@ const SERVICES_DATA: ServiceData[] = [
     intro: {
       fr: 'Nous créons des logiciels métier sur mesure — ERP, CRM, outils de facturation et de gestion — qui automatisent votre cœur d’activité et remplacent les tableurs éparpillés.',
       en: 'We build custom business software — ERP, CRM, invoicing and management tools — that automates the core of your activity and replaces scattered spreadsheets.',
+    },
+    metaDescription: {
+      fr: "Logiciels métier sur mesure pour les Antilles : ERP, CRM, facturation et gestion. Automatisez votre cœur d'activité et remplacez vos tableurs éparpillés.",
+      en: 'Custom business software for the French West Indies: ERP, CRM, invoicing and management tools that automate your core activity and replace spreadsheets.',
     },
     benefits: {
       fr: [
@@ -108,6 +121,10 @@ const SERVICES_DATA: ServiceData[] = [
       fr: 'Nous lançons des boutiques en ligne performantes et sécurisées, du catalogue au paiement, prêtes à vendre auprès de vos clients antillais et au-delà.',
       en: 'We launch fast, secure online stores, from catalog to checkout, ready to sell to your customers in the West Indies and beyond.',
     },
+    metaDescription: {
+      fr: 'Création de boutiques en ligne performantes et sécurisées aux Antilles : catalogue, paiement, stocks et expéditions, prêtes à vendre à vos clients.',
+      en: 'Fast, secure online store development in the French West Indies: catalog, checkout, inventory and shipping, ready to sell to your customers and beyond.',
+    },
     benefits: {
       fr: [
         'Paiement en ligne sécurisé',
@@ -135,6 +152,10 @@ const SERVICES_DATA: ServiceData[] = [
     intro: {
       fr: 'Nous gérons toute l’infrastructure technique de vos applications : déploiement, cloud, CI/CD, sauvegardes et maintenance, pour que vous restiez concentré sur votre business.',
       en: 'We handle the entire technical infrastructure of your applications: deployment, cloud, CI/CD, backups and maintenance, so you stay focused on your business.',
+    },
+    metaDescription: {
+      fr: 'Hébergement et DevOps pour vos applications aux Antilles : cloud, déploiements CI/CD, sauvegardes, SSL et maintenance. La technique gérée de A à Z.',
+      en: 'Hosting and DevOps for your applications in the French West Indies: cloud, CI/CD deployments, backups, SSL and maintenance, handled end to end.',
     },
     benefits: {
       fr: [
@@ -164,6 +185,10 @@ const SERVICES_DATA: ServiceData[] = [
       fr: 'Nous intégrons l’intelligence artificielle dans vos outils : chatbots, analyse de données, automatisation et recommandations — uniquement là où elle apporte une réelle valeur.',
       en: 'We integrate artificial intelligence into your tools: chatbots, data analysis, automation and recommendations — only where it brings real value.',
     },
+    metaDescription: {
+      fr: "Intégration d'intelligence artificielle dans vos outils aux Antilles : chatbots, analyse de données et automatisation, là où elle apporte une vraie valeur.",
+      en: 'Artificial intelligence integrated into your tools in the French West Indies: chatbots, data analysis and automation, only where it brings real value.',
+    },
     benefits: {
       fr: [
         'Chatbots et assistants intelligents',
@@ -189,6 +214,7 @@ export function getServices(locale: Locale): Service[] {
     title: s.title[locale],
     description: s.description[locale],
     intro: s.intro[locale],
+    metaDescription: s.metaDescription[locale],
     benefits: s.benefits[locale],
   }));
 }

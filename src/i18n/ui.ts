@@ -41,7 +41,7 @@ export const ui = {
     'services.detail.backToServices': 'Tous nos services',
     'services.page.metaTitle': 'Nos services digitaux aux Antilles | Karib Teck',
     'services.page.metaDescription':
-      "Création de sites web, applications mobiles, logiciels métier, e-commerce, hébergement DevOps et intelligence artificielle. Découvrez l'ensemble des services de Karib Teck aux Antilles.",
+      'Sites web, applications mobiles, logiciels métier, e-commerce, hébergement DevOps et IA : découvrez tous les services de Karib Teck aux Antilles.',
     'services.page.badge': 'Nos Services',
     'services.page.title.lead': 'Des solutions',
     'services.page.title.hl': 'adaptées à vos ambitions',
@@ -156,6 +156,8 @@ export const ui = {
     'blog.tagsTitle': 'Explorer par thème',
     'blog.allArticles': 'Tous les articles',
     'blog.tagPrefix': 'Articles : ',
+    'blog.tagMetaTemplate':
+      "Nos articles sur {tag} : conseils concrets et retours d'expérience de l'agence Karib Teck.",
     'blog.hero.badge': 'Le blog',
     'blog.hero.title.lead': 'Idées &',
     'blog.hero.title.hl': 'Innovation',
@@ -181,7 +183,7 @@ export const ui = {
       'Le savoir-faire d’une équipe locale qui maîtrise les standards internationaux.',
     'about.page.metaTitle': 'À propos de Karib Teck | Agence digitale aux Antilles',
     'about.page.metaDescription':
-      'Karib Teck est une agence digitale ancrée aux Antilles : développeurs seniors, exigence technique et accompagnement de proximité. Découvrez notre vision, nos engagements et notre équipe.',
+      'Karib Teck, agence digitale ancrée aux Antilles : développeurs seniors, exigence technique et accompagnement de proximité. Notre vision et notre équipe.',
     'about.page.badge': 'Qui sommes-nous',
     'about.page.title.lead': 'Une agence ancrée aux Antilles,',
     'about.page.title.hl': 'tournée vers le monde',
@@ -227,7 +229,7 @@ export const ui = {
     'services.detail.backToServices': 'All our services',
     'services.page.metaTitle': 'Our digital services in the French West Indies | Karib Teck',
     'services.page.metaDescription':
-      'Website creation, mobile apps, business software, e-commerce, DevOps hosting and artificial intelligence. Explore the full range of Karib Teck services in the French West Indies.',
+      'Website creation, mobile apps, business software, e-commerce, DevOps hosting and AI: explore the full range of Karib Teck services in the French West Indies.',
     'services.page.badge': 'Our Services',
     'services.page.title.lead': 'Solutions',
     'services.page.title.hl': 'tailored to your ambitions',
@@ -340,6 +342,8 @@ export const ui = {
     'blog.tagsTitle': 'Browse by topic',
     'blog.allArticles': 'All articles',
     'blog.tagPrefix': 'Articles: ',
+    'blog.tagMetaTemplate':
+      'Our articles on {tag}: practical tips and insights from the Karib Teck agency.',
     'blog.hero.badge': 'The blog',
     'blog.hero.title.lead': 'Ideas &',
     'blog.hero.title.hl': 'Innovation',
@@ -364,7 +368,7 @@ export const ui = {
     'expertise.sub': 'The craft of a local team that masters international standards.',
     'about.page.metaTitle': 'About Karib Teck | Digital agency in the French West Indies',
     'about.page.metaDescription':
-      'Karib Teck is a digital agency rooted in the French West Indies: senior developers, technical rigor and close support. Discover our vision, our commitments and our team.',
+      'Karib Teck is a digital agency rooted in the French West Indies: senior developers, technical rigor and close support. Discover our vision and our team.',
     'about.page.badge': 'Who we are',
     'about.page.title.lead': 'Rooted in the West Indies,',
     'about.page.title.hl': 'open to the world',

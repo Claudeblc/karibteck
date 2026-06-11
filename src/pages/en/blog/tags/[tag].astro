@@ -24,11 +24,12 @@ const posts = await loadPostsByTag(locale, tag);
 const graph = buildBlogIndexGraph(locale);
 const localizedPaths = { fr: localizeTagPath(tag, 'fr'), en: localizeTagPath(tag, 'en') };
 const title = `${t('blog.tagPrefix')}${tag}`;
+const metaDescription = t('blog.tagMetaTemplate').replace('{tag}', tag);
 ---
 
 <MainLayout
   title={`${title} | Karib Teck`}
-  description={`${t('blog.tagPrefix')}${tag}`}
+  description={metaDescription}
   locale={locale}
   route="blog"
   localizedPaths={localizedPaths}

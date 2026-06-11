@@ -28,9 +28,10 @@ const paths = {
 const url = new URL(paths.fr, SITE_URL).href;
 const graph = buildServiceGraph(locale, service, url);
 const title = `${service.title} aux Antilles | Karib Teck`;
+const description = (service.metaDescription ?? service.intro).slice(0, 160);
 ---
 
-<MainLayout title={title} description={service.intro} locale={locale} localizedPaths={paths}>
+<MainLayout title={title} description={description} locale={locale} localizedPaths={paths}>
   <Fragment slot="head"><JsonLd data={graph} /></Fragment>
   <Nav slot="nav" locale={locale} altHref={paths.en} />
   <ServiceDetail service={service} locale={locale} />

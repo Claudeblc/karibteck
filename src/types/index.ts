@@ -20,6 +20,8 @@ export interface Service {
   description: string;
   tags: string[];
   intro: string;
+  /** Concise SEO meta description (≈150-155 chars), distinct from `intro`. */
+  metaDescription?: string;
   benefits: string[];
 }
 
