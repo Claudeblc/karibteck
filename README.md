@@ -222,4 +222,6 @@ Ignoré (régénéré par la restauration) : `.agents/`, `.claude/skills/`, `*.l
 
 Build statique (`npm run build` → `./dist`) destiné à être servi par **nginx sur un VPS**, via GitHub Actions.
 
-> ⏸️ **Le pipeline de déploiement est en standby** tant que l'infrastructure n'est pas validée. Le build est produit et vérifié en CI ; seule l'étape de publication reste à brancher.
+Le workflow [`.github/workflows/deploy.yml`](.github/workflows/deploy.yml) construit `dist/` et le publie sur le VPS via rsync/SSH (nginx sert les fichiers statiques). Procédure de mise en route, secrets à renseigner et exemple de vhost nginx : [`docs/deploy/vps.md`](docs/deploy/vps.md).
+
+> ⏸️ **Le pipeline de déploiement est en standby** tant que l'infrastructure n'est pas validée : le job `deploy` ne s'exécute que lorsque la variable de dépôt `DEPLOY_ENABLED` vaut `true`. La CI reste verte et rien n'est publié d'ici là.
