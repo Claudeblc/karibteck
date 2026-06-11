@@ -4,7 +4,7 @@ import heroImage from '@/assets/hero.png';
 import Highlight from '@/components/atoms/Highlight.astro';
 import Button from '@/components/atoms/Button.astro';
 import SectionBadge from '@/components/atoms/SectionBadge.astro';
-import { useTranslations } from '@/i18n/utils';
+import { useTranslations, localizePath } from '@/i18n/utils';
 import { DEFAULT_LOCALE } from '@/lib/constants';
 import type { Locale } from '@/types';
 
@@ -27,7 +27,9 @@ const t = useTranslations(locale);
       <p class="hero-sub">{t('hero.sub')}</p>
       <div class="hero-ctas">
         <Button href="#services" variant="primary">{t('cta.discoverServices')}</Button>
-        <Button href="#realisations" variant="outline">{t('cta.seeProjects')}</Button>
+        <Button href={localizePath('contact', locale)} variant="outline">
+          {t('cta.contactUs')}
+        </Button>
       </div>
     </div>
     <div class="hero-img-col">
