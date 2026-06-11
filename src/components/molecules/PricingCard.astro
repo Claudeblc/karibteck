@@ -28,10 +28,11 @@ const ctaLabel = plan.ctaKey === 'requestQuote' ? t('cta.requestQuote') : t('cta
 <style>
   .tarif-card {
     background: var(--color-surface-card);
-    border: 1px solid var(--color-outline-variant);
+    border: 1px solid var(--color-surface-gray);
     border-radius: var(--radius-lg);
     padding: 36px 28px;
     position: relative;
+    box-shadow: var(--shadow-card);
     transition:
       transform 0.3s,
       border-color 0.3s,
@@ -39,7 +40,6 @@ const ctaLabel = plan.ctaKey === 'requestQuote' ? t('cta.requestQuote') : t('cta
   }
   .tarif-card:hover {
     transform: translateY(-4px);
-    border-color: transparent;
     box-shadow: var(--shadow-card-hover);
   }
   .tarif-card.popular {
