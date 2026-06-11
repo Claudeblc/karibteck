@@ -1,9 +1,8 @@
 ---
 import { getServices } from '@/data/services';
 import ServiceCard from '@/components/molecules/ServiceCard.astro';
-import SectionHeader from '@/components/molecules/SectionHeader.astro';
 import BentoGrid from '@/components/molecules/BentoGrid.astro';
-import { useTranslations, localizeServicePath } from '@/i18n/utils';
+import { localizeServicePath } from '@/i18n/utils';
 import { DEFAULT_LOCALE } from '@/lib/constants';
 import type { Locale } from '@/types';
 
@@ -11,19 +10,12 @@ interface Props {
   locale?: Locale;
 }
 const { locale = DEFAULT_LOCALE } = Astro.props;
-const t = useTranslations(locale);
 const services = getServices(locale);
 const spans = [6, 6, 4, 4, 4, 12] as const;
 ---
 
 <section id="solutions">
   <div class="section-inner">
-    <SectionHeader
-      badge={t('services.badge')}
-      lead={t('services.title.lead')}
-      highlight={t('services.title.hl')}
-      sub={t('services.sub')}
-    />
     <BentoGrid>
       {
         services.map((service, i) => (
