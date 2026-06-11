@@ -1,0 +1,41 @@
+---
+import SectionHeader from '@/components/molecules/SectionHeader.astro';
+import BentoGrid from '@/components/molecules/BentoGrid.astro';
+import ExpertiseCard from '@/components/molecules/ExpertiseCard.astro';
+import { getExpertise } from '@/data/expertise';
+import { useTranslations } from '@/i18n/utils';
+import { DEFAULT_LOCALE } from '@/lib/constants';
+import type { Locale } from '@/types';
+
+interface Props {
+  locale?: Locale;
+}
+const { locale = DEFAULT_LOCALE } = Astro.props;
+const t = useTranslations(locale);
+const items = getExpertise(locale);
+---
+
+<section id="expertise">
+  <div class="section-inner">
+    <SectionHeader
+      badge={t('expertise.badge')}
+      lead={t('expertise.title.lead')}
+      highlight={t('expertise.title.hl')}
+      sub={t('expertise.sub')}
+    />
+    <BentoGrid>
+      {items.map((item) => <ExpertiseCard item={item} />)}
+    </BentoGrid>
+  </div>
+
+  <style>
+    #expertise {
+      background: var(--color-surface);
+      padding: var(--section-pad-y) 5%;
+    }
+    .section-inner {
+      max-width: var(--content-max);
+      margin: 0 auto;
+    }
+  </style>
+</section>

@@ -210,6 +210,34 @@ export function buildServicesIndexGraph(locale: Locale) {
   };
 }
 
+/** Full graph for the /a-propos (about) page. */
+export function buildAboutGraph(locale: Locale) {
+  const t = useTranslations(locale);
+  const homeUrl = new URL(routes[locale].home, SITE_URL).href;
+  const aboutUrl = new URL(routes[locale].about, SITE_URL).href;
+  return {
+    '@context': 'https://schema.org',
+    '@graph': [
+      buildOrganization(locale),
+      buildWebSite(locale),
+      {
+        '@type': 'AboutPage',
+        '@id': `${SITE_URL}/#aboutpage`,
+        url: aboutUrl,
+        name: t('about.page.metaTitle'),
+        inLanguage: locale,
+      },
+      {
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          { '@type': 'ListItem', position: 1, name: t('nav.home'), item: homeUrl },
+          { '@type': 'ListItem', position: 2, name: t('nav.aboutPage'), item: aboutUrl },
+        ],
+      },
+    ],
+  };
+}
+
 /** Full graph for the home page. */
 export function buildHomeGraph(locale: Locale, url: string) {
   return {

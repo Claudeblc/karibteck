@@ -141,6 +141,14 @@ export const ui = {
     'expertise.title.hl': 'ancrée et exigeante',
     'expertise.sub':
       'Le savoir-faire d’une équipe locale qui maîtrise les standards internationaux.',
+    'about.page.metaTitle': 'À propos de Karib Teck | Agence digitale aux Antilles',
+    'about.page.metaDescription':
+      'Karib Teck est une agence digitale ancrée aux Antilles : développeurs seniors, exigence technique et accompagnement de proximité. Découvrez notre vision, nos engagements et notre équipe.',
+    'about.page.badge': 'Qui sommes-nous',
+    'about.page.title.lead': 'Une agence ancrée aux Antilles,',
+    'about.page.title.hl': 'tournée vers le monde',
+    'about.page.sub':
+      'Nous réunissons la proximité d’une équipe locale et l’exigence des standards internationaux pour bâtir des produits digitaux durables avec les entreprises des Antilles.',
   },
   en: {
     'nav.home': 'Home',
@@ -278,6 +286,14 @@ export const ui = {
     'expertise.title.lead': 'An agency',
     'expertise.title.hl': 'rooted and rigorous',
     'expertise.sub': 'The craft of a local team that masters international standards.',
+    'about.page.metaTitle': 'About Karib Teck | Digital agency in the French West Indies',
+    'about.page.metaDescription':
+      'Karib Teck is a digital agency rooted in the French West Indies: senior developers, technical rigor and close support. Discover our vision, our commitments and our team.',
+    'about.page.badge': 'Who we are',
+    'about.page.title.lead': 'Rooted in the West Indies,',
+    'about.page.title.hl': 'open to the world',
+    'about.page.sub':
+      'We combine the closeness of a local team with the demands of international standards to build durable digital products alongside West Indian businesses.',
   },
 } as const;
 
