@@ -1,0 +1,51 @@
+---
+import Highlight from '@/components/atoms/Highlight.astro';
+import Button from '@/components/atoms/Button.astro';
+import { useTranslations, localizePath } from '@/i18n/utils';
+import { DEFAULT_LOCALE } from '@/lib/constants';
+import type { Locale } from '@/types';
+
+interface Props {
+  locale?: Locale;
+}
+const { locale = DEFAULT_LOCALE } = Astro.props;
+const t = useTranslations(locale);
+const contactHref = localizePath('contact', locale);
+---
+
+<section class="cta-band">
+  <div class="cta-inner">
+    <h2 class="cta-title">
+      {t('cta.band.title.lead')}
+      <Highlight text={t('cta.band.title.hl')} />
+    </h2>
+    <p class="cta-sub">{t('cta.band.sub')}</p>
+    <Button href={contactHref} variant="primary">{t('cta.band.button')}</Button>
+  </div>
+
+  <style>
+    .cta-band {
+      background: var(--color-deep-ocean);
+      color: var(--color-on-primary);
+      padding: var(--section-pad-y) 5%;
+    }
+    .cta-inner {
+      max-width: 760px;
+      margin: 0 auto;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 18px;
+    }
+    .cta-title {
+      font-family: var(--font-display);
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      letter-spacing: -0.01em;
+    }
+    .cta-sub {
+      color: var(--color-on-primary-variant);
+      max-width: 52ch;
+    }
+  </style>
+</section>
