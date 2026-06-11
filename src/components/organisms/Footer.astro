@@ -23,11 +23,12 @@ const socialLinks: SocialLinkType[] = SOCIAL_LINKS.map((s) =>
   s.label === 'WhatsApp' && WHATSAPP_NUMBER
     ? { ...s, href: `https://wa.me/${WHATSAPP_NUMBER}` }
     : s,
-);
+).filter((s) => s.href !== '' && s.href !== '#');
+const hasSocials = socialLinks.length > 0;
 ---
 
 <footer>
-  <div class="footer-grid">
+  <div class:list={['footer-grid', { 'no-social': !hasSocials }]}>
     <div class="footer-brand">
       <span class="footer-name">{AGENCY.name}</span>
       <p>{tagline}</p>
@@ -62,12 +63,18 @@ const socialLinks: SocialLinkType[] = SOCIAL_LINKS.map((s) =>
         <li><a href={localizePath('terms', locale)}>{t('footer.legal.cgv')}</a></li>
       </ul>
     </div>
-    <div>
-      <h3>{t('footer.followTitle')}</h3>
-      <div class="footer-social">
-        {socialLinks.map((s) => <SocialLink link={s} />)}
-      </div>
-    </div>
+    {
+      hasSocials && (
+        <div>
+          <h3>{t('footer.followTitle')}</h3>
+          <div class="footer-social">
+            {socialLinks.map((s) => (
+              <SocialLink link={s} />
+            ))}
+          </div>
+        </div>
+      )
+    }
   </div>
   <p class="footer-copy">© {year} {AGENCY.name}. {t('footer.rights')}</p>
 
@@ -83,6 +90,9 @@ const socialLinks: SocialLinkType[] = SOCIAL_LINKS.map((s) =>
       display: grid;
       grid-template-columns: 2fr 1fr 1fr 1fr 1fr;
       gap: 32px;
+    }
+    .footer-grid.no-social {
+      grid-template-columns: 2fr 1fr 1fr 1fr;
     }
     .footer-name {
       font-family: var(--font-display);
