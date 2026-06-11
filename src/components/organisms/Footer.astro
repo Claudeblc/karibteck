@@ -3,7 +3,7 @@ import { AGENCY, getTagline } from '@/data/agency';
 import { getServices } from '@/data/services';
 import { SOCIAL_LINKS } from '@/data/socialLinks';
 import SocialLink from '@/components/molecules/SocialLink.astro';
-import { useTranslations, localizePath } from '@/i18n/utils';
+import { useTranslations, localizePath, localizeServicePath } from '@/i18n/utils';
 import { DEFAULT_LOCALE, WHATSAPP_NUMBER } from '@/lib/constants';
 import type { Locale, SocialLink as SocialLinkType } from '@/types';
 
@@ -40,7 +40,7 @@ const hasSocials = socialLinks.length > 0;
         {
           services.map((s) => (
             <li>
-              <a href={servicesHref}>{s.title}</a>
+              <a href={localizeServicePath(s.slug, locale)}>{s.title}</a>
             </li>
           ))
         }
