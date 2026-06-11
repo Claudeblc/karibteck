@@ -16,7 +16,11 @@ export default defineConfig({
       prefixDefaultLocale: false,
     },
   },
-  integrations: [sitemap(), icon(), mdx()],
+  integrations: [
+    sitemap({ filter: (page) => !/\/(merci|thank-you)\/?$/.test(page) }),
+    icon(),
+    mdx(),
+  ],
   vite: {
     plugins: [tailwindcss()],
   },

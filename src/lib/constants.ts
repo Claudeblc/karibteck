@@ -26,6 +26,12 @@ export const AREA_SERVED = [
 /** Legal/brand identifiers for schema.org. */
 export const ORGANIZATION_NAME = 'Karib Teck';
 export const ORGANIZATION_LEGAL_NAME = 'Karib Teck';
+/**
+ * Opening hours in schema.org format — mirrors the display hours
+ * "Lun–Ven : 8h – 18h • Sam : 9h – 13h".
+ */
+export const OPENING_HOURS = ['Mo-Fr 08:00-18:00', 'Sa 09:00-13:00'];
+
 /** Region for PostalAddress (placeholder until full NAP is provided). */
 export const ADDRESS_REGION = 'Guadeloupe';
 export const ADDRESS_COUNTRY = 'FR';

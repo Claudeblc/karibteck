@@ -7,6 +7,7 @@ import {
   GEO_LATITUDE,
   GEO_LONGITUDE,
   AREA_SERVED,
+  OPENING_HOURS,
 } from '@/lib/constants';
 import { getServices } from '@/data/services';
 import { getFaq } from '@/data/faq';
@@ -52,6 +53,7 @@ export function buildOrganization(locale: Locale) {
     description: t('meta.home.description'),
     address: postalAddress(),
     geo: geoCoordinates(),
+    openingHours: OPENING_HOURS,
     areaServed: areaServedNodes(),
     knowsAbout: getServices(locale).map((s) => s.title),
   };
