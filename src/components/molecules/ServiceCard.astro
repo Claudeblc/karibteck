@@ -1,13 +1,17 @@
 ---
 import { Icon } from 'astro-icon/components';
 import Tag from '@/components/atoms/Tag.astro';
-import type { Service } from '@/types';
+import { useTranslations } from '@/i18n/utils';
+import { DEFAULT_LOCALE } from '@/lib/constants';
+import type { Locale, Service } from '@/types';
 
 interface Props {
   service: Service;
   href?: string;
+  locale?: Locale;
 }
-const { service, href } = Astro.props;
+const { service, href, locale = DEFAULT_LOCALE } = Astro.props;
+const t = useTranslations(locale);
 ---
 
 <article class="service-card fade-up">
@@ -19,6 +23,14 @@ const { service, href } = Astro.props;
   <div class="service-tags">
     {service.tags.map((tag) => <Tag label={tag} />)}
   </div>
+  {
+    href && (
+      <a class="service-cta" href={href}>
+        {t('cta.learnMore')}
+        <span aria-hidden="true">→</span>
+      </a>
+    )
+  }
 </article>
 
 <style>
@@ -65,5 +77,22 @@ const { service, href } = Astro.props;
     flex-wrap: wrap;
     gap: 8px;
     margin-top: 16px;
+  }
+  .service-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 18px;
+    color: var(--color-teal-text);
+    font-family: var(--font-label);
+    font-weight: 600;
+    font-size: 0.9rem;
+    text-decoration: none;
+  }
+  .service-cta span {
+    transition: transform 0.2s;
+  }
+  .service-card:hover .service-cta span {
+    transform: translateX(4px);
   }
 </style>

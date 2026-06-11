@@ -18,8 +18,8 @@ const SERVICES_DATA: ServiceData[] = [
     tags: ['WordPress', 'Next.js', 'Figma', 'SEO'],
     title: { fr: 'Création de Sites Web', en: 'Website Design & Development' },
     description: {
-      fr: 'Sites vitrines, landing pages, sites e-commerce et portails corporate. Des designs modernes, rapides et optimisés SEO qui convertissent vos visiteurs en clients.',
-      en: 'Brochure sites, landing pages, e-commerce stores and corporate portals. Modern, fast, SEO-optimized designs that turn visitors into customers.',
+      fr: 'Un site rapide, bien référencé et pensé pour convertir : vos visiteurs deviennent des clients, pas juste des visites.',
+      en: 'A fast, well-ranked site built to convert: your visitors become customers, not just traffic.',
     },
     intro: {
       fr: 'Nous concevons des sites web sur mesure pour les entreprises des Antilles : vitrines élégantes, sites e-commerce et portails corporate, pensés pour être rapides, bien référencés et faciles à gérer.',
@@ -50,8 +50,8 @@ const SERVICES_DATA: ServiceData[] = [
     tags: ['React Native', 'Flutter', 'iOS', 'Android'],
     title: { fr: 'Applications Mobiles', en: 'Mobile Apps' },
     description: {
-      fr: 'Applications iOS et Android sur mesure pour votre activité. Gestion de commandes, suivi client, tableaux de bord — nous transformons vos processus en apps intuitives.',
-      en: 'Custom iOS and Android apps for your business. Order management, customer tracking, dashboards — we turn your processes into intuitive apps.',
+      fr: 'Mettez votre activité dans la poche de vos clients : commandes, réservations et fidélité, sur iOS et Android.',
+      en: "Put your business in your customers' pocket: orders, bookings and loyalty, on iOS and Android.",
     },
     intro: {
       fr: 'Nous développons des applications iOS et Android natives ou cross-platform pour digitaliser votre activité : commandes, réservations, suivi client, tableaux de bord.',
@@ -79,32 +79,32 @@ const SERVICES_DATA: ServiceData[] = [
   {
     slug: 'intelligence-artificielle',
     icon: 'lucide:cpu',
-    tags: ['ChatGPT API', 'Python', 'Automatisation'],
+    tags: ['Agents IA', 'RAG', 'LLM', 'Python'],
     title: { fr: 'Intelligence Artificielle', en: 'Artificial Intelligence' },
     description: {
-      fr: "Intégration d'IA dans vos outils existants : chatbots intelligents, analyse de données, automatisation des tâches répétitives et recommandations personnalisées.",
-      en: 'AI integrated into your existing tools: smart chatbots, data analysis, automation of repetitive tasks, and personalized recommendations.',
+      fr: 'Au-delà du chatbot : des agents IA qui agissent dans vos outils — qualifient vos leads, répondent 24/7 et automatisent vos process de bout en bout.',
+      en: 'Beyond the chatbot: AI agents that act inside your tools — qualifying leads, replying 24/7 and automating your processes end to end.',
     },
     intro: {
-      fr: 'Nous intégrons l’intelligence artificielle dans vos outils : chatbots, analyse de données, automatisation et recommandations — uniquement là où elle apporte une réelle valeur.',
-      en: 'We integrate artificial intelligence into your tools: chatbots, data analysis, automation and recommendations — only where it brings real value.',
+      fr: 'Nous concevons des agents IA qui agissent dans vos outils — qualification de leads, support client 24/7, automatisation de vos process — connectés à vos données (RAG). De l’IA qui exécute, pas du gadget.',
+      en: 'We build AI agents that act inside your tools — lead qualification, 24/7 customer support, process automation — connected to your data (RAG). AI that executes, not gimmicks.',
     },
     metaDescription: {
-      fr: "Intégration d'intelligence artificielle dans vos outils aux Antilles : chatbots, analyse de données et automatisation, là où elle apporte une vraie valeur.",
-      en: 'Artificial intelligence integrated into your tools in the French West Indies: chatbots, data analysis and automation, only where it brings real value.',
+      fr: 'Agents IA pour les entreprises des Antilles : qualification de leads, support 24/7 et automatisation de vos process, connectés à vos données et vos outils.',
+      en: 'AI agents for businesses in the French West Indies: lead qualification, 24/7 support and process automation, connected to your own data and tools.',
     },
     benefits: {
       fr: [
-        'Chatbots et assistants intelligents',
-        'Automatisation des tâches à faible valeur',
-        'Analyse et exploitation de vos données',
-        'Intégration dans vos outils existants',
+        'Des agents IA qui exécutent vos tâches, pas juste un chatbot',
+        'Support client et qualification de leads 24/7',
+        'Connectés à vos données et vos outils (RAG)',
+        'Automatisation de vos process de bout en bout',
       ],
       en: [
-        'Smart chatbots and assistants',
-        'Automation of low-value tasks',
-        'Analysis and use of your data',
-        'Integration into your existing tools',
+        'AI agents that execute tasks, not just a chatbot',
+        '24/7 customer support and lead qualification',
+        'Connected to your data and tools (RAG)',
+        'End-to-end automation of your processes',
       ],
     },
   },

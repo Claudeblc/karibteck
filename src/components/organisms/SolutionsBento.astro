@@ -20,7 +20,11 @@ const spans = [4, 4, 4] as const;
       {
         services.map((service, i) => (
           <div style={`--col:${spans[i] ?? 4}`}>
-            <ServiceCard service={service} href={localizeServicePath(service.slug, locale)} />
+            <ServiceCard
+              service={service}
+              href={localizeServicePath(service.slug, locale)}
+              locale={locale}
+            />
           </div>
         ))
       }

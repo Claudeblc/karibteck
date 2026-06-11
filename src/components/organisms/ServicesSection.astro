@@ -25,7 +25,11 @@ const services = getServices(locale);
     <div class="services-grid">
       {
         services.map((service) => (
-          <ServiceCard service={service} href={localizeServicePath(service.slug, locale)} />
+          <ServiceCard
+            service={service}
+            href={localizeServicePath(service.slug, locale)}
+            locale={locale}
+          />
         ))
       }
     </div>
