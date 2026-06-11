@@ -1,0 +1,74 @@
+name: Deploy
+
+# Déploie le build statique (dist/) sur le VPS via rsync/SSH ; nginx sert les fichiers.
+#
+# ⏸️ EN STANDBY — ce workflow ne s'exécute que lorsque la variable de dépôt
+# DEPLOY_ENABLED vaut "true" (Settings → Secrets and variables → Actions → Variables).
+# Tant que l'infra VPS n'est pas validée, il reste inactif sans casser la CI.
+#
+# Pré-requis à compléter avant activation — voir docs/deploy/vps.md :
+#   Secrets   : VPS_SSH_KEY, VPS_KNOWN_HOSTS
+#   Variables : DEPLOY_ENABLED, VPS_HOST, VPS_USER, VPS_PATH, (VPS_PORT optionnel)
+#   Build     : PUBLIC_CALCOM_URL, PUBLIC_WEB3FORMS_KEY, PUBLIC_WHATSAPP_NUMBER,
+#               PUBLIC_PLAUSIBLE_DOMAIN (secrets ou variables, optionnels)
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+concurrency:
+  group: deploy-production
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    # Garde-fou : reste inactif tant que l'infra n'est pas validée.
+    if: ${{ vars.DEPLOY_ENABLED == 'true' }}
+    runs-on: ubuntu-latest
+    environment:
+      name: production
+      url: https://karibteck.com
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - run: npm ci
+
+      - name: Build
+        run: npm run build
+        env:
+          PUBLIC_CALCOM_URL: ${{ vars.PUBLIC_CALCOM_URL }}
+          PUBLIC_WEB3FORMS_KEY: ${{ secrets.PUBLIC_WEB3FORMS_KEY }}
+          PUBLIC_WHATSAPP_NUMBER: ${{ vars.PUBLIC_WHATSAPP_NUMBER }}
+          PUBLIC_PLAUSIBLE_DOMAIN: ${{ vars.PUBLIC_PLAUSIBLE_DOMAIN }}
+
+      - name: Validate JSON-LD
+        run: npm run validate:jsonld
+
+      - name: Configure SSH
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.VPS_SSH_KEY }}" > ~/.ssh/deploy_key
+          chmod 600 ~/.ssh/deploy_key
+          echo "${{ secrets.VPS_KNOWN_HOSTS }}" > ~/.ssh/known_hosts
+          chmod 644 ~/.ssh/known_hosts
+
+      - name: Deploy dist/ to VPS
+        env:
+          VPS_HOST: ${{ vars.VPS_HOST }}
+          VPS_USER: ${{ vars.VPS_USER }}
+          VPS_PATH: ${{ vars.VPS_PATH }}
+          VPS_PORT: ${{ vars.VPS_PORT || '22' }}
+        run: |
+          rsync -avz --delete \
+            -e "ssh -i ~/.ssh/deploy_key -p ${VPS_PORT}" \
+            dist/ "${VPS_USER}@${VPS_HOST}:${VPS_PATH}/"
+
+      - name: Cleanup SSH key
+        if: always()
+        run: rm -f ~/.ssh/deploy_key
