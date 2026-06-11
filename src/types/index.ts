@@ -25,8 +25,12 @@ export interface Service {
   /** Pain the client faces today — opens the detail page (problem → deliver → result). */
   problem: string;
   benefits: string[];
+  /** Concrete, illustrative things we can build for this service (not client work). */
+  useCases: string[];
   /** Outcome the client gets — closes the detail page before the CTA. */
   outcome: string;
+  /** Service-specific FAQ — also fed into the page's FAQPage JSON-LD. */
+  faq: FaqItem[];
 }
 
 export interface Feature {

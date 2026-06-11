@@ -10,7 +10,9 @@ interface ServiceData {
   metaDescription: Localized<string>;
   problem: Localized<string>;
   benefits: Localized<string[]>;
+  useCases: Localized<string[]>;
   outcome: Localized<string>;
+  faq: { question: Localized<string>; answer: Localized<string> }[];
 }
 
 const SERVICES_DATA: ServiceData[] = [
@@ -53,6 +55,50 @@ const SERVICES_DATA: ServiceData[] = [
       fr: 'Un site rapide, bien positionné sur Google et pensé pour convertir : plus de demandes entrantes, moins d’efforts commerciaux.',
       en: 'A fast site that ranks on Google and is built to convert: more inbound requests, less sales effort.',
     },
+    useCases: {
+      fr: [
+        'Site vitrine pour un restaurant ou un commerce : menu, horaires, réservation et avis, optimisé Google.',
+        'Boutique en ligne pour un producteur ou artisan local : catalogue, paiement et livraison.',
+        'Refonte d’un site lent ou daté : design moderne, vitesse, SEO et back-office simple.',
+      ],
+      en: [
+        'Brochure site for a restaurant or shop: menu, hours, booking and reviews, optimized for Google.',
+        'Online store for a local producer or maker: catalog, checkout and delivery.',
+        'Redesign of a slow or dated site: modern design, speed, SEO and a simple back office.',
+      ],
+    },
+    faq: [
+      {
+        question: {
+          fr: 'Combien de temps pour un site vitrine ?',
+          en: 'How long for a brochure site?',
+        },
+        answer: {
+          fr: 'En général 2 à 4 semaines selon le nombre de pages et la complexité, avec un calendrier fixé dès la conception.',
+          en: 'Usually 2 to 4 weeks depending on the number of pages and complexity, with a schedule set from the design phase.',
+        },
+      },
+      {
+        question: {
+          fr: 'Pourrai-je mettre à jour le site moi-même ?',
+          en: 'Will I be able to update the site myself?',
+        },
+        answer: {
+          fr: 'Oui. Nous livrons un back-office simple et une courte formation pour que vous restiez autonome.',
+          en: 'Yes. We deliver a simple back office and a short training so you stay independent.',
+        },
+      },
+      {
+        question: {
+          fr: 'Mon site sera-t-il bien référencé sur Google ?',
+          en: 'Will my site rank on Google?',
+        },
+        answer: {
+          fr: 'Le SEO technique (vitesse, structure, balises, mobile) est intégré dès la conception. Nous posons des bases saines ; le référencement se travaille ensuite dans la durée.',
+          en: 'Technical SEO (speed, structure, tags, mobile) is built in from the start. We lay healthy foundations; ranking is then built over time.',
+        },
+      },
+    ],
   },
   {
     slug: 'applications-mobiles',
@@ -93,6 +139,50 @@ const SERVICES_DATA: ServiceData[] = [
       fr: 'Une app que vos clients gardent en poche : commandes et réservations en autonomie, et un lien direct qui fidélise.',
       en: 'An app your customers keep in their pocket: self-service orders and bookings, and a direct channel that builds loyalty.',
     },
+    useCases: {
+      fr: [
+        'App de réservation et de prise de rendez-vous, avec tableau de bord pour le prestataire.',
+        'App de commande et de fidélité pour un commerce : panier, notifications, points de fidélité.',
+        'App métier de terrain : saisie hors-ligne, suivi d’interventions, synchronisation au retour du réseau.',
+      ],
+      en: [
+        'Booking and appointment app, with a dashboard for the provider.',
+        'Ordering and loyalty app for a shop: cart, notifications, loyalty points.',
+        'Field operations app: offline data entry, job tracking, sync when back online.',
+      ],
+    },
+    faq: [
+      {
+        question: {
+          fr: 'iOS et Android, ça veut dire deux apps ?',
+          en: 'Does iOS and Android mean two apps?',
+        },
+        answer: {
+          fr: 'Non. Nous développons une seule base de code (React Native ou Flutter) publiée sur l’App Store et Google Play, ce qui réduit coût et délais.',
+          en: 'No. We build a single codebase (React Native or Flutter) published to the App Store and Google Play, which cuts cost and time.',
+        },
+      },
+      {
+        question: {
+          fr: 'L’app peut-elle fonctionner hors connexion ?',
+          en: 'Can the app work offline?',
+        },
+        answer: {
+          fr: 'Oui, c’est utile aux Antilles : les données saisies hors-ligne se synchronisent dès le retour du réseau.',
+          en: 'Yes, which matters in the West Indies: data entered offline syncs as soon as the network is back.',
+        },
+      },
+      {
+        question: {
+          fr: 'Gérez-vous la publication sur les stores ?',
+          en: 'Do you handle store publishing?',
+        },
+        answer: {
+          fr: 'Oui, nous gérons la mise en ligne sur l’App Store et Google Play, ainsi que les mises à jour.',
+          en: 'Yes, we handle release on the App Store and Google Play, as well as updates.',
+        },
+      },
+    ],
   },
   {
     slug: 'intelligence-artificielle',
@@ -133,6 +223,47 @@ const SERVICES_DATA: ServiceData[] = [
       fr: 'Des agents IA qui travaillent 24/7 dans vos outils : leads qualifiés, clients répondus, process automatisés — votre équipe se concentre sur l’essentiel.',
       en: 'AI agents working 24/7 inside your tools: leads qualified, customers answered, processes automated — your team focuses on what matters.',
     },
+    useCases: {
+      fr: [
+        'Chatbot de support connecté à votre FAQ et vos documents : répond 24/7 et escalade vers vous si besoin.',
+        'Agent de qualification de leads : trie les demandes entrantes, pose les bonnes questions et route les prospects chauds.',
+        'Automatisation de tâches : génération de devis et de comptes-rendus, extraction de données depuis vos documents.',
+      ],
+      en: [
+        'Support chatbot connected to your FAQ and documents: answers 24/7 and escalates to you when needed.',
+        'Lead-qualification agent: sorts incoming requests, asks the right questions and routes hot prospects.',
+        'Task automation: quote and report generation, data extraction from your documents.',
+      ],
+    },
+    faq: [
+      {
+        question: {
+          fr: 'L’IA va-t-elle dire n’importe quoi à mes clients ?',
+          en: 'Will the AI say anything to my customers?',
+        },
+        answer: {
+          fr: 'Nous connectons les agents à vos données réelles (RAG) et posons des garde-fous : ils répondent à partir de vos documents et escaladent vers un humain en cas de doute.',
+          en: 'We connect agents to your real data (RAG) and set guardrails: they answer from your documents and escalate to a human when unsure.',
+        },
+      },
+      {
+        question: {
+          fr: 'Faut-il changer tous nos outils ?',
+          en: 'Do we have to change all our tools?',
+        },
+        answer: {
+          fr: 'Non. Les agents s’intègrent à vos outils existants (site, CRM, messagerie) via API, sans tout remplacer.',
+          en: 'No. Agents integrate with your existing tools (site, CRM, inbox) via API, without replacing everything.',
+        },
+      },
+      {
+        question: { fr: 'Mes données sont-elles en sécurité ?', en: 'Is my data safe?' },
+        answer: {
+          fr: 'Nous cadrons les accès et le périmètre des données dès le départ, et privilégions des solutions respectueuses de la confidentialité.',
+          en: 'We scope data access and boundaries from the start, and favor privacy-respecting solutions.',
+        },
+      },
+    ],
   },
 ];
 
@@ -147,7 +278,9 @@ export function getServices(locale: Locale): Service[] {
     metaDescription: s.metaDescription[locale],
     problem: s.problem[locale],
     benefits: s.benefits[locale],
+    useCases: s.useCases[locale],
     outcome: s.outcome[locale],
+    faq: s.faq.map((f) => ({ question: f.question[locale], answer: f.answer[locale] })),
   }));
 }
 

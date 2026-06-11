@@ -1,0 +1,33 @@
+---
+import FaqItem from '@/components/molecules/FaqItem.astro';
+import type { FaqItem as FaqItemType } from '@/types';
+
+interface Props {
+  title: string;
+  items: FaqItemType[];
+}
+const { title, items } = Astro.props;
+---
+
+<section class="faq-list">
+  <h2>{title}</h2>
+  <div class="items">
+    {items.map((item) => <FaqItem item={item} />)}
+  </div>
+</section>
+
+<style>
+  .faq-list {
+    margin-top: 48px;
+  }
+  .faq-list h2 {
+    font-family: var(--font-display);
+    font-size: 1.3rem;
+    margin-bottom: 18px;
+    color: var(--color-primary);
+  }
+  .items {
+    display: grid;
+    gap: 12px;
+  }
+</style>

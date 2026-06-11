@@ -112,34 +112,43 @@ export function buildBreadcrumb(locale: Locale, url: string) {
 export function buildServiceGraph(locale: Locale, service: Service, url: string) {
   const t = useTranslations(locale);
   const homeUrl = new URL(routes[locale].home, SITE_URL).href;
-  return {
-    '@context': 'https://schema.org',
-    '@graph': [
-      buildOrganization(locale),
-      {
-        '@type': 'Service',
-        name: service.title,
-        description: service.intro,
-        serviceType: service.title,
-        provider: { '@id': ORG_ID },
-        areaServed: areaServedNodes(),
-        url,
-      },
-      {
-        '@type': 'BreadcrumbList',
-        itemListElement: [
-          { '@type': 'ListItem', position: 1, name: t('nav.home'), item: homeUrl },
-          {
-            '@type': 'ListItem',
-            position: 2,
-            name: t('services.detail.breadcrumb'),
-            item: `${homeUrl}#services`,
-          },
-          { '@type': 'ListItem', position: 3, name: service.title, item: url },
-        ],
-      },
-    ],
-  };
+  const graph: object[] = [
+    buildOrganization(locale),
+    {
+      '@type': 'Service',
+      name: service.title,
+      description: service.intro,
+      serviceType: service.title,
+      provider: { '@id': ORG_ID },
+      areaServed: areaServedNodes(),
+      url,
+    },
+    {
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: t('nav.home'), item: homeUrl },
+        {
+          '@type': 'ListItem',
+          position: 2,
+          name: t('services.detail.breadcrumb'),
+          item: `${homeUrl}#services`,
+        },
+        { '@type': 'ListItem', position: 3, name: service.title, item: url },
+      ],
+    },
+  ];
+  if (service.faq.length > 0) {
+    graph.push({
+      '@type': 'FAQPage',
+      '@id': `${url}#faq`,
+      mainEntity: service.faq.map((f) => ({
+        '@type': 'Question',
+        name: f.question,
+        acceptedAnswer: { '@type': 'Answer', text: f.answer },
+      })),
+    });
+  }
+  return { '@context': 'https://schema.org', '@graph': graph };
 }
 
 /** Full graph for a single blog article (Organization + BlogPosting). */

@@ -4,6 +4,8 @@ import Tag from '@/components/atoms/Tag.astro';
 import Button from '@/components/atoms/Button.astro';
 import ReassuranceStrip from '@/components/molecules/ReassuranceStrip.astro';
 import Callout from '@/components/molecules/Callout.astro';
+import CheckList from '@/components/molecules/CheckList.astro';
+import FaqList from '@/components/molecules/FaqList.astro';
 import { useTranslations, localizePath } from '@/i18n/utils';
 import { DEFAULT_LOCALE } from '@/lib/constants';
 import type { Locale, Service } from '@/types';
@@ -36,14 +38,13 @@ const servicesHref = localizePath('services', locale);
 
   <Callout title={t('services.detail.problemTitle')} text={service.problem} variant="pain" />
 
-  <section class="benefits">
-    <h2>{t('services.detail.benefitsTitle')}</h2>
-    <ul>
-      {service.benefits.map((b) => <li>{b}</li>)}
-    </ul>
-  </section>
+  <CheckList title={t('services.detail.benefitsTitle')} items={service.benefits} />
+
+  <CheckList title={t('services.detail.useCasesTitle')} items={service.useCases} />
 
   <Callout title={t('services.detail.resultTitle')} text={service.outcome} variant="gain" />
+
+  <FaqList title={t('services.detail.faqTitle')} items={service.faq} />
 
   <section class="tech">
     <h2>{t('services.detail.techTitle')}</h2>
@@ -98,11 +99,9 @@ const servicesHref = localizePath('services', locale);
   .head :global(.reassure) {
     margin-top: 18px;
   }
-  .benefits,
   .tech {
     margin-top: 48px;
   }
-  .benefits h2,
   .tech h2 {
     font-family: var(--font-display);
     font-size: 1.3rem;
@@ -111,24 +110,6 @@ const servicesHref = localizePath('services', locale);
   }
   .final-cta {
     margin-top: 56px;
-  }
-  .benefits ul {
-    list-style: none;
-    padding: 0;
-    display: grid;
-    gap: 12px;
-  }
-  .benefits li {
-    padding-left: 28px;
-    position: relative;
-    color: var(--color-on-surface-variant);
-  }
-  .benefits li::before {
-    content: '✓';
-    position: absolute;
-    left: 0;
-    color: var(--color-teal);
-    font-weight: 700;
   }
   .tags {
     display: flex;
