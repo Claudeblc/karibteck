@@ -1,5 +1,6 @@
 ---
 import Tag from '@/components/atoms/Tag.astro';
+import ArticleCover from '@/components/molecules/ArticleCover.astro';
 import { formatDate } from '@/lib/dates';
 import { useTranslations } from '@/i18n/utils';
 import type { Locale } from '@/types';
@@ -18,14 +19,19 @@ const t = useTranslations(locale);
 ---
 
 <article class="article-card fade-up">
-  <p class="article-meta">
-    {formatDate(date, locale)} · {readingMinutes}
-    {t('blog.readingTime')}
-  </p>
-  <h3 class="article-title"><a href={href}>{title}</a></h3>
-  <p class="article-excerpt">{excerpt}</p>
-  <div class="article-tags">
-    {tags.map((tag) => <Tag label={tag} />)}
+  <a class="article-cover-link" href={href} tabindex="-1" aria-hidden="true">
+    <ArticleCover seed={href} category={tags[0]} size="sm" />
+  </a>
+  <div class="article-body">
+    <p class="article-meta">
+      {formatDate(date, locale)} · {readingMinutes}
+      {t('blog.readingTime')}
+    </p>
+    <h3 class="article-title"><a href={href}>{title}</a></h3>
+    <p class="article-excerpt">{excerpt}</p>
+    <div class="article-tags">
+      {tags.map((tag) => <Tag label={tag} />)}
+    </div>
   </div>
 </article>
 
@@ -36,7 +42,7 @@ const t = useTranslations(locale);
     background: var(--color-surface-card);
     border: 1px solid var(--color-surface-gray);
     border-radius: var(--radius-lg);
-    padding: 28px;
+    overflow: hidden;
     box-shadow: var(--shadow-card);
     transition:
       transform 0.3s,
@@ -45,6 +51,15 @@ const t = useTranslations(locale);
   .article-card:hover {
     transform: translateY(-4px);
     box-shadow: var(--shadow-card-hover);
+  }
+  .article-cover-link {
+    display: block;
+  }
+  .article-body {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    padding: 28px;
   }
   .article-meta {
     color: var(--color-on-surface-variant);
