@@ -1,3 +1,5 @@
+import type { ImageMetadata } from 'astro';
+import claudePhoto from '@/assets/team/claude-belcram.png';
 import type { Locale, Localized, TeamMember } from '@/types';
 
 interface TeamMemberData {
@@ -6,6 +8,7 @@ interface TeamMemberData {
   accent: string;
   role: Localized<string>;
   bio: Localized<string>;
+  photo?: ImageMetadata;
 }
 
 // Two founders. Roles split the three verticals (web, mobile, IA) across them.
@@ -27,6 +30,7 @@ const TEAM_DATA: TeamMemberData[] = [
     initials: 'C',
     name: 'Claude',
     accent: 'var(--color-teal-bright)',
+    photo: claudePhoto,
     role: {
       fr: 'Intelligence artificielle, DevOps & cloud',
       en: 'Artificial intelligence, DevOps & cloud',
@@ -43,6 +47,7 @@ export function getTeam(locale: Locale): TeamMember[] {
     initials: m.initials,
     name: m.name,
     accent: m.accent,
+    photo: m.photo,
     role: m.role[locale],
     bio: m.bio[locale],
   }));
