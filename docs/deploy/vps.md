@@ -75,24 +75,24 @@ sudo certbot --nginx -d karibteck.com -d www.karibteck.com
 
 ### Secrets (chiffrés)
 
-| Secret                  | Description                                          |
-| ----------------------- | ---------------------------------------------------- |
-| `VPS_SSH_KEY`           | Clé privée SSH de déploiement (`deploy_key`)         |
-| `VPS_KNOWN_HOSTS`       | Sortie de `ssh-keyscan` du VPS                        |
-| `PUBLIC_WEB3FORMS_KEY`  | Clé Web3Forms (build) — optionnel                    |
+| Secret                 | Description                                  |
+| ---------------------- | -------------------------------------------- |
+| `VPS_SSH_KEY`          | Clé privée SSH de déploiement (`deploy_key`) |
+| `VPS_KNOWN_HOSTS`      | Sortie de `ssh-keyscan` du VPS               |
+| `PUBLIC_WEB3FORMS_KEY` | Clé Web3Forms (build) — optionnel            |
 
 ### Variables (non sensibles)
 
-| Variable                  | Exemple                         | Description                          |
-| ------------------------- | ------------------------------- | ------------------------------------ |
-| `DEPLOY_ENABLED`          | `true`                          | **Active le déploiement** (garde-fou) |
-| `VPS_HOST`                | `123.45.67.89` / `karibteck.com`| Hôte SSH                             |
-| `VPS_USER`                | `deploy`                        | Utilisateur SSH                      |
-| `VPS_PATH`                | `/var/www/karibteck`            | Dossier servi par nginx              |
-| `VPS_PORT`                | `22`                            | Port SSH (optionnel, défaut 22)      |
-| `PUBLIC_CALCOM_URL`       | …                               | Build (optionnel)                    |
-| `PUBLIC_WHATSAPP_NUMBER`  | …                               | Build (optionnel)                    |
-| `PUBLIC_PLAUSIBLE_DOMAIN` | `karibteck.com`                 | Build (optionnel)                    |
+| Variable                  | Exemple                          | Description                           |
+| ------------------------- | -------------------------------- | ------------------------------------- |
+| `DEPLOY_ENABLED`          | `true`                           | **Active le déploiement** (garde-fou) |
+| `VPS_HOST`                | `123.45.67.89` / `karibteck.com` | Hôte SSH                              |
+| `VPS_USER`                | `deploy`                         | Utilisateur SSH                       |
+| `VPS_PATH`                | `/var/www/karibteck`             | Dossier servi par nginx               |
+| `VPS_PORT`                | `22`                             | Port SSH (optionnel, défaut 22)       |
+| `PUBLIC_CALCOM_URL`       | …                                | Build (optionnel)                     |
+| `PUBLIC_WHATSAPP_NUMBER`  | …                                | Build (optionnel)                     |
+| `PUBLIC_PLAUSIBLE_DOMAIN` | `karibteck.com`                  | Build (optionnel)                     |
 
 > Tant que `DEPLOY_ENABLED` ≠ `true`, le job `deploy` est **skippé** : la CI reste verte
 > et rien n'est publié.
