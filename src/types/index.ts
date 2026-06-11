@@ -96,6 +96,15 @@ export interface FaqItem {
   answer: string;
 }
 
+export interface ExpertiseItem {
+  variant: 'light' | 'dark' | 'stat';
+  icon?: string;
+  title: string;
+  description: string;
+  stat?: string;
+  col?: number;
+}
+
 export interface LegalSection {
   heading: string;
   paragraphs: string[];

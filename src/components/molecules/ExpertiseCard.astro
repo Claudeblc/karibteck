@@ -1,0 +1,82 @@
+---
+import { Icon } from 'astro-icon/components';
+import type { ExpertiseItem } from '@/types';
+
+interface Props {
+  item: ExpertiseItem;
+}
+const { item } = Astro.props;
+const colSpan = item.col ?? 4;
+---
+
+<article class:list={['xcard', `xcard-${item.variant}`]} style={`--col:${colSpan}`}>
+  {item.variant === 'stat' && item.stat && <div class="xstat">{item.stat}</div>}
+  {
+    item.icon && item.variant !== 'stat' && (
+      <div class="xicon" aria-hidden="true">
+        <Icon name={item.icon} />
+      </div>
+    )
+  }
+  <h3 class="xtitle">{item.title}</h3>
+  <p class="xdesc">{item.description}</p>
+</article>
+
+<style>
+  .xcard {
+    border-radius: var(--radius-lg);
+    padding: 28px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: var(--shadow-card);
+    transition:
+      transform 0.3s,
+      box-shadow 0.3s;
+  }
+  .xcard:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-card-hover);
+  }
+  .xcard-light {
+    background: var(--color-surface-card);
+    border: 1px solid var(--color-surface-gray);
+  }
+  .xcard-dark {
+    background: var(--color-primary);
+    color: var(--color-on-primary);
+    justify-content: flex-end;
+    min-height: 220px;
+  }
+  .xcard-stat {
+    background: var(--color-surface-card);
+    border: 1px solid var(--color-surface-gray);
+    justify-content: center;
+  }
+  .xicon :global(svg) {
+    width: 30px;
+    height: 30px;
+    color: var(--color-teal);
+  }
+  .xstat {
+    font-family: var(--font-display);
+    font-size: 3rem;
+    font-weight: 700;
+    color: var(--color-teal);
+    line-height: 1;
+  }
+  .xtitle {
+    font-family: var(--font-display);
+    font-size: 1.2rem;
+    margin: 14px 0 8px;
+  }
+  .xcard-dark .xtitle {
+    color: var(--color-on-primary);
+  }
+  .xdesc {
+    color: var(--color-on-surface-variant);
+    font-size: 0.95rem;
+  }
+  .xcard-dark .xdesc {
+    color: var(--color-on-primary-variant);
+  }
+</style>
