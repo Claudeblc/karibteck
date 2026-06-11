@@ -1,6 +1,7 @@
 ---
 import Highlight from '@/components/atoms/Highlight.astro';
 import Button from '@/components/atoms/Button.astro';
+import ReassuranceStrip from '@/components/molecules/ReassuranceStrip.astro';
 import { useTranslations, localizePath } from '@/i18n/utils';
 import { DEFAULT_LOCALE } from '@/lib/constants';
 import type { Locale } from '@/types';
@@ -21,6 +22,7 @@ const contactHref = localizePath('contact', locale);
     </h2>
     <p class="cta-sub">{t('cta.band.sub')}</p>
     <Button href={contactHref} variant="primary">{t('cta.band.button')}</Button>
+    <ReassuranceStrip locale={locale} />
   </div>
 
   <style>
@@ -46,6 +48,10 @@ const contactHref = localizePath('contact', locale);
     .cta-sub {
       color: var(--color-on-primary-variant);
       max-width: 52ch;
+    }
+    .cta-band :global(.reassure) {
+      justify-content: center;
+      margin-top: 6px;
     }
   </style>
 </section>

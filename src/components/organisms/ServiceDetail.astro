@@ -2,6 +2,8 @@
 import { Icon } from 'astro-icon/components';
 import Tag from '@/components/atoms/Tag.astro';
 import Button from '@/components/atoms/Button.astro';
+import ReassuranceStrip from '@/components/molecules/ReassuranceStrip.astro';
+import Callout from '@/components/molecules/Callout.astro';
 import { useTranslations, localizePath } from '@/i18n/utils';
 import { DEFAULT_LOCALE } from '@/lib/constants';
 import type { Locale, Service } from '@/types';
@@ -29,7 +31,10 @@ const servicesHref = localizePath('services', locale);
     <h1>{service.title}</h1>
     <p class="intro">{service.intro}</p>
     <Button href={contactHref} variant="primary">{t('services.detail.cta')}</Button>
+    <ReassuranceStrip locale={locale} />
   </header>
+
+  <Callout title={t('services.detail.problemTitle')} text={service.problem} variant="pain" />
 
   <section class="benefits">
     <h2>{t('services.detail.benefitsTitle')}</h2>
@@ -38,10 +43,16 @@ const servicesHref = localizePath('services', locale);
     </ul>
   </section>
 
+  <Callout title={t('services.detail.resultTitle')} text={service.outcome} variant="gain" />
+
   <section class="tech">
     <h2>{t('services.detail.techTitle')}</h2>
     <div class="tags">{service.tags.map((tag) => <Tag label={tag} />)}</div>
   </section>
+
+  <div class="final-cta">
+    <Button href={contactHref} variant="primary">{t('services.detail.cta')}</Button>
+  </div>
 
   <a class="back" href={servicesHref}>← {t('services.detail.backToServices')}</a>
 </article>
@@ -84,6 +95,9 @@ const servicesHref = localizePath('services', locale);
     font-size: 1.05rem;
     margin-bottom: 28px;
   }
+  .head :global(.reassure) {
+    margin-top: 18px;
+  }
   .benefits,
   .tech {
     margin-top: 48px;
@@ -94,6 +108,9 @@ const servicesHref = localizePath('services', locale);
     font-size: 1.3rem;
     margin-bottom: 18px;
     color: var(--color-primary);
+  }
+  .final-cta {
+    margin-top: 56px;
   }
   .benefits ul {
     list-style: none;

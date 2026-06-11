@@ -1,0 +1,54 @@
+---
+import { Icon } from 'astro-icon/components';
+import { useTranslations } from '@/i18n/utils';
+import { DEFAULT_LOCALE } from '@/lib/constants';
+import type { Locale } from '@/types';
+
+interface Props {
+  locale?: Locale;
+}
+const { locale = DEFAULT_LOCALE } = Astro.props;
+const t = useTranslations(locale);
+
+const items = [
+  { icon: 'lucide:badge-check', label: t('reassure.freeQuote') },
+  { icon: 'lucide:clock', label: t('reassure.fastReply') },
+  { icon: 'lucide:languages', label: t('reassure.bilingual') },
+];
+---
+
+<ul class="reassure">
+  {
+    items.map((item) => (
+      <li>
+        <Icon name={item.icon} aria-hidden="true" />
+        <span>{item.label}</span>
+      </li>
+    ))
+  }
+</ul>
+
+<style>
+  .reassure {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px 24px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    color: inherit;
+  }
+  .reassure li {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--font-label);
+    font-size: 0.88rem;
+    opacity: 0.85;
+  }
+  .reassure :global(svg) {
+    width: 18px;
+    height: 18px;
+    color: var(--color-teal-bright);
+  }
+</style>

@@ -22,7 +22,11 @@ export interface Service {
   intro: string;
   /** Concise SEO meta description (≈150-155 chars), distinct from `intro`. */
   metaDescription?: string;
+  /** Pain the client faces today — opens the detail page (problem → deliver → result). */
+  problem: string;
   benefits: string[];
+  /** Outcome the client gets — closes the detail page before the CTA. */
+  outcome: string;
 }
 
 export interface Feature {

@@ -8,7 +8,9 @@ interface ServiceData {
   description: Localized<string>;
   intro: Localized<string>;
   metaDescription: Localized<string>;
+  problem: Localized<string>;
   benefits: Localized<string[]>;
+  outcome: Localized<string>;
 }
 
 const SERVICES_DATA: ServiceData[] = [
@@ -29,6 +31,10 @@ const SERVICES_DATA: ServiceData[] = [
       fr: 'Création de sites web sur mesure pour les entreprises des Antilles : vitrines, e-commerce et portails corporate, rapides, bien référencés et faciles à gérer.',
       en: 'Custom website design and development for businesses in the French West Indies: fast, SEO-optimized brochure, e-commerce and corporate sites built to convert.',
     },
+    problem: {
+      fr: 'Un site lent, daté ou introuvable sur Google, c’est des clients qui partent à la concurrence sans même vous connaître.',
+      en: 'A slow, dated or invisible site means customers go to your competitors without ever knowing you exist.',
+    },
     benefits: {
       fr: [
         'Design unique aligné sur votre marque',
@@ -42,6 +48,10 @@ const SERVICES_DATA: ServiceData[] = [
         '100% responsive across every screen',
         'Simple, easy-to-learn admin interface',
       ],
+    },
+    outcome: {
+      fr: 'Un site rapide, bien positionné sur Google et pensé pour convertir : plus de demandes entrantes, moins d’efforts commerciaux.',
+      en: 'A fast site that ranks on Google and is built to convert: more inbound requests, less sales effort.',
     },
   },
   {
@@ -61,6 +71,10 @@ const SERVICES_DATA: ServiceData[] = [
       fr: "Développement d'applications mobiles iOS et Android pour les entreprises des Antilles : commandes, réservations, suivi client et tableaux de bord sur mesure.",
       en: 'iOS and Android mobile app development for businesses in the French West Indies: orders, bookings, customer tracking and custom dashboards in one app.',
     },
+    problem: {
+      fr: 'Vos clients vivent sur leur téléphone, mais votre activité reste coincée au comptoir ou au téléphone.',
+      en: 'Your customers live on their phones, but your business is still stuck at the counter or on the phone.',
+    },
     benefits: {
       fr: [
         'Une seule base de code pour iOS et Android',
@@ -74,6 +88,10 @@ const SERVICES_DATA: ServiceData[] = [
         'Publishing to the App Store and Google Play',
         'Notifications, offline mode and custom integrations',
       ],
+    },
+    outcome: {
+      fr: 'Une app que vos clients gardent en poche : commandes et réservations en autonomie, et un lien direct qui fidélise.',
+      en: 'An app your customers keep in their pocket: self-service orders and bookings, and a direct channel that builds loyalty.',
     },
   },
   {
@@ -93,6 +111,10 @@ const SERVICES_DATA: ServiceData[] = [
       fr: 'Agents IA pour les entreprises des Antilles : qualification de leads, support 24/7 et automatisation de vos process, connectés à vos données et vos outils.',
       en: 'AI agents for businesses in the French West Indies: lead qualification, 24/7 support and process automation, connected to your own data and tools.',
     },
+    problem: {
+      fr: 'Vos équipes perdent des heures sur des tâches répétitives, et vos clients attendent une réponse quand personne n’est disponible.',
+      en: 'Your team loses hours on repetitive tasks, and your customers wait for answers when no one is available.',
+    },
     benefits: {
       fr: [
         'Des agents IA qui exécutent vos tâches, pas juste un chatbot',
@@ -107,6 +129,10 @@ const SERVICES_DATA: ServiceData[] = [
         'End-to-end automation of your processes',
       ],
     },
+    outcome: {
+      fr: 'Des agents IA qui travaillent 24/7 dans vos outils : leads qualifiés, clients répondus, process automatisés — votre équipe se concentre sur l’essentiel.',
+      en: 'AI agents working 24/7 inside your tools: leads qualified, customers answered, processes automated — your team focuses on what matters.',
+    },
   },
 ];
 
@@ -119,7 +145,9 @@ export function getServices(locale: Locale): Service[] {
     description: s.description[locale],
     intro: s.intro[locale],
     metaDescription: s.metaDescription[locale],
+    problem: s.problem[locale],
     benefits: s.benefits[locale],
+    outcome: s.outcome[locale],
   }));
 }
 
