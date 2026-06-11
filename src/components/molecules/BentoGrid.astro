@@ -1,0 +1,33 @@
+---
+interface Props {
+  class?: string;
+}
+const { class: className } = Astro.props;
+---
+
+<div class:list={['bento', className]}>
+  <slot />
+</div>
+
+<style>
+  .bento {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 20px;
+    max-width: var(--content-max);
+    margin: 0 auto;
+  }
+  /* children set their span via inline style --col / --row (defaults: 4 cols, 1 row) */
+  .bento > :global(*) {
+    grid-column: span var(--col, 4);
+    grid-row: span var(--row, 1);
+  }
+  @media (max-width: 860px) {
+    .bento {
+      grid-template-columns: 1fr;
+    }
+    .bento > :global(*) {
+      grid-column: span 1;
+    }
+  }
+</style>
