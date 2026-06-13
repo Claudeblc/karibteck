@@ -1,4 +1,5 @@
 ---
+import type { ImageMetadata } from 'astro';
 import Tag from '@/components/atoms/Tag.astro';
 import ArticleCover from '@/components/molecules/ArticleCover.astro';
 import { formatDate } from '@/lib/dates';
@@ -13,14 +14,16 @@ interface Props {
   readingMinutes: number;
   tags: string[];
   locale: Locale;
+  cover?: ImageMetadata;
+  coverAlt?: string;
 }
-const { href, title, excerpt, date, readingMinutes, tags, locale } = Astro.props;
+const { href, title, excerpt, date, readingMinutes, tags, locale, cover, coverAlt } = Astro.props;
 const t = useTranslations(locale);
 ---
 
 <article class="article-card fade-up">
   <a class="article-cover-link" href={href} tabindex="-1" aria-hidden="true">
-    <ArticleCover seed={href} category={tags[0]} size="sm" />
+    <ArticleCover seed={href} category={tags[0]} size="sm" image={cover} alt={coverAlt ?? title} />
   </a>
   <div class="article-body">
     <p class="article-meta">

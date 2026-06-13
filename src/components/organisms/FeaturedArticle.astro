@@ -21,7 +21,14 @@ const category = entry.data.tags[0];
 <section class="featured">
   <div class="featured-inner">
     <a class="featured-cover" href={href} aria-label={entry.data.title}>
-      <ArticleCover seed={entry.data.translationKey} category={category} size="lg" />
+      <ArticleCover
+        seed={entry.data.translationKey}
+        category={category}
+        size="lg"
+        image={entry.data.cover}
+        alt={entry.data.coverAlt ?? entry.data.title}
+        eager
+      />
     </a>
     <div class="featured-body">
       <span class="featured-label">{t('blog.featuredLabel')}</span>
