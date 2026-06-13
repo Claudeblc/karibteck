@@ -63,6 +63,8 @@ const localizedPaths = { fr: localizePath('blog', 'fr'), en: localizePath('blog'
                 readingMinutes={computeReadingTime(entry.body ?? '')}
                 tags={entry.data.tags}
                 locale={locale}
+                cover={entry.data.cover}
+                coverAlt={entry.data.coverAlt}
               />
             ))}
           </div>

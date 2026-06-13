@@ -49,6 +49,8 @@ const metaDescription = t('blog.tagMetaTemplate').replace('{tag}', tag);
             readingMinutes={computeReadingTime(entry.body ?? '')}
             tags={entry.data.tags}
             locale={locale}
+            cover={entry.data.cover}
+            coverAlt={entry.data.coverAlt}
           />
         ))
       }
