@@ -1,0 +1,50 @@
+---
+import Button from '@/components/atoms/Button.astro';
+import WhatsAppButton from '@/components/molecules/WhatsAppButton.astro';
+import { useTranslations, localizePath } from '@/i18n/utils';
+import type { Locale } from '@/types';
+
+interface Props {
+  locale: Locale;
+}
+const { locale } = Astro.props;
+const t = useTranslations(locale);
+const contactHref = localizePath('contact', locale);
+---
+
+<aside class="blog-cta">
+  <h2>{t('blog.cta.title')}</h2>
+  <p>{t('blog.cta.sub')}</p>
+  <div class="actions">
+    <Button href={contactHref} variant="primary">{t('cta.discussProject')}</Button>
+    <WhatsAppButton locale={locale} />
+  </div>
+</aside>
+
+<style>
+  .blog-cta {
+    margin-top: 56px;
+    padding: 32px;
+    border-radius: var(--radius-lg);
+    background: var(--color-surface-gray);
+    border: 1px solid var(--color-surface-gray);
+    text-align: center;
+  }
+  .blog-cta h2 {
+    font-family: var(--font-display);
+    font-size: clamp(1.4rem, 3vw, 1.8rem);
+    color: var(--color-primary);
+    margin: 0 0 8px;
+  }
+  .blog-cta p {
+    color: var(--color-on-surface-variant);
+    max-width: 52ch;
+    margin: 0 auto 24px;
+  }
+  .actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    justify-content: center;
+  }
+</style>
