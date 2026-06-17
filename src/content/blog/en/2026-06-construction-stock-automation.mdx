@@ -1,49 +1,55 @@
 ---
-title: 'Automating stock and supplier orders for a construction tradesperson with an AI agent'
-seoTitle: 'AI agent: automating construction stock and orders'
+title: 'Ordering materials from a quote with an AI agent, keeping the human in the loop'
+seoTitle: 'AI agent: ordering construction materials from a quote'
 cover: ../../../assets/blog/ia-agents.jpg
-coverAlt: 'Dashboard tracking stock levels and supplier orders for a construction tradesperson'
+coverAlt: 'AI agent reading a quote to order materials from a construction supplier'
 date: 2026-06-17
 locale: en
 translationKey: automatisation-stock-btp
 tags: ['ia', 'business']
-excerpt: 'How we helped a construction tradesperson put an AI agent in charge of tracking stock, catching low levels and preparing supplier orders, with no manual data entry.'
+excerpt: 'How we helped a construction tradesperson: an AI agent reads the quote, orders the materials from the supplier, and pings him on WhatsApp whenever a price doesn’t match.'
 ---
 
-A construction tradesperson spends the day on site, not in front of a spreadsheet. Yet it is often a missing material — spotted too late — that costs a whole crew half a day. We helped a tradesperson facing exactly that problem: stock kept in his head and in a notebook, shortages discovered on the morning of a pour, orders placed in a rush. Here is how we put an AI agent on the job, and what it changed day to day.
+Between the quote a client accepts and the materials delivered on site, there is a thankless step every tradesperson knows: going through the quote line by line and re-typing it into a supplier order. Time, in the evening, and a risk of error at every reference. We helped a construction tradesperson with exactly this. The result: an AI agent that reads the quote, places the order, and only disturbs him when a real decision is needed. Here is how, and why the "human in the loop" changes everything.
 
-## The problem: stock invisible until it runs out
+## The problem: from quote to order, by hand
 
-Tracking used to rely on memory and a few scattered notes. As long as everything went well, it held. The day a bag of mortar, a type of screw or a length of conduit ran short, it was a scramble: call the supplier, wait for availability, sometimes send someone to buy at full price in store. The real cost was not the material — it was the lost time and the delayed jobs.
+A partition job starts from a quote: so many plasterboard sheets, tracks, studs, screws, filler. Once the quote is approved, that list has to become a supplier order. It is repetitive, often done late, and that is where errors creep in: a forgotten quantity, a wrong reference, an incomplete delivery that stalls the install.
 
-The need was clear: never again discover a shortage on the very day the material is needed. Not a heavy management tool to fill in every evening — he would never have filled it in — but something that works in the background and warns him at the right moment.
+The tradesperson did not want one more piece of software to fill in. He wanted the quote he already produces to trigger the order directly — with no re-entry.
 
-## Our approach: an agent, not one more piece of software
+## Our approach: an agent that reads, orders and flags
 
-An AI agent is not a tool you open and feed by hand. It is an assistant you hand a task to, that watches information and acts on rules decided with you. We built it around four steps.
+An AI agent is not a magic button. It is an assistant you hand a clear task to, that acts on rules decided with you and knows when to stop and ask. We built it around three moments.
 
-**Track stock without painful data entry.** The starting point of any automation is reliable data. Rather than an inventory to re-enter every day, we set up a light update: stock in on delivery, stock out per job, all in a few simple taps from the phone. The agent keeps the count up to date from there.
+**Reading the quote.** The agent takes the quote as it is — the tradesperson's usual format — and pulls out what matters: products, quantities, references. Plasterboard, tracks, screws: each line becomes an order line, with no manual copying.
 
-**Catch low levels before it is too late.** For each material that matters, we set a threshold together that accounts for the supplier's lead time. The agent watches continuously and triggers when a level nears the critical point — not when the shortage is already there.
+**Placing the order.** From that list, the agent prepares the order with the right supplier and sends it. What used to eat an evening now happens in the background, from a document the tradesperson had already written anyway.
 
-**Prepare the order on its own.** When a threshold is reached, the agent drafts the purchase order: the right supplier, the right references, quantities calculated to restart from a healthy base. It generates a clean document, ready to go, and presents it to the tradesperson.
+**Flagging a mismatch.** This is the heart of the system. If the price found at the supplier does not match the one in the quote — a rise, a swapped reference, a discount that vanished — the agent does not order in silence. It stops and warns.
 
-**Send it and keep the record.** After approval, the order goes to the supplier by email, and the agent centralizes the exchanges: what was ordered, when, from whom, and where it stands. No more purchase order lost at the bottom of an inbox.
+## The "human in the loop," where it counts
 
-## The human stays in control
+When a price drifts, the agent sends a WhatsApp message to the tradesperson: here is the line, the expected price, the actual price, the gap. And a simple question: order anyway, look for another supplier, or wait?
 
-One point we never compromise on: the agent prepares, the tradesperson decides. Nothing goes to a supplier without approval. That is deliberate. An order commits money and a deadline; that kind of decision stays human.
+That is the "human in the loop": the machine does all the grunt work — reading, comparing, preparing — but the decision that commits money goes back to the human, at the exact moment it arises. The tradesperson answers in a word from the job site, and the agent carries it out.
 
-So the goal is not to take away control, but to take away the mental load. The tradesperson no longer spends his evenings wondering whether he has enough of a given product left for the week. The agent thinks about it for him and hands him an order that is already prepared: all that is left is to glance at it and confirm.
+The detail that changes everything: he is only asked about the exception. As long as prices match the quote, the order goes out on its own. The moment there is a doubt that costs money, he is the one who decides. Neither blind autopilot nor manual labor — the right balance between the two.
+
+## What stays fully human
+
+The agent does not invent a tolerance threshold, does not "negotiate" a price and never decides on extra cost alone. Those rules — from what gap to warn, which suppliers are acceptable — are set with the tradesperson, and the final call is always his. The model executes fast and tirelessly; it does not sign the purchase order in the boss's place.
+
+That distinction matters on a job site, where an ordering mistake is paid in days of waiting. An agent that asks beats an agent that gets it wrong with confidence.
 
 ## What it changes in practice
 
-The benefit is not measured in a technological gadget, it is measured in peace of mind. The surprise shortage, the one that freezes a job site, becomes rare because it is anticipated. The order, which used to take time and attention at the end of the day, shrinks to a quick review. And the history, long scattered, becomes readable at a glance.
+The benefit is not a gadget, it is less load and fewer errors. The move from quote to order, which used to nibble away evenings, becomes nearly invisible. And the risk of a nasty surprise at delivery — a price that doubled without anyone noticing — disappears, because the gap surfaces before the order, not after the invoice.
 
-In all honesty, we will not quote a percentage of time saved here: that would be a number invented to look good. What we can say is that the logic has changed. We moved from reactive management — putting out fires — to anticipatory management, without asking the tradesperson to become an administrator.
+In all honesty, we will not quote a time-saved figure: it would be made up. What we can say is that the logic has changed. The tradesperson no longer re-enters anything and no longer discovers price gaps too late; he decides, at the right moment, only on the cases that deserve it.
 
 ## Why it works for a tradesperson
 
-Many management tools fail for one simple reason: they ask too much data entry from someone who has no time. An agent flips the load. It does the repetitive work — watching, calculating, drafting — and only calls on the human for what really matters: deciding.
+Many automations fail because they try to do everything alone, or because they demand too much data entry. The right approach is in between: hand the repetitive work to the agent, keep the committing decision for the human. WhatsApp, already in the tradesperson's pocket, is enough as a control point.
 
-The takeaway: if a task comes back every week, follows clear rules and is costly to forget, it is an excellent candidate for an agent. A construction tradesperson's stock management ticks all three boxes. If this sounds like you, let's talk: the right automation is not the most impressive one, it is the one that gives you back time without asking you to spend any.
+The takeaway: if a task starts from a document you already produce, follows clear rules and includes a point where you sometimes have to decide, it is an ideal candidate for a "human in the loop" agent. Ordering materials from a quote ticks every box. If this sounds like you, let's talk: the right automation is not the one that replaces you, it is the one that gives you back time and calls you at the right moment.
