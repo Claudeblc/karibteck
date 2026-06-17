@@ -1,0 +1,55 @@
+---
+title: 'Commander le matériel à partir d’un devis avec un agent IA, et garder l’humain dans la boucle'
+seoTitle: 'Agent IA : commander le matériel BTP depuis un devis'
+cover: ../../../assets/blog/ia-agents.jpg
+coverAlt: 'Agent IA lisant un devis pour commander du matériel auprès d’un fournisseur du BTP'
+date: 2026-06-17
+locale: fr
+translationKey: automatisation-stock-btp
+tags: ['ia', 'business']
+excerpt: 'Comment nous avons accompagné un artisan du BTP : un agent IA lit le devis, commande le matériel auprès du fournisseur, et le prévient sur WhatsApp en cas d’écart de prix.'
+---
+
+Entre le devis accepté par le client et le matériel livré sur le chantier, il y a une étape ingrate que tout artisan connaît : reprendre le devis ligne par ligne et le retaper en commande chez le fournisseur. Du temps, le soir, et un risque d'erreur à chaque référence. Nous avons accompagné un artisan du BTP sur exactement ce point. Le résultat : un agent IA qui lit le devis, passe la commande, et ne dérange l'artisan que quand une vraie décision s'impose. Voici comment, et pourquoi le « human in the loop » change tout.
+
+## Le problème : du devis à la commande, à la main
+
+Un chantier de cloisons part d'un devis : tant de plaques de plâtre, de rails, de montants, de vis, d'enduit. Une fois le devis validé, il faut transformer cette liste en commande fournisseur. C'est répétitif, ça se fait souvent tard, et c'est là que se glissent les erreurs : une quantité oubliée, une mauvaise référence, une livraison incomplète qui bloque la pose.
+
+L'artisan ne voulait pas un logiciel de plus à remplir. Il voulait que le devis, qu'il produit déjà, serve directement à déclencher la commande — sans ressaisie.
+
+## Notre démarche : un agent qui lit, commande et alerte
+
+Un agent IA n'est pas un bouton magique. C'est un assistant à qui on confie une tâche claire, qui agit selon des règles décidées avec vous et qui sait s'arrêter pour demander. Nous l'avons construit autour de trois temps.
+
+**Lire le devis.** L'agent prend le devis tel qu'il est — le format habituel de l'artisan — et en extrait ce qui compte : les produits, les quantités, les références. Le placo, les rails, la visserie : chaque ligne devient une ligne de commande, sans recopiage manuel.
+
+**Passer la commande.** À partir de cette liste, l'agent prépare la commande auprès du bon fournisseur et la transmet. Ce qui prenait une fin de soirée se fait en arrière-plan, à partir d'un document que l'artisan avait de toute façon déjà rédigé.
+
+**Alerter en cas d'écart.** C'est le cœur du système. Si le prix relevé chez le fournisseur ne correspond pas à celui prévu au devis — une hausse, une référence remplacée, une remise disparue — l'agent ne commande pas en silence. Il s'arrête et prévient.
+
+## Le « human in the loop », là où ça compte
+
+Quand un prix dérape, l'agent envoie un message WhatsApp à l'artisan : voici la ligne concernée, le prix attendu, le prix réel, l'écart. Et une question simple : on commande quand même, on cherche un autre fournisseur, ou on attend ?
+
+C'est ça, le « human in the loop » : la machine fait tout le travail de fourmi — lire, comparer, préparer — mais la décision qui engage de l'argent revient à l'humain, au moment précis où elle se pose. L'artisan répond d'un mot depuis son chantier, et l'agent exécute.
+
+Le détail qui change tout : il n'est sollicité **que** sur l'exception. Tant que les prix collent au devis, la commande part toute seule. Dès qu'il y a un doute qui coûte, c'est lui qui tranche. Ni pilote automatique aveugle, ni travail manuel — le bon équilibre entre les deux.
+
+## Ce qui reste 100 % humain
+
+L'agent n'invente pas de seuil de tolérance, ne « négocie » pas un prix et ne décide jamais seul d'un surcoût. Ces règles — à partir de quel écart prévenir, quels fournisseurs sont acceptables — se définissent avec l'artisan, et la décision finale lui appartient toujours. Le modèle exécute vite et sans fatigue ; il ne signe pas le bon de commande à la place du patron.
+
+C'est une distinction qui compte sur un chantier, où une erreur de commande se paie en jours d'attente. Mieux vaut un agent qui demande qu'un agent qui se trompe avec assurance.
+
+## Ce que ça change concrètement
+
+Le bénéfice n'est pas un gadget, c'est de la charge en moins et des erreurs évitées. Le passage du devis à la commande, qui grignotait des soirées, devient quasi invisible. Et le risque d'une mauvaise surprise à la livraison — un prix qui a doublé sans que personne l'ait vu — disparaît, parce que l'écart remonte avant la commande, pas après la facture.
+
+Par honnêteté, nous ne donnerons pas de chiffre de temps gagné : ce serait inventé. Ce que nous pouvons dire, c'est que la logique a changé. L'artisan ne ressaisit plus rien et ne découvre plus les écarts de prix trop tard ; il décide, au bon moment, sur les seuls cas qui le méritent.
+
+## Pourquoi ça marche pour un artisan
+
+Beaucoup d'automatisations échouent parce qu'elles veulent tout faire toutes seules, ou parce qu'elles demandent trop de saisie. La bonne approche est entre les deux : déléguer le répétitif à l'agent, garder pour l'humain la décision qui engage. Le WhatsApp, que l'artisan a déjà dans la poche, suffit comme point de contrôle.
+
+À retenir : si une tâche part d'un document que vous produisez déjà, suit des règles claires et comporte un point où il faut parfois décider, c'est un candidat idéal pour un agent « human in the loop ». La commande de matériel à partir d'un devis coche toutes les cases. Si vous vous reconnaissez, parlons-en : la bonne automatisation n'est pas celle qui vous remplace, c'est celle qui vous rend du temps et vous appelle au bon moment.

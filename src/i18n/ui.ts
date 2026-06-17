@@ -177,6 +177,9 @@ export const ui = {
     'blog.featuredLabel': 'À la une',
     'blog.by': 'Par',
     'blog.author': "L'équipe Karib Teck",
+    'blog.cta.title': 'Un cas comme le vôtre ?',
+    'blog.cta.sub':
+      "Sites, applications mobiles, agents IA : parlons de votre besoin et voyons ce qu'on peut automatiser pour vous faire gagner du temps.",
     'cta.readArticle': "Lire l'article",
     'nav.aboutPage': 'À propos',
     'cta.band.title.lead': 'Prêt à transformer',
@@ -371,6 +374,9 @@ export const ui = {
     'blog.featuredLabel': 'Featured',
     'blog.by': 'By',
     'blog.author': 'The Karib Teck team',
+    'blog.cta.title': 'A case like yours?',
+    'blog.cta.sub':
+      "Websites, mobile apps, AI agents: tell us your need and let's see what we can automate to save you time.",
     'cta.readArticle': 'Read the article',
     'nav.aboutPage': 'About',
     'cta.band.title.lead': 'Ready to transform',
