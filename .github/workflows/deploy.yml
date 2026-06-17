@@ -46,6 +46,7 @@ jobs:
           PUBLIC_WEB3FORMS_KEY: ${{ secrets.PUBLIC_WEB3FORMS_KEY }}
           PUBLIC_WHATSAPP_NUMBER: ${{ secrets.PUBLIC_WHATSAPP_NUMBER }}
           PUBLIC_PLAUSIBLE_DOMAIN: ${{ secrets.PUBLIC_PLAUSIBLE_DOMAIN }}
+          PUBLIC_GOOGLE_SITE_VERIFICATION: ${{ secrets.PUBLIC_GOOGLE_SITE_VERIFICATION }}
         run: npm run build
 
       - name: Deploy dist/ to the VPS over SSH

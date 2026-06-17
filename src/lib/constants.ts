@@ -9,6 +9,9 @@ export const WEB3FORMS_KEY = import.meta.env.PUBLIC_WEB3FORMS_KEY ?? '';
 export const CALCOM_URL = import.meta.env.PUBLIC_CALCOM_URL ?? '';
 export const WHATSAPP_NUMBER = import.meta.env.PUBLIC_WHATSAPP_NUMBER ?? '';
 
+/** Google Search Console site verification token (meta-tag method). */
+export const GOOGLE_SITE_VERIFICATION = import.meta.env.PUBLIC_GOOGLE_SITE_VERIFICATION ?? '';
+
 export const SUPPORTED_LOCALES = ['fr', 'en'] as const;
 export const DEFAULT_LOCALE = 'fr';
 
