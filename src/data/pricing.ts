@@ -41,7 +41,7 @@ const PRICING_PLANS_DATA: PricingPlanData[] = [
   },
   {
     name: { fr: 'Business', en: 'Business' },
-    price: { fr: 'À partir de 2 900€', en: 'From €2,900' },
+    price: { fr: 'À partir de 2 900€', en: 'From €2,900' },
     description: {
       fr: 'Pour les PME qui veulent un site performant ou une application web avec des fonctionnalités avancées.',
       en: 'For SMEs that want a high-performing site or a web app with advanced features.',

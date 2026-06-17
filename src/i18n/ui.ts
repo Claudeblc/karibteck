@@ -26,7 +26,7 @@ export const ui = {
     'hero.imageAlt': 'Karib Teck – Solutions digitales',
     'hero.title.lead': 'Nous créons des',
     'hero.title.hl': 'sites web',
-    'hero.title.tail': 'qui propulsent votre entreprise.',
+    'hero.title.tail': 'et des solutions digitales pour votre entreprise.',
     'hero.sub':
       'Karib Teck accompagne les entreprises, entrepreneurs et marques des DOM dans leur transformation digitale avec des sites modernes, rapides et performants.',
     'services.badge': 'Nos Services',
@@ -222,7 +222,7 @@ export const ui = {
     'hero.imageAlt': 'Karib Teck – Digital solutions',
     'hero.title.lead': 'We build',
     'hero.title.hl': 'websites',
-    'hero.title.tail': 'that grow your business.',
+    'hero.title.tail': 'and digital solutions for your business.',
     'hero.sub':
       'Karib Teck helps businesses, entrepreneurs and brands across the French overseas territories go digital with modern, fast and high-performing websites.',
     'services.badge': 'Our Services',

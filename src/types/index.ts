@@ -1,3 +1,4 @@
+import type { ImageMetadata } from 'astro';
 import type { SUPPORTED_LOCALES } from '@/lib/constants';
 import type { UiKey, RouteKey } from '@/i18n/ui';
 
@@ -93,6 +94,8 @@ export interface TeamMember {
   role: string;
   bio: string;
   accent: string;
+  /** Optional profile photo; falls back to initials avatar when absent. */
+  photo?: ImageMetadata;
 }
 
 export interface Guarantee {

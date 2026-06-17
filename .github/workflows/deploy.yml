@@ -1,0 +1,96 @@
+name: Deploy to VPS
+
+# Build the static site and rsync it to the production VPS (nginx).
+# Runs after a merge to main. The build step doubles as a gate:
+# a broken build never reaches production.
+#
+# SECURITY — nothing about the server lives in this repo.
+# Every server detail (key, host, user, path) is read from GitHub Secrets.
+# Never hardcode an IP, a path, or a key here. See the PR description for
+# the list of secrets to configure (Settings > Secrets and variables > Actions).
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch: {}
+
+# One production deploy at a time; let a running deploy finish before the next.
+concurrency:
+  group: production-deploy
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+        env:
+          HUSKY: 0
+
+      - name: Build (static output)
+        # All PUBLIC_* values are injected from secrets at build time.
+        # They are optional: the site builds and serves without them
+        # (forms / Cal / WhatsApp simply stay inactive).
+        env:
+          PUBLIC_CALCOM_URL: ${{ secrets.PUBLIC_CALCOM_URL }}
+          PUBLIC_WEB3FORMS_KEY: ${{ secrets.PUBLIC_WEB3FORMS_KEY }}
+          PUBLIC_WHATSAPP_NUMBER: ${{ secrets.PUBLIC_WHATSAPP_NUMBER }}
+          PUBLIC_PLAUSIBLE_DOMAIN: ${{ secrets.PUBLIC_PLAUSIBLE_DOMAIN }}
+          PUBLIC_GOOGLE_SITE_VERIFICATION: ${{ secrets.PUBLIC_GOOGLE_SITE_VERIFICATION }}
+        run: npm run build
+
+      - name: Deploy dist/ to the VPS over SSH
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.VPS_SSH_PRIVATE_KEY }}
+          KNOWN_HOSTS: ${{ secrets.VPS_KNOWN_HOSTS }}
+          REMOTE_HOST: ${{ secrets.VPS_HOST }}
+          REMOTE_USER: ${{ secrets.VPS_USER }}
+          REMOTE_PATH: ${{ secrets.VPS_DEPLOY_PATH }}
+        run: |
+          set -euo pipefail
+
+          # Guard rails: refuse to run with a missing or unsafe target path,
+          # because rsync --delete on the wrong path is destructive.
+          if [ -z "${REMOTE_HOST:-}" ] || [ -z "${REMOTE_USER:-}" ] || [ -z "${REMOTE_PATH:-}" ]; then
+            echo "::error::Missing VPS_HOST / VPS_USER / VPS_DEPLOY_PATH secret."
+            exit 1
+          fi
+          case "$REMOTE_PATH" in
+            /var/www/*) : ;;
+            *) echo "::error::VPS_DEPLOY_PATH must be an absolute path under /var/www."; exit 1 ;;
+          esac
+
+          mkdir -p ~/.ssh
+          printf '%s\n' "$SSH_PRIVATE_KEY" > ~/.ssh/deploy_key
+          chmod 600 ~/.ssh/deploy_key
+          printf '%s\n' "$KNOWN_HOSTS" > ~/.ssh/known_hosts
+          chmod 644 ~/.ssh/known_hosts
+
+          SSH_OPTS="ssh -i ~/.ssh/deploy_key -o UserKnownHostsFile=~/.ssh/known_hosts -o IdentitiesOnly=yes"
+
+          # --delay-updates -> near-atomic swap; --exclude .well-known keeps
+          # Let's Encrypt ACME challenges in place during cert renewals.
+          rsync -avz --delete --delay-updates \
+            --exclude='.well-known/' \
+            -e "$SSH_OPTS" \
+            dist/ "${REMOTE_USER}@${REMOTE_HOST}:${REMOTE_PATH}/"
+
+          # Correct ownership/permissions for nginx (www-data).
+          $SSH_OPTS "${REMOTE_USER}@${REMOTE_HOST}" \
+            "chown -R www-data:www-data '${REMOTE_PATH}' \
+             && find '${REMOTE_PATH}' -type d -exec chmod 755 {} + \
+             && find '${REMOTE_PATH}' -type f -exec chmod 644 {} +"
+
+      - name: Remove deploy key
+        if: always()
+        run: rm -f ~/.ssh/deploy_key

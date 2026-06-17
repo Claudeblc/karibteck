@@ -1,5 +1,5 @@
 ---
-import { DEFAULT_LOCALE, SITE_URL } from '@/lib/constants';
+import { DEFAULT_LOCALE, SITE_URL, GOOGLE_SITE_VERIFICATION } from '@/lib/constants';
 import { routes } from '@/i18n/ui';
 import { useTranslations } from '@/i18n/utils';
 import Nav from '@/components/organisms/Nav.astro';
@@ -47,6 +47,11 @@ const navAltHref = locale === 'fr' ? enPath : frPath;
     <title>{title}</title>
     <meta name="description" content={description} />
     {noindex && <meta name="robots" content="noindex" />}
+    {
+      GOOGLE_SITE_VERIFICATION && (
+        <meta name="google-site-verification" content={GOOGLE_SITE_VERIFICATION} />
+      )
+    }
     <link rel="canonical" href={canonical} />
     <link rel="alternate" hreflang="fr" href={frHref} />
     <link rel="alternate" hreflang="en" href={enHref} />
