@@ -12,7 +12,12 @@ const t = useTranslations(locale);
 
 {
   CALCOM_URL && (
-    <a href={CALCOM_URL} target="_blank" rel="noopener noreferrer" class="cal-btn">
+    <a
+      href={`https://cal.com/${CALCOM_URL}`}
+      target="_blank"
+      rel="noopener noreferrer"
+      class="cal-btn"
+    >
       📅 {t('contact.cal')}
     </a>
   )
