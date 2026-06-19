@@ -49,7 +49,7 @@ export function buildOrganization(locale: Locale) {
     legalName: ORGANIZATION_LEGAL_NAME,
     url: SITE_URL,
     email: contact.email,
-    telephone: contact.phone,
+    telephone: contact.phones[0],
     description: t('meta.home.description'),
     address: postalAddress(),
     geo: geoCoordinates(),

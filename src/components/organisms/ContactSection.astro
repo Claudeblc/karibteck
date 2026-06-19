@@ -33,7 +33,9 @@ const contact = getContactDetails(locale);
         </div>
         <div class="contact-detail">
           <div class="contact-detail-icon"><Icon name="lucide:phone" /></div>
-          <div>{contact.phone}</div>
+          <div class="contact-phones">
+            {contact.phones.map((p) => <a href={`tel:${p.replace(/\s/g, '')}`}>{p}</a>)}
+          </div>
         </div>
         <div class="contact-detail">
           <div class="contact-detail-icon"><Icon name="lucide:map-pin" /></div>
@@ -91,6 +93,10 @@ const contact = getContactDetails(locale);
   }
   .contact-detail a:hover {
     color: var(--color-teal);
+  }
+  .contact-phones {
+    display: flex;
+    flex-direction: column;
   }
   .contact-cta {
     margin-top: 28px;

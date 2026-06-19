@@ -24,7 +24,13 @@ const contact = getContactDetails(locale);
     <aside class="col-info">
       <ContactInfoCard icon="lucide:map-pin" title={t('contact.info.office')}>
         <p>{contact.location}</p>
-        <p>{contact.phone}</p>
+        {
+          contact.phones.map((p) => (
+            <p>
+              <a href={`tel:${p.replace(/\s/g, '')}`}>{p}</a>
+            </p>
+          ))
+        }
       </ContactInfoCard>
       <ContactInfoCard icon="lucide:mail" title={t('contact.info.email')}>
         <a href={`mailto:${contact.email}`}>{contact.email}</a>

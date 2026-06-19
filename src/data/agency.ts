@@ -22,7 +22,8 @@ export function getTagline(locale: Locale): string {
  */
 const CONTACT_DETAILS_DATA = {
   email: CONTACT_EMAIL,
-  phone: '+590 690 00 00 00',
+  // Numéro local (Guadeloupe) en premier : sert de téléphone principal au JSON-LD local.
+  phones: ['+590 690 12 09 97', '+33 6 50 92 06 62'],
   location: {
     fr: 'Guadeloupe, Antilles Françaises',
     en: 'Guadeloupe, French West Indies',
@@ -35,7 +36,7 @@ const CONTACT_DETAILS_DATA = {
 
 export interface ContactDetails {
   email: string;
-  phone: string;
+  phones: string[];
   location: string;
   hours: string;
 }
@@ -43,7 +44,7 @@ export interface ContactDetails {
 export function getContactDetails(locale: Locale): ContactDetails {
   return {
     email: CONTACT_DETAILS_DATA.email,
-    phone: CONTACT_DETAILS_DATA.phone,
+    phones: CONTACT_DETAILS_DATA.phones,
     location: CONTACT_DETAILS_DATA.location[locale],
     hours: CONTACT_DETAILS_DATA.hours[locale],
   };
